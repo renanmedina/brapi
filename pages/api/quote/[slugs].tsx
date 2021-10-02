@@ -8,16 +8,6 @@ interface LooseObject {
 }
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  if (req.headers['user-agent']?.includes('python-requests')) {
-    res.setHeader('Cache-Control', 's-maxage=2592000, stale-while-revalidate');
-
-    res.status(403).json({
-      error: true,
-      message:
-        'Your limit exceeded, please email us at brapi@protonmail.com for more information',
-    });
-    return;
-  }
   const { slugs } = req.query;
   const { interval } = req.query;
   const { range } = req.query;
