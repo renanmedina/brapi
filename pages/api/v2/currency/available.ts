@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { NextApiRequest, NextApiResponse } from 'next';
 // import { logHost } from '../../../../utils/logHost';
-import { sortObject } from '../../../../utils/sortObject';
 
 interface DataProps {
   [key: string]: string;
@@ -41,8 +40,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     return;
   }
 
+  const currenciesData = Object.keys(data).map((key) => ({
+    name: key,
+    currency: data[key],
+  }));
+
   res.status(200).json({
-    currencies: sortObject(data),
+    currencies: currenciesData,
   });
 
   // logHost(req, 'v2/crypto/available');
