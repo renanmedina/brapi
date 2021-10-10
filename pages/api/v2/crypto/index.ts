@@ -1,12 +1,14 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
-// import { logHost } from '../../../../utils/logHost';
+import { logHost } from '../../../../utils/logHost';
 
 interface LooseObject {
   [key: string]: any;
 }
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
+  logHost(req, 'v2/crypto');
+
   const { coin, currency } = req.query;
 
   if (!coin) {
@@ -91,6 +93,4 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       message: 'Something went wrong while fetching the data',
     });
   }
-
-  // logHost(req, 'v2/crypto');
 };

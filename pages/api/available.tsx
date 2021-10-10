@@ -1,8 +1,10 @@
 import axios from 'axios';
-// import { logHost } from '../../utils/logHost';
+import { logHost } from '../../utils/logHost';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
+  logHost(req, 'available');
+
   const { search } = req.query;
   res.setHeader('Cache-Control', 's-maxage=2592000, stale-while-revalidate');
 
@@ -56,6 +58,4 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   res.status(200).json({
     stocks: uniqueStocks,
   });
-
-  // logHost(req, 'available');
 };

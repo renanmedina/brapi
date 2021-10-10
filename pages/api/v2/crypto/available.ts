@@ -1,8 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { availableCoins } from '../../../../utils/availableCoins';
-// import { logHost } from '../../../../utils/logHost';
+import { logHost } from '../../../../utils/logHost';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
+  logHost(req, 'v2/crypto/available');
+
   const { search } = req.query;
 
   res.setHeader('Cache-Control', 's-maxage=2592000, stale-while-revalidate');
@@ -34,6 +36,4 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   res.status(200).json({
     coins: availableCoins,
   });
-
-  // logHost(req, 'v2/crypto/available');
 };

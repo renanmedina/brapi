@@ -11,7 +11,6 @@
     "axios": "0.21.1",
     "firebase": "8.2.9",
     "he": "1.2.0",
-    "ioredis": "4.27.6",
     "next": "10.0.6",
     "next-images": "1.7.0",
     "prettier": "2.2.1",
@@ -24,7 +23,6 @@
   "devDependencies": {
     "@types/gtag.js": "0.0.4",
     "@types/he": "1.1.1",
-    "@types/ioredis": "4.26.4",
     "@types/node": "14.14.22",
     "@types/react": "17.0.0",
     "@types/request-ip": "0.0.36",
