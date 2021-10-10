@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
-// import { logHost } from '../../../../utils/logHost';
+import { logHost } from '../../../../utils/logHost';
 
 interface ResponseProps {
   [key: string]: {
@@ -33,6 +33,8 @@ interface DataProps {
 }
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
+  logHost(req, 'v2/currency');
+
   const { currency } = req.query;
 
   if (!currency) {
@@ -78,6 +80,4 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       message: 'Something went wrong while fetching the data',
     });
   }
-
-  // logHost(req, 'v2/currency');
 };

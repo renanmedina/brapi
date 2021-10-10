@@ -1,5 +1,5 @@
 import axios from 'axios';
-// import { logHost } from '../../../utils/logHost';
+import { logHost } from '../../../utils/logHost';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { QuoteProps } from '../../../@types/QuoteProps';
 
@@ -8,6 +8,8 @@ interface LooseObject {
 }
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
+  logHost(req, 'quote');
+
   const { slugs } = req.query;
   const { interval } = req.query;
   const { range } = req.query;
@@ -206,6 +208,4 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     await responseAllSlugs();
   }
-
-  // logHost(req, 'quote');
 };
