@@ -51,7 +51,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                   types: [],
                 },
               },
-              columns: ['price_earnings_ttm', 'earnings_per_share_basic_ttm'],
+              columns: [
+                'price_earnings_ttm',
+                'earnings_per_share_basic_ttm',
+                'logoid',
+              ],
             };
 
             const responseTradingView = await axios.post(
@@ -138,6 +142,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             if (fundamental) {
               historicalQuote.priceEarnings = fundamentalInformation[0][0];
               historicalQuote.earningsPerShare = fundamentalInformation[0][1];
+              historicalQuote.logourl = fundamentalInformation[0][2]
+                ? `https://s3-symbol-logo.tradingview.com/${fundamentalInformation[0][2]}--big.svg`
+                : 'https://brapi.ga/favicon.svg';
             }
 
             if (response.status === 200) {
@@ -179,6 +186,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           if (fundamental) {
             quote.priceEarnings = fundamentalInformation[0][0];
             quote.earningsPerShare = fundamentalInformation[0][1];
+            quote.logourl = fundamentalInformation[0][2]
+              ? `https://s3-symbol-logo.tradingview.com/${fundamentalInformation[0][2]}--big.svg`
+              : 'https://brapi.ga/favicon.svg';
           }
 
           if (response.status === 200) {
