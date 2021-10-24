@@ -63,7 +63,14 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       active_symbols_only: true,
     },
     symbols: {},
-    columns: ['close', 'change', 'volume', 'market_cap_basic', 'description'],
+    columns: [
+      'close',
+      'change',
+      'volume',
+      'market_cap_basic',
+      'description',
+      'logoid',
+    ],
     sort: {
       sortBy: sortBy?.toString() || 'volume',
       sortOrder: sortOrder?.toString() || 'desc',
@@ -105,6 +112,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       change: stock.d[1],
       volume: stock.d[2],
       market_cap: stock.d[3],
+      logo: stock.d[5]
+        ? `https://s3-symbol-logo.tradingview.com/${stock.d[5]}--big.svg`
+        : 'https://brapi.ga/favicon.svg',
     };
 
     return stockInformation;
