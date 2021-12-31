@@ -47,16 +47,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         left: sortBy?.toString() || 'volume',
         operation: 'nempty',
       },
-      {
-        left: 'type',
-        operation: 'equal',
-        right: 'stock',
-      },
-      {
-        left: 'subtype',
-        operation: 'equal',
-        right: 'common',
-      },
     ],
     options: {
       lang: 'pt',
@@ -96,12 +86,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         .replace(' N2', '');
     };
 
-    const availableStock = stock.s
-      .replace('3F', '3')
-      .replace('4F', '4')
-      .replace('11F', '11')
-      .replace('6F', '6')
-      .replace('BMFBOVESPA:', '');
+    const availableStock = stock.s.replace('BMFBOVESPA:', '');
 
     const cleanName = cleanString(stock.d[4]);
 

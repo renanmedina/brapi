@@ -43,12 +43,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   );
 
   const paths = await response.data.data.map((stock: any) => {
-    const availableStock = stock.s
-      .replace('3F', '3')
-      .replace('4F', '4')
-      .replace('11F', '11')
-      .replace('6F', '6')
-      .replace('BMFBOVESPA:', '');
+    const availableStock = stock.s.replace('BMFBOVESPA:', '');
 
     return availableStock;
   });

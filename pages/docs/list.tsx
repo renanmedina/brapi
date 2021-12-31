@@ -39,12 +39,7 @@ export const getStaticProps = async () => {
   );
 
   const paths = await response.data.data.map((stock: any) => {
-    const workingStock = stock.s
-      .replace('3F', '3')
-      .replace('4F', '4')
-      .replace('11F', '11')
-      .replace('6F', '6')
-      .replace('BMFBOVESPA:', '');
+    const workingStock = stock.s.replace('BMFBOVESPA:', '');
 
     const stockImg = stock.d[0]
       ? `https://s3-symbol-logo.tradingview.com/${stock.d[0]}.svg`
