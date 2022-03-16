@@ -14,12 +14,16 @@ export const numberToSI = (number: any) => {
 };
 
 export const numberToMoney = (number: any) => {
+  const parsedNumber = parseFloat(number);
+
+  if (isNaN(parsedNumber)) return '--';
+
   let money = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',
   });
 
-  return money.format(number);
+  return money.format(parsedNumber);
 };
 
 export const numberToPercent = (number: any) => {
