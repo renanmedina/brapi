@@ -57,11 +57,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       if (currency?.toString()?.toUpperCase() == 'USD') {
         return Number(usdPrice);
       }
-
-      const currencyPrice = Number(
-        USDPriceInCurrency[`USD${currency?.toString()?.toUpperCase() || 'BRL'}`]
-          .bid,
-      );
+      const currencyPrice = Number(USDPriceInCurrency['USD']?.bid);
 
       return currencyPrice * Number(usdPrice);
     };
