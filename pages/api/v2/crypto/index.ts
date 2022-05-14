@@ -50,6 +50,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           currency?.toString()?.toUpperCase() || 'BRL'
         }`,
       );
+      console.log(data);
+
       USDPriceInCurrency = data;
     }
 
