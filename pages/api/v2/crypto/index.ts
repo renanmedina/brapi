@@ -50,7 +50,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           currency?.toString()?.toUpperCase() || 'BRL'
         }`,
       );
-      console.log(data);
 
       USDPriceInCurrency = data;
     }
@@ -59,7 +58,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       if (currency?.toString()?.toUpperCase() == 'USD') {
         return Number(usdPrice);
       }
-      const currencyPrice = Number(USDPriceInCurrency['USD']?.bid);
+
+      const currencySelector = `USD${
+        currency?.toString()?.toUpperCase() || 'BRL'
+      }`;
+      const currencyPrice = Number(USDPriceInCurrency[currencySelector]?.bid);
 
       return currencyPrice * Number(usdPrice);
     };
