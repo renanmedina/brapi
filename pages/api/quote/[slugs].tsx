@@ -195,15 +195,21 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             return quote;
           }
         } catch (err) {
-          throw new Error(
-            `Não encontramos a ação ${slug.toString().toUpperCase()}`,
-          );
+          return {
+            symbol: slug.toString().toUpperCase(),
+            error: true,
+            message: `Não encontramos a ação ${slug.toString().toUpperCase()}`,
+          };
         }
       });
 
       const dynamicDate = new Date();
       await Promise.all(promises)
         .then((actualData) => {
+          if (actualData?.length === 1 && actualData?.[0]?.error) {
+            throw new Error(actualData[0].message);
+          }
+
           res.status(200).json({
             results: actualData,
             requestedAt: dynamicDate,
