@@ -3,6 +3,7 @@ import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import * as gtag from '../utils/gtag';
 import { AuthProvider } from '../context/SignUp';
+import '../styles/global.css';
 
 const App = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
