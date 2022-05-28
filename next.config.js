@@ -3,4 +3,5 @@ module.exports = withImages({
   images: {
     domains: ['s3-symbol-logo.tradingview.com'],
   },
+  swcMinify: true,
 });

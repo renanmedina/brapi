@@ -5,7 +5,7 @@ import * as gtag from '../utils/gtag';
 import '../styles/global.css';
 
 const App = ({ Component, pageProps }: AppProps) => {
-  const router = useRouter();
+  // const router = useRouter();
 
   // useEffect(() => {
   //   const handleRouteChange = (url: URL) => {
