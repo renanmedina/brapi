@@ -210,7 +210,7 @@ const Main: React.FC = () => {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
-                  className="text-indigo-400 w-12 h-12 mb-3 inline-block"
+                  className="text-brand-400 w-12 h-12 mb-3 inline-block"
                   viewBox="0 0 24 24"
                 >
                   <path d="M8 17l4 4 4-4m-4-5v9"></path>
@@ -230,7 +230,7 @@ const Main: React.FC = () => {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
-                  className="text-indigo-400 w-12 h-12 mb-3 inline-block"
+                  className="text-brand-400 w-12 h-12 mb-3 inline-block"
                   viewBox="0 0 24 24"
                 >
                   <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
@@ -246,18 +246,22 @@ const Main: React.FC = () => {
             <div className="p-4 md:w-1/4 sm:w-1/2 w-full">
               <div className="border-2 border-gray-800 px-4 py-6 rounded-lg">
                 <svg
-                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
                   stroke="currentColor"
+                  aria-label="Satellite"
+                  viewBox="0 0 24 24"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth="2"
-                  className="text-indigo-400 w-12 h-12 mb-3 inline-block"
-                  viewBox="0 0 24 24"
+                  className="text-brand-400 w-12 h-12 mb-3 inline-block"
                 >
-                  <path d="M3 18v-6a9 9 0 0118 0v6"></path>
-                  <path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"></path>
+                  <path
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    d="M7 17C2.97 12.794 2.97 6.118 7 2l15 15c-4.118 4.03-10.794 4.03-15 0zm0 0c-3.295 0-6 2.95-6 6h12c0-1.139-.37-2.034-1-3m3-11 4-4-4 4zm5.5-8a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z"
+                  ></path>
                 </svg>
-                {/* todo: get correct icon */}
+
                 <h2 className="title-font font-medium text-3xl text-white">
                   +2.500
                 </h2>
@@ -272,7 +276,7 @@ const Main: React.FC = () => {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
-                  className="text-indigo-400 w-12 h-12 mb-3 inline-block"
+                  className="text-brand-400 w-12 h-12 mb-3 inline-block"
                   viewBox="0 0 24 24"
                 >
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
@@ -283,6 +287,21 @@ const Main: React.FC = () => {
                 <p className="leading-relaxed">Uptime</p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="text-gray-400 bg-gray-900 body-font">
+        <div className="container px-5 py-24 mx-auto">
+          <div className="lg:w-2/3 flex flex-col sm:flex-row sm:items-center items-start mx-auto">
+            <h1 className="flex-grow sm:pr-16 text-2xl font-medium title-font text-white">
+              Pronto para desenvolver uma aplicação?
+            </h1>
+            <Link href="/docs" passHref>
+              <button className="flex-shrink-0 text-white bg-brand-500 border-0 py-2 px-8 focus:outline-none hover:bg-brand-600 rounded text-lg mt-10 sm:mt-0">
+                Começar
+              </button>
+            </Link>
           </div>
         </div>
       </section>
