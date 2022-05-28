@@ -38,7 +38,7 @@ export const Features = () => {
                 href="https://vercel.com/features/infrastructure"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-3 text-brand-400 inline-flex items-center"
+                className="btn btn-link"
               >
                 Saber mais
                 <svg
@@ -82,7 +82,7 @@ export const Features = () => {
                 tudo, é grátis. Acreditamos que dados devem ser democratizados
               </p>
               <Link href="/docs" passHref>
-                <a className="mt-3 text-brand-400 inline-flex items-center">
+                <a className="btn btn-link">
                   Começar
                   <svg
                     fill="none"
@@ -128,7 +128,7 @@ export const Features = () => {
                 href="https://status.brapi.ga"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-3 text-brand-400 inline-flex items-center"
+                className="btn btn-link"
               >
                 Ver uptime
                 <svg

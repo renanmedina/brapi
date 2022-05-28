@@ -13,9 +13,7 @@ export const Hero = () => {
           </p>
           <div className="flex justify-center">
             <Link href="/docs" passHref>
-              <button className="inline-flex text-white bg-brand-500 border-0 py-2 px-6 focus:outline-none hover:bg-brand-600 rounded text-lg">
-                Começar
-              </button>
+              <button className="btn btn-primary">Começar</button>
             </Link>
           </div>
         </div>

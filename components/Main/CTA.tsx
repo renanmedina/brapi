@@ -9,9 +9,7 @@ export const CTA = () => {
             Pronto para desenvolver uma aplicação?
           </h1>
           <Link href="/docs" passHref>
-            <button className="flex-shrink-0 text-white bg-brand-500 border-0 py-2 px-8 focus:outline-none hover:bg-brand-600 rounded text-lg mt-10 sm:mt-0">
-              Começar
-            </button>
+            <button className="btn btn-primary">Começar</button>
           </Link>
         </div>
       </div>
