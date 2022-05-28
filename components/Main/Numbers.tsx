@@ -4,11 +4,10 @@ export const Numbers = () => {
       <div className="container px-5 py-24 mx-auto">
         <div className="flex flex-col text-center w-full mb-20">
           <h1 className="sm:text-3xl text-2xl font-medium title-font text-white">
-            Nossos números
+            Junte-se a nós e faça parte da nossa comunidade
           </h1>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-            Começamos do zero em março de 2021 e já temos números
-            impressionantes
+            Começamos em 2021 e já temos números impressionantes
           </p>
         </div>
         <div className="flex flex-wrap -m-4 text-center">

@@ -6,11 +6,10 @@ export const Hero = () => {
       <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
         <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
           <h1 className="title-font sm:text-5xl text-3xl mb-4 font-medium text-white max-w-sm">
-            A melhor API de finanças do Brasil
+            Use a melhor API de finanças do Brasil
           </h1>
           <p className="mb-8 leading-relaxed max-w-md">
-            Precisa de uma API da Bovespa ou de Cripto? Não importa o que você
-            precisa, temos a solução
+            Ganhe acesso aos dados de qualquer ação, moeda ou criptomoeda
           </p>
           <div className="flex justify-center">
             <Link href="/docs" passHref>
