@@ -16,7 +16,10 @@ export const WhatWeDo = () => {
             converter de uma moeda para qualquer outra.
           </p>
           <Link href="/docs" passHref>
-            <a className="text-brand-400 inline-flex items-center mt-4">
+            <a
+              className="text-brand-400 inline-flex items-center mt-4"
+              tabIndex={0}
+            >
               Começar
               <svg
                 fill="none"
@@ -39,32 +42,44 @@ export const WhatWeDo = () => {
           <nav className="flex flex-wrap list-none -mb-1">
             <li className="lg:w-1/3 mb-1 w-1/2">
               <Link href="/docs#stocks" passHref>
-                <a className="hover:text-white">Bovespa</a>
+                <a className="hover:text-white" tabIndex={0}>
+                  Bovespa
+                </a>
               </Link>
             </li>
             <li className="lg:w-1/3 mb-1 w-1/2">
               <Link href="/docs#stocks-history" passHref>
-                <a className="hover:text-white">Dados históricos</a>
+                <a className="hover:text-white" tabIndex={0}>
+                  Dados históricos
+                </a>
               </Link>
             </li>
             <li className="lg:w-1/3 mb-1 w-1/2">
               <Link href="/docs#stocks-fundamentalist" passHref>
-                <a className="hover:text-white">Dados fundamentalistas</a>
+                <a className="hover:text-white" tabIndex={0}>
+                  Dados fundamentalistas
+                </a>
               </Link>
             </li>
             <li className="lg:w-1/3 mb-1 w-1/2">
               <Link href="/docs#crypto" passHref>
-                <a className="hover:text-white">Criptomoedas</a>
+                <a className="hover:text-white" tabIndex={0}>
+                  Criptomoedas
+                </a>
               </Link>
             </li>
             <li className="lg:w-1/3 mb-1 w-1/2">
               <Link href="/docs#currency" passHref>
-                <a className="hover:text-white">Moedas</a>
+                <a className="hover:text-white" tabIndex={0}>
+                  Moedas
+                </a>
               </Link>
             </li>
             <li className="lg:w-1/3 mb-1 w-1/2">
               <Link href="/docs#search" passHref>
-                <a className="hover:text-white">Pesquisa rápida</a>
+                <a className="hover:text-white" tabIndex={0}>
+                  Pesquisa rápida
+                </a>
               </Link>
             </li>
           </nav>

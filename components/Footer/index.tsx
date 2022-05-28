@@ -50,6 +50,7 @@ const Footer = () => {
               className="text-gray-500 ml-1"
               target="_blank"
               rel="noopener noreferrer"
+              tabIndex={0}
             >
               brapi@proton.me
             </a>
@@ -57,6 +58,7 @@ const Footer = () => {
           <a
             href="https://vercel.com/?utm_source=alisson-oss&utm_campaign=oss"
             className="sm:ml-auto sm:mt-0 mt-2 sm:w-auto w-full sm:text-left text-center text-gray-400 text-sm hover:text-gray-500"
+            tabIndex={0}
           >
             Powered by ▲ Vercel
           </a>

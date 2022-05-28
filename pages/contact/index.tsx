@@ -23,7 +23,7 @@ const Contact: React.FC = () => {
               <ul>
                 <li>
                   <Link href="https://github.com/alissonsleal/brapi">
-                    <a target="_blank" rel="noopener noreferrer">
+                    <a target="_blank" rel="noopener noreferrer" tabIndex={0}>
                       Github
                     </a>
                   </Link>
@@ -31,7 +31,9 @@ const Contact: React.FC = () => {
                 <li>
                   Email:{' '}
                   <Link href="mailto:brapi@protonmail.com">
-                    <a target="_blank">brapi@protonmail.com</a>
+                    <a target="_blank" tabIndex={0}>
+                      brapi@protonmail.com
+                    </a>
                   </Link>
                 </li>
               </ul>

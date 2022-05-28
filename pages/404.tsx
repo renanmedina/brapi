@@ -61,7 +61,7 @@ const NotFound: React.FC = () => {
           <h1>{`Essa página não existe :(`}</h1>
           <p>Deseja voltar para a página inicial?</p>
           <Link href="/">
-            <a>Página Inicial</a>
+            <a tabIndex={0}>Página Inicial</a>
           </Link>
         </span>
       </Container>

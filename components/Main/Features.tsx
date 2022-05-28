@@ -39,6 +39,7 @@ export const Features = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-link"
+                tabIndex={0}
               >
                 Saber mais
                 <svg
@@ -82,7 +83,7 @@ export const Features = () => {
                 tudo, é grátis. Acreditamos que dados devem ser democratizados
               </p>
               <Link href="/docs" passHref>
-                <a className="btn btn-link">
+                <a className="btn btn-link" tabIndex={0}>
                   Começar
                   <svg
                     fill="none"
@@ -129,6 +130,7 @@ export const Features = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-link"
+                tabIndex={0}
               >
                 Ver uptime
                 <svg

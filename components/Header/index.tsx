@@ -7,7 +7,10 @@ const Header: React.FC = () => {
       <header className="text-gray-400 bg-gray-900/70 body-font fixed w-full z-10 backdrop-blur-md">
         <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
           <Link href="/">
-            <a className="flex title-font font-medium items-center text-white mb-4 md:mb-0 w-20">
+            <a
+              className="flex title-font font-medium items-center text-white mb-4 md:mb-0 w-20"
+              tabIndex={0}
+            >
               <svg
                 viewBox="0 0 661 320"
                 fill="none"
@@ -66,16 +69,24 @@ const Header: React.FC = () => {
           </Link>
           <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
             <Link href="/about" passHref>
-              <a className="mr-5 hover:text-white">Sobre</a>
+              <a className="mr-5 hover:text-white" tabIndex={0}>
+                Sobre
+              </a>
             </Link>
             <Link href="/docs" passHref>
-              <a className="mr-5 hover:text-white">Docs</a>
+              <a className="mr-5 hover:text-white" tabIndex={0}>
+                Docs
+              </a>
             </Link>
             <Link href="/quotes" passHref>
-              <a className="mr-5 hover:text-white">Cotação</a>
+              <a className="mr-5 hover:text-white" tabIndex={0}>
+                Cotação
+              </a>
             </Link>
             <Link href="/contact" passHref>
-              <a className="mr-5 hover:text-white">Contato</a>
+              <a className="mr-5 hover:text-white" tabIndex={0}>
+                Contato
+              </a>
             </Link>
           </nav>
           <Link href="/docs" passHref>
