@@ -1,77 +1,58 @@
-import Link from 'next/link';
-import { ImWhatsapp } from 'react-icons/im';
-
-import { Container } from './styles';
-
-const Footer: React.FC = () => {
+const Footer = () => {
   return (
-    <Container>
-      <div>
-        <span>
-          <h2>brapi</h2>
-          <Link href="/about">
-            <a>sobre</a>
-          </Link>
-          <Link href="/docs">
-            <a>docs</a>
-          </Link>
-          <Link href="/quotes">
-            <a>cotação</a>
-          </Link>
-          <Link href="/contact">
-            <a>contato</a>
-          </Link>
-          <Link href="/legal">
-            <a>legal</a>
-          </Link>
-          <Link href="https://status.brapi.ga/">
-            <a target="_blank" rel="noopener noreferrer">
-              status
-            </a>
-          </Link>
-        </span>
+    <footer className="text-gray-400 bg-gray-900 body-font border-t border-gray-800">
+      <div className="container px-5 py-8 flex flex-wrap mx-auto items-center flex-row">
+        <div>
+          <div className="flex md:flex-nowrap flex-wrap justify-center items-end md:justify-start">
+            <div className="relative sm:w-64 w-full max-w-full sm:mr-4 mr-2">
+              <label
+                htmlFor="footer-field"
+                className="leading-7 text-sm text-gray-400"
+              >
+                Receba novidades por email
+              </label>
+              <input
+                type="text"
+                placeholder="email@empresa.com"
+                id="footer-field"
+                name="footer-field"
+                className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:ring-2 focus:ring-brand-900 focus:bg-transparent focus:border-brand-500 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              />
+            </div>
+            <button className="inline-flex text-white bg-brand-500 border-0 py-2 px-6 focus:outline-none hover:bg-brand-600 rounded">
+              Cadastrar
+            </button>
+            <p className="text-gray-500 text-sm md:ml-6 md:mt-0 mt-2 text-center sm:text-left max-w-md">
+              Ajudamos desenvolvedores a construir o futuro das fintechs
+              democratizando o acesso aos dados do mercado financeiro
+              brasileiro.
+            </p>
+          </div>
+        </div>
+      </div>
 
-        <span>
-          <h2>contato</h2>
-          <p>brapi@protonmail.com</p>
-          <Link href="https://github.com/alissonsleal/brapi/issues">
-            <a target="_blank" rel="noopener noreferrer">
-              Github
+      <div className="bg-gray-800 bg-opacity-75">
+        <div className="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
+          <p className="text-gray-400 text-sm text-center sm:text-left">
+            © {new Date().getFullYear()} brapi —
+            <a
+              href="https://twitter.com/alissonsleal"
+              className="text-gray-500 ml-1"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              @alissonsleal
             </a>
-          </Link>
-        </span>
-
-        <span>
-          <h2>sobre nós</h2>
-          <p>
-            Ajudamos desenvolvedores a construir o futuro das fintechs
-            democratizando o acesso aos dados do mercado financeiro brasileiro.
           </p>
-        </span>
-
-        <span>
-          <h2>convide</h2>
-          <p>Compartilhe com seus amigos!</p>
-          <Link href="https://api.whatsapp.com/send?text=Quero%20te%20convidar%20para%20conhecer%20o%20brapi,%20o%20jeito%20mais%20f%C3%A1cil%20de%20acessar%20uma%20API%20da%20bolsa%20de%20valores!%20Clique%20no%20link%20para%20ter%20acesso%20gratuitamente%20https://www.brapi.ga/">
-            <a className="wpp-button" rel="noreferrer noopener" target="_blank">
-              <ImWhatsapp size={20} />
-              Compartilhe agora
-            </a>
-          </Link>
-          <br />
-          <br />
-          <br />
-          <br />
           <a
             href="https://vercel.com/?utm_source=alisson-oss&utm_campaign=oss"
-            rel="noreferrer noopener"
-            target="_blank"
+            className="sm:ml-auto sm:mt-0 mt-2 sm:w-auto w-full sm:text-left text-center text-gray-400 text-sm hover:text-gray-500"
           >
-            <img src="https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg" />
+            Powered by ▲ Vercel
           </a>
-        </span>
+        </div>
       </div>
-    </Container>
+    </footer>
   );
 };
 
