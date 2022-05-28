@@ -1,0 +1,372 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "brapi - API de finanças",
+    "description": "Tenha acesso instantâneo aos valores da cotação da bolsa de valores, dados históricos e até dados de criptomoedas em diferentes moedas\n\n**https://brapi.ga**",
+    "termsOfService": "https://brapi.ga/legal",
+    "contact": {
+      "name": "brapi",
+      "url": "https://brapi.ga/",
+      "email": "brapi@proton.me"
+    },
+    "version": "2.2.0"
+  },
+  "externalDocs": {
+    "description": "https://brapi.ga/docs",
+    "url": "https://brapi.ga/docs"
+  },
+  "servers": [
+    {
+      "url": "https://brapi.ga",
+      "description": "API de finanças"
+    }
+  ],
+  "paths": {
+    "/api/quote/PETR4,MGLU3": {
+      "get": {
+        "tags": ["default"],
+        "summary": "quote",
+        "parameters": [
+          {
+            "name": "interval",
+            "in": "query",
+            "description": "'1d', '5d', '1mo', '3mo', '6mo', '1y', '2y', '5y', '10y', 'ytd', 'max'",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "1d"
+          },
+          {
+            "name": "range",
+            "in": "query",
+            "description": "'1d', '5d', '1mo', '3mo', '6mo', '1y', '2y', '5y', '10y', 'ytd', 'max'",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "1mo"
+          },
+          {
+            "name": "fundamental",
+            "in": "query",
+            "description": "'true', 'false'",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "boolean"
+            },
+            "example": "true"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        },
+        "security": [
+          {
+            "noauthAuth": []
+          }
+        ]
+      }
+    },
+    "/api/available": {
+      "get": {
+        "tags": ["default"],
+        "summary": "available",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "co"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        },
+        "security": [
+          {
+            "noauthAuth": []
+          }
+        ]
+      }
+    },
+    "/api/quote/list": {
+      "get": {
+        "tags": ["default"],
+        "summary": "quote/list",
+        "parameters": [
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "'name', 'close', 'change', 'change_abs', 'volume', 'market_cap_basic'",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "volume"
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "'desc', 'asc'",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "desc"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer"
+            },
+            "example": "10"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        },
+        "security": [
+          {
+            "noauthAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v2/crypto": {
+      "get": {
+        "tags": ["default"],
+        "summary": "crypto",
+        "parameters": [
+          {
+            "name": "coin",
+            "in": "query",
+            "description": "'Available coins at: https://brapi.ga/api/v2/crypto/available'",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "BTC,ETH"
+          },
+          {
+            "name": "currency",
+            "in": "query",
+            "description": "Available currencies at: https://economia.awesomeapi.com.br/json/available/uniq",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "BRL"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          },
+          "405": {
+            "description": "Method not allowed",
+            "content": {
+              "application/json": {}
+            }
+          },
+          "417": {
+            "description": "Missing parameters",
+            "content": {
+              "application/json": {}
+            }
+          },
+          "500": {
+            "description": "Internal Error",
+            "content": {
+              "application/json": {}
+            }
+          }
+        },
+        "security": [
+          {
+            "noauthAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v2/crypto/available": {
+      "get": {
+        "tags": ["default"],
+        "summary": "crypto",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "'Search all cryptocoins that starts with the query, if no query is passed then all coins are returned'",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "BT"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          },
+          "404": {
+            "description": "Coin not found",
+            "content": {
+              "application/json": {}
+            }
+          }
+        },
+        "security": [
+          {
+            "noauthAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v2/currency": {
+      "get": {
+        "tags": ["default"],
+        "summary": "currency",
+        "parameters": [
+          {
+            "name": "currency",
+            "in": "query",
+            "description": "'Available currencies at: https://brapi.ga/api/v2/currency/available'",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "USD-BRL,EUR-USD"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          },
+          "405": {
+            "description": "Method not allowed",
+            "content": {
+              "application/json": {}
+            }
+          },
+          "417": {
+            "description": "Missing parameters",
+            "content": {
+              "application/json": {}
+            }
+          },
+          "500": {
+            "description": "Internal Error",
+            "content": {
+              "application/json": {}
+            }
+          }
+        },
+        "security": [
+          {
+            "noauthAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v2/currency/available": {
+      "get": {
+        "tags": ["default"],
+        "summary": "currency",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "'Find all available currencies in the query, if no query is passed then all currencies are returned'",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "BRL"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          },
+          "404": {
+            "description": "Coin not found",
+            "content": {
+              "application/json": {}
+            }
+          }
+        },
+        "security": [
+          {
+            "noauthAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {},
+    "securitySchemes": {
+      "noauthAuth": {
+        "type": "http",
+        "scheme": "noauth"
+      }
+    }
+  }
+}

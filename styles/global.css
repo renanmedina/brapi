@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.swagger-ui {
+  filter: invert(88%) hue-rotate(210deg) brightness(180%);
+}
+
+.swagger-ui {
+  filter: invert(100%) hue-rotate(210deg);
+}
+
+.highlight-code {
+  filter: invert(100%) hue-rotate(210deg);
+}
