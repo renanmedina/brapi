@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Container } from './styles';
 
 import ConstructionImg from '../../assets/construction.svg';

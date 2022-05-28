@@ -2,7 +2,6 @@ import axios from 'axios';
 import Head from 'next/head';
 import { InferGetServerSidePropsType } from 'next';
 import he from 'he';
-import React from 'react';
 
 import {
   numberToMoney,

@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import React from 'react';
 import MainLegal from '../../components/MainLegal';
 import Header from '../../components/Header';
 import Layout from '../../Layout';

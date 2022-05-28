@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
-import React from 'react';
 import Header from '../../components/Header';
 import MainQuote, { StocksProps } from '../../components/MainQuote';
 import Layout from '../../Layout';

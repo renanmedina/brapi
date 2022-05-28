@@ -14,7 +14,7 @@ const Header: React.FC = () => {
             >
               <path
                 d="M12 181.695V308.967H148.589C225.507 308.967 269.517 235.419 269.517 188.039V12H214.405L177.136 54.0273C55.8116 54.0273 12 121.231 12 181.695Z"
-                fill="#52B788"
+                fill="#7347ab"
               />
               <path
                 d="M138.839 182.725C91.6433 143.325 20.9209 135.901 20.9209 135.901C15.4328 149.719 13.5475 158.642 12 176.343V308.967H151.959C169.198 307.864 178.414 305.847 193.986 299.649C193.986 299.649 186.035 222.126 138.839 182.725Z"
@@ -55,7 +55,7 @@ const Header: React.FC = () => {
                   y2="308.967"
                   gradientUnits="userSpaceOnUse"
                 >
-                  <stop stopColor="#52B788" />
+                  <stop stopColor="#7347ab" />
                   <stop offset="1" stopColor="white" stopOpacity="0.28" />
                 </linearGradient>
               </defs>
@@ -77,14 +77,14 @@ const Header: React.FC = () => {
           </Link>
         </nav>
         <Link href="/docs" passHref>
-          <button className="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-green-700 rounded text-base mt-4 md:mt-0">
+          <button className="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-brand-700 rounded text-base mt-4 md:mt-0">
             Começar
             <svg
               fill="none"
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               className="w-4 h-4 ml-1"
               viewBox="0 0 24 24"
             >

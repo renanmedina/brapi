@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import React from 'react';
 import { ImWhatsapp } from 'react-icons/im';
 
 import { Container } from './styles';
