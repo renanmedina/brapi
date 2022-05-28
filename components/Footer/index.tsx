@@ -4,22 +4,35 @@ const Footer = () => {
       <div className="container px-5 py-8 flex flex-wrap mx-auto items-center flex-row">
         <div>
           <div className="flex md:flex-nowrap flex-wrap justify-center items-end md:justify-start">
-            <div className="relative sm:w-64 w-full max-w-full sm:mr-4 mr-2">
+            <form
+              action="https://formsubmit.co/166feb7796ce3daa45ec9848d1ae062e"
+              method="POST"
+              className="relative sm:w-64 w-full max-w-full sm:mr-4 mr-2"
+            >
+              <input type="hidden" name="_next" value="https://brapi.ga/docs" />
+              <input
+                type="hidden"
+                name="_autoresponse"
+                value="Recebemos seu email!"
+              />
               <label
-                htmlFor="footer-field"
+                htmlFor="email"
                 className="leading-7 text-sm text-gray-400"
               >
                 Receba novidades por email
               </label>
               <input
-                type="text"
+                type="email"
                 placeholder="email@empresa.com"
-                id="footer-field"
-                name="footer-field"
+                id="email"
+                name="email"
                 className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:ring-2 focus:ring-brand-900 focus:bg-transparent focus:border-brand-500 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
-            </div>
-            <button className="inline-flex text-white bg-brand-500 border-0 py-2 px-6 focus:outline-none hover:bg-brand-600 rounded">
+            </form>
+            <button
+              className="inline-flex text-white bg-brand-500 border-0 py-2 px-6 focus:outline-none hover:bg-brand-600 rounded"
+              type="submit"
+            >
               Cadastrar
             </button>
             <p className="text-gray-500 text-sm md:ml-6 md:mt-0 mt-2 text-center sm:text-left max-w-md">
@@ -36,12 +49,12 @@ const Footer = () => {
           <p className="text-gray-400 text-sm text-center sm:text-left">
             © {new Date().getFullYear()} brapi —
             <a
-              href="https://twitter.com/alissonsleal"
+              href="https://formsubmit.co/el/xunuti"
               className="text-gray-500 ml-1"
               target="_blank"
               rel="noopener noreferrer"
             >
-              @alissonsleal
+              brapi@proton.me
             </a>
           </p>
           <a
