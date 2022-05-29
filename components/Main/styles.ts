@@ -47,7 +47,6 @@ export const Container = styled.div`
             border-radius: 0.75rem;
             padding: 0.5rem 1.25rem;
             text-align: center;
-            font-family: 'Open Sans', sans-serif;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;

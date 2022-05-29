@@ -30,15 +30,11 @@ const GlobalStyle = createGlobalStyle`
   body {
   padding: 0;
   margin: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      'Helvetica Neue', Arial, sans-serif;
   font-weight: 400;
-  background-color: var(--background);
-
-  /* @media (max-width: 768px) {
-    font-size: 20px;
-  } */
-  
   }
+  
   a {
     text-decoration: none;
   }
