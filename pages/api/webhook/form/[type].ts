@@ -7,7 +7,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   console.log({ data });
   console.log({ body: req.body });
 
-  const formData = JSON.parse(data);
+  const formData = JSON.parse(data?.form_data || '{}');
   console.log({ formData });
 
   await axios.post(`${process.env.DISCORD_WEBHOOK_URL}`, {
