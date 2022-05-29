@@ -4,16 +4,17 @@ const MainAbout = () => {
   return (
     <main>
       <section className="text-gray-400 bg-gray-900 body-font">
-        <div className="container px-5 py-24 mx-auto flex flex-col">
+        <div className="container px-5 py-0 md:py-24 mx-auto flex flex-col">
           <div className="lg:w-4/6 mx-auto">
             <div className="flex flex-col sm:flex-row mt-10">
               <div className="sm:w-1/3 text-center sm:pr-8 sm:py-8">
-                <div className="w-20 h-20 rounded-full inline-flex items-center justify-center bg-gray-800 text-gray-600">
-                  <img
-                    src="https://github.com/alissonsleal.png"
-                    alt="avatar"
-                    className="object-cover object-center h-full w-full rounded-full"
-                  />
+                <div className="avatar">
+                  <div className="w-24 mask mask-hexagon">
+                    <img
+                      src="https://github.com/alissonsleal.png"
+                      alt="avatar"
+                    />
+                  </div>
                 </div>
                 <div className="flex flex-col items-center text-center justify-center">
                   <h2 className="font-medium title-font mt-4 text-white text-lg">
