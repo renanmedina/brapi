@@ -8,7 +8,9 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const App = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
-  const toastMessage = router.query?.['show-toast'];
+  const toastMessage = decodeURI(
+    (router.query?.['show-toast'] as string) || '',
+  );
 
   // useEffect(() => {
   //   const handleRouteChange = (url: URL) => {
