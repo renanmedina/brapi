@@ -27,7 +27,13 @@ export const MainContact = () => {
               action="https://formsubmit.co/166feb7796ce3daa45ec9848d1ae062e"
               method="POST"
             >
-              <input type="hidden" name="_next" value="https://brapi.ga/" />
+              <input
+                type="hidden"
+                name="_next"
+                value={encodeURI(
+                  'https://brapi.ga/contact?show-toast=Recebemos o seu email',
+                )}
+              />
               <input
                 type="hidden"
                 name="_autoresponse"

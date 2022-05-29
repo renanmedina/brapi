@@ -19,7 +19,15 @@ const Footer = () => {
               method="POST"
               className="relative sm:w-64 w-full max-w-full sm:mr-4 mr-2"
             >
-              <input type="hidden" name="_next" value="https://brapi.ga/docs" />
+              {isReady && (
+                <input
+                  type="hidden"
+                  name="_next"
+                  value={encodeURI(
+                    `${window.location.href}?show-toast=Agora você receberá nossas novidades!`,
+                  )}
+                />
+              )}
               <input type="hidden" name="_subject" value="Newsletter brapi" />
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_template" value="table" />
@@ -44,10 +52,8 @@ const Footer = () => {
                 name="email"
                 className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:ring-2 focus:ring-brand-900 focus:bg-transparent focus:border-brand-500 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
+              <button className="hidden">Cadastrar</button>
             </form>
-            <button className="btn btn-accent" type="submit">
-              Cadastrar
-            </button>
             <p className="text-gray-500 text-sm md:ml-6 md:mt-0 mt-2 text-center sm:text-left max-w-md">
               Ajudamos desenvolvedores a construir o futuro das fintechs
               democratizando o acesso aos dados do mercado financeiro
