@@ -35,7 +35,7 @@ const Footer = () => {
                 <input
                   type="hidden"
                   name="_webhook"
-                  value={`${window.location.origin}/api/webhook/contact`}
+                  value={`${window.location.origin}/api/webhook/form/newsletter`}
                 />
               )}
               <input type="text" name="_honey" style={{ display: 'none' }} />

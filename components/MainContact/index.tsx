@@ -46,7 +46,7 @@ export const MainContact = () => {
                 <input
                   type="hidden"
                   name="_webhook"
-                  value={`${window.location.origin}/api/webhook/contact`}
+                  value={`${window.location.origin}/api/webhook/form/contact`}
                 />
               )}
               <input type="text" name="_honey" style={{ display: 'none' }} />
