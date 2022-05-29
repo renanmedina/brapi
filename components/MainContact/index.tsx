@@ -26,11 +26,13 @@ export const MainContact = () => {
               <input type="hidden" name="_subject" value="Contato brapi" />
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_template" value="table" />
-              <input
-                type="hidden"
-                name="_webhook"
-                value={`${window.location.origin}/api/webhook/contact`}
-              />
+              {typeof window !== undefined && (
+                <input
+                  type="hidden"
+                  name="_webhook"
+                  value={`${window.location.origin}/api/webhook/contact`}
+                />
+              )}
               <input type="text" name="_honey" style={{ display: 'none' }} />
 
               <div className="p-2 w-1/2">
