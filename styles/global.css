@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background-color: red;
-}
-
 img {
   image-rendering: -webkit-optimize-contrast;
   image-rendering: -moz-crisp-edges;
