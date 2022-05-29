@@ -2,17 +2,9 @@ import axios from 'axios';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  console.log({ req });
-  console.log({ data: req.body });
+  const data = req.body;
   const formType = req.query.type;
   // todo: get data from request webhook
-  const data = {
-    form_data: {
-      name: 'Star LABS',
-      email: 'hello@starlabs.com',
-      message: 'hello! there',
-    },
-  };
 
   await axios.post(`${process.env.DISCORD_WEBHOOK_URL}`, {
     username: 'brapi',
