@@ -5,10 +5,22 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const data = req.body;
   const formType = req.query.type;
   console.log({ data });
-  console.log({ body: req.body });
 
   const formData = JSON.parse(data?.form_data || '{}');
   console.log({ formData });
+
+  // remove keys that start with _
+  const cleanFormData = Object.keys(formData).reduce((acc, key) => {
+    if (key.startsWith('_')) {
+      return acc;
+    }
+    return {
+      ...acc,
+      [key]: data[key],
+    };
+  }, {}) as { [key: string]: any };
+
+  console.log({ cleanFormData });
 
   await axios.post(`${process.env.DISCORD_WEBHOOK_URL}`, {
     username: 'brapi',
@@ -16,9 +28,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     embeds: [
       {
         title: `New ${formType} Form Submission`,
-        description: formData?.email || '',
+        description: cleanFormData?.email || '',
         color: 7419530,
-        fields: Object.entries(formData || {}).map(([key, value]) => ({
+        fields: Object.entries(cleanFormData || {}).map(([key, value]) => ({
           name: key,
           value,
         })),
