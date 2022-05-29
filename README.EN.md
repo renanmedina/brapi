@@ -1,7 +1,7 @@
 <p align="center">
   <picture>
     <source width="256" media="(prefers-color-scheme: dark)" srcset="public/logotype.svg">
-    <img src="./public/favicon.svg">
+    <img src="public/favicon.svg">
 </picture>
 </p>
 
@@ -113,7 +113,7 @@ affected by these values, as well as other API endpoints.
 <p align="center">
   <picture>
     <source width="256" media="(prefers-color-scheme: dark)" srcset="public/logotype.svg">
-    <img src="./public/favicon.svg">
+    <img src="public/favicon.svg">
 </picture>
 </p>
 
