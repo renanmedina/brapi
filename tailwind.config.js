@@ -36,7 +36,7 @@ module.exports = {
     themes: [
       {
         brapi: {
-          primary: '#7347ab',
+          primary: '#9d7ec4',
           secondary: '#f6d860',
           accent: '#37cdbe',
           neutral: '#3d4451',
