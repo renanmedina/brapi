@@ -17,8 +17,7 @@
   },
   "servers": [
     {
-      "url": "https://brapi.ga",
-      "description": "API de finanças"
+      "url": "https://brapi.ga"
     }
   ],
   "paths": {

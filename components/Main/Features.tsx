@@ -5,9 +5,7 @@ export const Features = () => {
     <section className="text-gray-400 bg-gray-900 body-font">
       <div className="container px-5 py-24 mx-auto">
         <h1 className="sm:text-3xl text-2xl font-medium title-font text-center text-white mb-20">
-          Agilize o desenvolvimento
-          <br className="hidden sm:block" />
-          do seu aplicativo
+          Agilize o desenvolvimento do seu aplicativo
         </h1>
         <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 md:space-y-0 space-y-6">
           <div className="p-4 md:w-1/3 flex">

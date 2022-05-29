@@ -24,8 +24,8 @@ const Docs: React.FC = () => {
         <Layout>
           <Header />
 
-          <section className="text-gray-400 bg-gray-900 body-font min-w-fit">
-            <div className="container mx-auto flex flex-col px-5 py-0 md:py-24 items-center min-w-[600px]">
+          <section className="text-gray-400 bg-gray-900 body-font max-w-screen">
+            <div className="container mx-auto flex flex-col px-5 py-0 md:py-24 items-center">
               <SwaggerUI url="/swagger/latest.json" />
               {/* todo: create better docs */}
               {/* <SwaggerUI url="https://petstore.swagger.io/v2/swagger.json" /> */}
