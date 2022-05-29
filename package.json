@@ -31,6 +31,7 @@
     "@typescript-eslint/eslint-plugin": "4.14.1",
     "@typescript-eslint/parser": "4.14.1",
     "autoprefixer": "^10.4.7",
+    "critters": "^0.0.16",
     "eslint": "7.19.0",
     "eslint-config-prettier": "7.2.0",
     "eslint-loader": "4.0.2",
