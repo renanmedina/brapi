@@ -4,7 +4,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const data = req.body;
   const formType = req.query.type;
-  // todo: get data from request webhook
+  console.log({ data });
 
   await axios.post(`${process.env.DISCORD_WEBHOOK_URL}`, {
     username: 'brapi',
@@ -14,7 +14,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         title: `New ${formType} Form Submission`,
         description: data.form_data?.email || '',
         color: 7419530,
-        fields: Object.entries(data.form_data).map(([key, value]) => ({
+        fields: Object.entries(data.form_data || {}).map(([key, value]) => ({
           name: key,
           value,
         })),
