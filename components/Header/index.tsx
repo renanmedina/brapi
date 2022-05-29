@@ -3,7 +3,7 @@ import Link from 'next/link';
 const Header: React.FC = () => {
   return (
     <div className="bg-gray-900 pb-40 md:pb-20 relative min-w-full">
-      <div className="absolute bg-brand-400/80 md:bg-brand-400/20 w-96 h-96 max-w-full blur-3xl rounded-full left-1/2 translate -translate-x-1/2 -translate-y-3/4 md:-left-48 md:-top-48 md:-translate-x-0 md:-translate-y-0 overflow-hidden" />
+      <div className="absolute bg-brand-400/80 md:bg-brand-400/20 w-96 h-96 max-w-full blur-3xl rounded-full left-1/2 translate -translate-x-1/2 -translate-y-3/4 md:-left-48 md:-top-48 md:-translate-x-0 md:-translate-y-0 overflow-hidden z-10" />
       <header className="text-gray-400 bg-gray-900/70 body-font fixed w-full z-10 backdrop-blur-md">
         <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
           <Link href="/">
