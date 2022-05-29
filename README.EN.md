@@ -1,8 +1,10 @@
 <p align="center">
-  <picture>
-    <source width="256" media="(prefers-color-scheme: dark)" srcset="public/logotype.svg">
-    <img src="public/favicon.svg">
-</picture>
+  <a href="https://brapi.ga/#gh-dark-mode-only">
+    <img src="./public/logotype.svg" width="256" />
+  </a>
+  <a href="https://brapi.ga/#gh-light-mode-only">
+    <img src="./public/favicon.svg" width="96" />
+  </a>
 </p>
 
 <p align="center">
@@ -111,10 +113,12 @@ affected by these values, as well as other API endpoints.
 [Go to the top 🚀](#brapi)
 
 <p align="center">
-  <picture>
-    <source width="256" media="(prefers-color-scheme: dark)" srcset="public/logotype.svg">
-    <img src="public/favicon.svg">
-</picture>
+  <a href="https://brapi.ga/#gh-dark-mode-only">
+    <img src="./public/logotype.svg" width="256" />
+  </a>
+  <a href="https://brapi.ga/#gh-light-mode-only">
+    <img src="./public/favicon.svg" width="96" />
+  </a>
 </p>
 
 <p align="center">
