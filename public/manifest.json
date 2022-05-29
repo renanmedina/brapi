@@ -1,6 +1,6 @@
 {
   "short_name": "brapi",
-  "name": "brapi - API de Ações da Bovespa",
+  "name": "brapi - API de finanças",
   "icons": [
     {
       "src": "favicon.svg",
@@ -10,6 +10,6 @@
   "start_url": "/",
   "display": "fullscreen",
   "orientation": "portrait",
-  "background_color": "#f0f0f0",
-  "theme_color": "#52B788"
+  "background_color": "#111827",
+  "theme_color": "#7347AB"
 }

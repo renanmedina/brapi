@@ -12,15 +12,15 @@ const App = ({ Component, pageProps }: AppProps) => {
     (router.query?.['show-toast'] as string) || '',
   );
 
-  // useEffect(() => {
-  //   const handleRouteChange = (url: URL) => {
-  //     gtag.pageview(url);
-  //   };
-  //   router.events.on('routeChangeComplete', handleRouteChange);
-  //   return () => {
-  //     router.events.off('routeChangeComplete', handleRouteChange);
-  //   };
-  // }, [router.events]);
+  useEffect(() => {
+    const handleRouteChange = (url: URL) => {
+      gtag.pageview(url);
+    };
+    router.events.on('routeChangeComplete', handleRouteChange);
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router.events]);
 
   useEffect(() => {
     if (toastMessage) {
