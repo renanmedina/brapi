@@ -10,11 +10,15 @@ const Footer = () => {
               className="relative sm:w-64 w-full max-w-full sm:mr-4 mr-2"
             >
               <input type="hidden" name="_next" value="https://brapi.ga/docs" />
+              <input type="hidden" name="_subject" value="Newsletter brapi" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
               <input
                 type="hidden"
-                name="_autoresponse"
-                value="Recebemos seu email!"
+                name="_webhook"
+                value={`${window.location.origin}/api/webhook/contact`}
               />
+              <input type="text" name="_honey" style={{ display: 'none' }} />
               <label
                 htmlFor="email"
                 className="leading-7 text-sm text-gray-400"
