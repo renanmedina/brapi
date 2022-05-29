@@ -1,6 +1,7 @@
-const withImages = require('next-images');
-module.exports = withImages({
-  images: {
-    domains: ['s3-symbol-logo.tradingview.com'],
+/** @type {import('next').NextConfig} */
+module.exports = {
+  swcMinify: true,
+  experimental: {
+    optimizeCss: true,
   },
-});
+};

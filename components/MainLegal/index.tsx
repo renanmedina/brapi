@@ -1,25 +1,12 @@
-import { Container } from './styles';
+import { FC } from 'react';
 
-const MainLegal = () => {
+const MainLegal: FC = (props) => {
   return (
-    <Container>
-      <main>
-        <section>
-          <aside>
-            <h1>Exoneração de responsabilidade</h1>
-            <p>
-              API para fins informativos. Não garantimos a precisão dos dados
-              fornecidos pela API ou contidos nesta página, uma vez que devem
-              ser utilizados apenas para efeitos informativos. Trabalhamos pela
-              estabilidade e precisão dos dados, porém, os dados podem estar
-              atrasados ou errados "no estado em que se encontram", confirme
-              todos os dados antes de efetuar qualquer ação que possa ser
-              afetada por estes valores, assim como demais endpoints da API.
-            </p>
-          </aside>
-        </section>
-      </main>
-    </Container>
+    <section className="text-white bg-gray-900 body-font max-w-screen">
+      <div className="container mx-auto flex flex-col px-5 py-0 md:py-24 text-left prose lg:prose-xl prose-invert prose-headings:text-white prose-a:text-white prose-strong:text-white prose-li:marker:text-white text-white">
+        {props.children}
+      </div>
+    </section>
   );
 };
 

@@ -1,13 +1,14 @@
-<svg width="258" height="297" viewBox="0 0 258 297" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M3.05176e-05 169.695V296.967H136.589C213.507 296.967 257.517 223.419 257.517 176.039V0H202.405L165.136 42.0273C43.8116 42.0273 3.05176e-05 109.231 3.05176e-05 169.695Z" fill="#52B788"/>
-<path d="M126.839 170.725C79.6433 131.325 8.9209 123.901 8.9209 123.901C3.43276 137.719 1.54753 146.642 0 164.343V296.967H139.959C157.198 295.864 166.414 293.847 181.986 287.649C181.986 287.649 174.035 210.126 126.839 170.725Z" fill="url(#paint0_linear)" fill-opacity="0.3"/>
-<rect x="45.5957" y="168.704" width="38.8555" height="84.0547" fill="white"/>
-<rect x="105.465" y="97.3369" width="38.8555" height="155.422" fill="white"/>
-<rect x="165.334" y="0.198242" width="38.8555" height="252.561" fill="white"/>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512"><svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M34 292.571V512H269.493C402.107 512 477.984 385.196 477.984 303.508V0H382.966L318.711 72.4592C109.535 72.4592 34 188.325 34 292.571Z" fill="#7347AB"></path>
+<path d="M252.683 294.346C171.313 226.417 49.3805 213.617 49.3805 213.617C39.9185 237.441 36.668 252.825 34 283.343V512H275.303C305.025 510.098 320.914 506.621 347.762 495.935C347.762 495.935 334.053 362.278 252.683 294.346Z" fill="url(#paint0_linear_324_15)" fill-opacity="0.3"></path>
+<path d="M179.602 290.862H112.612V435.781H179.602V290.862Z" fill="white"></path>
+<path d="M282.823 167.818H215.832V435.781H282.823V167.818Z" fill="white"></path>
+<path d="M386.042 0.341675H319.052V435.781H386.042V0.341675Z" fill="white"></path>
 <defs>
-<linearGradient id="paint0_linear" x1="90.9932" y1="123.901" x2="90.9932" y2="296.967" gradientUnits="userSpaceOnUse">
-<stop stop-color="#52B788"/>
-<stop offset="1" stop-color="white" stop-opacity="0.28"/>
+<linearGradient id="SvgjsLinearGradient1000" x1="190.881" y1="213.617" x2="190.881" y2="512" gradientUnits="userSpaceOnUse">
+<stop stop-color="#7347AB"></stop>
+<stop offset="1" stop-color="white" stop-opacity="0.28"></stop>
 </linearGradient>
 </defs>
-</svg>
+</svg><style>@media (prefers-color-scheme: light) { :root { filter: none; } }
+</style></svg>

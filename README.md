@@ -1,26 +1,23 @@
 <p align="center">
-    <img  width="256" src="https://i.imgur.com/pY5brQ8.png">
-  </p>
-
-<p align="center">
-    <a href="https://github.com/Alissonsleal/brapi/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/Alissonsleal/brapi?color=sucess&style=flat-square"></a>
-    <a href="https://github.com/Alissonsleal/brapi/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/Alissonsleal/brapi?color=sucess&style=flat-square"></a>
-    <a href="https://github.com/Alissonsleal/brapi/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Alissonsleal/brapi?color=sucess&style=flat-square"></a>
-    <a href="https://github.com/Alissonsleal/brapi/blob/master/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/Alissonsleal/brapi?color=sucess&style=flat-square"></a>
-    <a href="https://github.com/Alissonsleal/"><img alt="Alisson Leal GitHub Profile" src="https://img.shields.io/badge/made%20by-Alisson%20Leal-sucess?style=flat-square&logo=appveyor"></a>
+  <a href="https://brapi.ga/#gh-dark-mode-only">
+    <img src="./public/logotype.svg" width="256" />
+  </a>
+  <a href="https://brapi.ga/#gh-light-mode-only">
+    <img src="./public/favicon.svg" width="96" />
+  </a>
 </p>
 
 <p align="center">
-<a href="https://app.getpostman.com/run-collection/da5f72c67bf46c6c4a5f">
-<img  width="96" src="https://run.pstmn.io/button.svg"></a>
-
+    <a href="https://github.com/Alissonsleal/brapi/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/Alissonsleal/brapi?color=blueviolet&style=flat-square"></a>
+    <a href="https://github.com/Alissonsleal/brapi/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/Alissonsleal/brapi?color=blueviolet&style=flat-square"></a>
+    <a href="https://github.com/Alissonsleal/brapi/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Alissonsleal/brapi?color=blueviolet&style=flat-square"></a>
+    <a href="https://github.com/Alissonsleal/brapi/blob/master/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/Alissonsleal/brapi?color=blueviolet&style=flat-square"></a>
+    <a href="https://github.com/Alissonsleal/"><img alt="Alisson Leal GitHub Profile" src="https://img.shields.io/badge/made%20by-Alisson%20Leal-blueviolet?style=flat-square&logo=appveyor"></a>
 </p>
 
 # brapi
 
-Na brapi, você tem acesso à cotação em tempo real das ações da Bovespa e criptomoedas com um delay de até 15 minutos. Você tem acesso à uma API que mostra todos os dados necessarios para você desenvolver a sua própria aplicação relacionada ao mercado de ações brasileiro ou cripto. Ajudamos desenvolvedores a construir o futuro das fintechs democratizando o acesso aos dados do mercado financeiro brasileiro e de criptomoedas.
-
-Também suportamos criptomoedas e conversão de moedas
+Na brapi, você tem acesso à cotação em tempo real das ações da Bovespa e criptomoedas com um delay de até 15 minutos. Você tem acesso à uma API que mostra todos os dados necessarios para você desenvolver a sua própria aplicação relacionada ao mercado de ações brasileiro, cripto ou moedas. Ajudamos desenvolvedores a construir o futuro das fintechs democratizando o acesso aos dados do mercado financeiro brasileiro e de criptomoedas.
 
 - Saiba mais: [https://brapi.ga](https://brapi.ga)
 
@@ -36,19 +33,9 @@ Também suportamos criptomoedas e conversão de moedas
 
 Providenciamos dados do mercado de ação brasileiro em tempo real e totalmente grátis.
 
-  <p align="center">
-    <img  max-width="768" src="https://i.imgur.com/iDRs0lO.png">
-  </p>
-<br />
-
 ### Requisições Ilimitadas
 
 Nossa API não tem limites por enquanto, use a vontade.
-
-  <p align="center">
-    <img  max-width="768" src="https://i.imgur.com/QitsOx0.png">
-  </p>
-<br />
 
 ### Suportamos Criptomoedas
 
@@ -147,15 +134,14 @@ Desenvolvemos a API mais fácil de começar a utilizar, sem cadastros, sem cart�
 
 ## Feito com:
 
-- [x] Serverless Node.js
+- [x] Node.js - Vercel Serverless Functions
 - [x] Next.js
 - [x] Typescript
-- [x] Axios
-- [x] Styled-Components
+- [x] Tailwindcss
 - [x] Yahoo API
 - [x] TradingView API
 - [x] https://economia.awesomeapi.com.br
-- [x] Deploy na Vercel
+- [x] Infraestrutura na Vercel
 
 ## Contribuições
 
@@ -176,13 +162,18 @@ afetada por estes valores, assim como demais endpoints da API.
 ## Desenvolvedor
 
 - Twitter - [@alissonsleal](https://twitter.com/alissonsleal)
-- Email - [brapi@protonmail.com](mailto:brapi@protonmail.com)
+- Email - [brapi@proton.me](mailto:brapi@proton.me)
 - StackOverflow - [Alisson Leal](https://stackoverflow.com/users/14122260/alisson-leal)
 
 [Subir ao Topo 🚀](#brapi)
 
 <p align="center">
-    <img  width="256" src="https://i.imgur.com/pY5brQ8.png">
+  <a href="https://brapi.ga/#gh-dark-mode-only">
+    <img src="./public/logotype.svg" width="256" />
+  </a>
+  <a href="https://brapi.ga/#gh-light-mode-only">
+    <img src="./public/favicon.svg" width="96" />
+  </a>
 </p>
 
 <p align="center">

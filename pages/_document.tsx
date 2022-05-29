@@ -1,47 +1,18 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-import { ServerStyleSheet } from 'styled-components';
 import { GA_TRACKING_ID } from '../utils/gtag';
 
 class MyDocument extends Document {
-  static async getInitialProps(ctx: any) {
-    const sheet = new ServerStyleSheet();
-    const originalRenderPage = ctx.renderPage;
-    try {
-      ctx.renderPage = () =>
-        originalRenderPage({
-          enhanceApp: (App: any) => (props: any) =>
-            sheet.collectStyles(<App {...props} />),
-        });
-      const initialProps = await Document.getInitialProps(ctx);
-
-      return {
-        ...initialProps,
-        styles: (
-          <>
-            {initialProps.styles}
-            {sheet.getStyleElement()}
-          </>
-        ),
-      };
-    } finally {
-      sheet.seal();
-    }
-  }
   render() {
     return (
       <Html lang="pt-br">
         <Head>
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
-            rel="stylesheet"
-          />
-          <link rel="icon" href="/favicon.svg" />
+          <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+          <link rel="icon" type="image/png" href="/favicon.png" />
           <meta
             name="keywords"
             content="API, Desenvolvimento, Cripto, Criptomoeda, Bitcoin, Ethereum, Bovespa, Ibovespa, Negócios, Informações financeiras, Investimento, Investidor, Notícias de mercado, Pesquisa de ações, Avaliação de ações, notícias de negócios, economia, finanças, ferramentas de investimento, hipotecas, fundos mútuos, finanças pessoais, cotação, imóveis, aposentadoria, ações, ações, impostos , monitorar portfólio"
           />
-          <meta name="theme-color" content="#52B788" />
+          <meta name="theme-color" content="#7347AB" />
           <meta property="og:title" content="brapi" />
           <meta property="og:type" content="website" />
           <meta property="og:image" content="https://brapi.ga/favicon.png" />
@@ -55,6 +26,10 @@ class MyDocument extends Document {
           <meta property="og:url" content="https://brapi.ga" />
           <meta property="og:locale" content="pt-BR" />
           <link rel="manifest" href="/manifest.json" />
+          {/* <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=5.0, minimum-scale=0.86"
+          /> */}
           <meta
             name="google-site-verification"
             content="Gy5EFTeucGOTohOucovRJIzCaWPkQ1qWs3mktuSNyGw"

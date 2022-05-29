@@ -1,13 +1,18 @@
 <p align="center">
-    <img  width="256" src="https://i.imgur.com/pY5brQ8.png">
-  </p>
+  <a href="https://brapi.ga/#gh-dark-mode-only">
+    <img src="./public/logotype.svg" width="256" />
+  </a>
+  <a href="https://brapi.ga/#gh-light-mode-only">
+    <img src="./public/favicon.svg" width="96" />
+  </a>
+</p>
 
 <p align="center">
-    <a href="https://github.com/Alissonsleal/brapi/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/Alissonsleal/brapi?color=sucess&style=flat-square"></a>
-    <a href="https://github.com/Alissonsleal/brapi/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/Alissonsleal/brapi?color=sucess&style=flat-square"></a>
-    <a href="https://github.com/Alissonsleal/brapi/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Alissonsleal/brapi?color=sucess&style=flat-square"></a>
-    <a href="https://github.com/Alissonsleal/brapi/blob/master/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/Alissonsleal/brapi?color=sucess&style=flat-square"></a>
-    <a href="https://github.com/Alissonsleal/"><img alt="Alisson Leal GitHub Profile" src="https://img.shields.io/badge/made%20by-Alisson%20Leal-sucess?style=flat-square&logo=appveyor"></a>
+    <a href="https://github.com/Alissonsleal/brapi/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/Alissonsleal/brapi?color=blueviolet&style=flat-square"></a>
+    <a href="https://github.com/Alissonsleal/brapi/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/Alissonsleal/brapi?color=blueviolet&style=flat-square"></a>
+    <a href="https://github.com/Alissonsleal/brapi/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Alissonsleal/brapi?color=blueviolet&style=flat-square"></a>
+    <a href="https://github.com/Alissonsleal/brapi/blob/master/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/Alissonsleal/brapi?color=blueviolet&style=flat-square"></a>
+    <a href="https://github.com/Alissonsleal/"><img alt="Alisson Leal GitHub Profile" src="https://img.shields.io/badge/made%20by-Alisson%20Leal-blueviolet?style=flat-square&logo=appveyor"></a>
 </p>
 
 # brapi
@@ -26,19 +31,9 @@ Documentation: [https://brapi.ga/docs](https://brapi.ga/docs)
 
 We provide data from the Brazilian stock market in real time and totally free for now.
 
-  <p align="center">
-    <img  max-width="768" src="https://i.imgur.com/iDRs0lO.png">
-  </p>
-<br />
-
 ### Unlimited Requests
 
 Our API has no limits for now, use at your will.
-
-  <p align="center">
-    <img  max-width="768" src="https://i.imgur.com/QitsOx0.png">
-  </p>
-<br />
 
 ### From developers to developers
 
@@ -84,13 +79,14 @@ We developed the easiest API to start using, no registration, no credit card and
 
 ## Built With:
 
+- [x] Node.js - Vercel Serverless Functions
 - [x] Next.js
 - [x] Typescript
-- [x] Axios
-- [x] Styled-Components
+- [x] Tailwindcss
 - [x] Yahoo API
 - [x] TradingView API
-- [x] Deployed to Vercel
+- [x] https://economia.awesomeapi.com.br
+- [x] Vercel's infrastructure
 
 ## Contributions
 
@@ -117,7 +113,12 @@ affected by these values, as well as other API endpoints.
 [Go to the top 🚀](#brapi)
 
 <p align="center">
-    <img  width="256" src="https://i.imgur.com/pY5brQ8.png">
+  <a href="https://brapi.ga/#gh-dark-mode-only">
+    <img src="./public/logotype.svg" width="256" />
+  </a>
+  <a href="https://brapi.ga/#gh-light-mode-only">
+    <img src="./public/favicon.svg" width="96" />
+  </a>
 </p>
 
 <p align="center">
