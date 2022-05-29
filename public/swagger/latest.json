@@ -3,7 +3,7 @@
   "info": {
     "title": "brapi - API de finanças",
     "description": "Tenha acesso instantâneo aos valores da cotação da bolsa de valores, dados históricos e até dados de criptomoedas em diferentes moedas\n\n**https://brapi.ga**",
-    "termsOfService": "https://brapi.ga/legal",
+    "termsOfService": "/terms-of-use",
     "contact": {
       "name": "brapi",
       "url": "https://brapi.ga/",
