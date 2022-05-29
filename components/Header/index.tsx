@@ -78,11 +78,6 @@ const Header: React.FC = () => {
                 Docs
               </a>
             </Link>
-            <Link href="/quotes" passHref>
-              <a className="mr-5 hover:text-white" tabIndex={0}>
-                Cotação
-              </a>
-            </Link>
             <Link href="/contact" passHref>
               <a className="mr-5 hover:text-white" tabIndex={0}>
                 Contato
