@@ -36,12 +36,13 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
             rel="stylesheet"
           />
-          <link rel="icon" href="/favicon.svg" />
+          <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+          <link rel="icon" type="image/png" href="/favicon.png" />
           <meta
             name="keywords"
             content="API, Desenvolvimento, Cripto, Criptomoeda, Bitcoin, Ethereum, Bovespa, Ibovespa, Negócios, Informações financeiras, Investimento, Investidor, Notícias de mercado, Pesquisa de ações, Avaliação de ações, notícias de negócios, economia, finanças, ferramentas de investimento, hipotecas, fundos mútuos, finanças pessoais, cotação, imóveis, aposentadoria, ações, ações, impostos , monitorar portfólio"
           />
-          <meta name="theme-color" content="#52B788" />
+          <meta name="theme-color" content="#7347AB" />
           <meta property="og:title" content="brapi" />
           <meta property="og:type" content="website" />
           <meta property="og:image" content="https://brapi.ga/favicon.png" />
