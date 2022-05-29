@@ -12,7 +12,7 @@ img {
 }
 
 .swagger-ui {
-  filter: invert(88%) hue-rotate(210deg) brightness(180%);
+  filter: invert(88%) hue-rotate(210deg) brightness(120%);
   max-width: 100vw;
 }
 
@@ -27,6 +27,7 @@ img {
 .opblock-summary-path {
   flex: 2 1 !important;
   max-width: fit-content !important;
+  min-width: 100px;
 }
 
 .scheme-container {
