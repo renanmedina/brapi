@@ -1,4 +1,14 @@
+import { useEffect, useState } from 'react';
+
 export const MainContact = () => {
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setIsReady(true);
+    }
+  }, []);
+
   return (
     <section className="text-gray-400 bg-gray-900 body-font relative">
       <div className="container px-5 py-24 mx-auto">
@@ -26,7 +36,7 @@ export const MainContact = () => {
               <input type="hidden" name="_subject" value="Contato brapi" />
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_template" value="table" />
-              {typeof window !== undefined && (
+              {isReady && (
                 <input
                   type="hidden"
                   name="_webhook"

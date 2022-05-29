@@ -1,4 +1,14 @@
+import { useEffect, useState } from 'react';
+
 const Footer = () => {
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setIsReady(true);
+    }
+  }, []);
+
   return (
     <footer className="text-gray-400 bg-gray-900 body-font border-t border-gray-800">
       <div className="container px-5 py-8 flex flex-wrap mx-auto items-center flex-row">
@@ -13,7 +23,7 @@ const Footer = () => {
               <input type="hidden" name="_subject" value="Newsletter brapi" />
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_template" value="table" />
-              {typeof window !== undefined && (
+              {isReady && (
                 <input
                   type="hidden"
                   name="_webhook"
