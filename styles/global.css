@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: -moz-crisp-edges;
+}
+
 .swagger-ui {
   filter: invert(88%) hue-rotate(210deg) brightness(180%);
 }
