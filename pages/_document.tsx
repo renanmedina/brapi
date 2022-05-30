@@ -34,6 +34,7 @@ class MyDocument extends Document {
             name="google-site-verification"
             content="Gy5EFTeucGOTohOucovRJIzCaWPkQ1qWs3mktuSNyGw"
           />
+          <script src="https://www.googleoptimize.com/optimize.js?id=OPT-M7MLFBD"></script>
 
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script
