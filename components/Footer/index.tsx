@@ -65,6 +65,7 @@ const Footer = () => {
               )}
               <input type="hidden" name="_subject" value="Newsletter brapi" />
               <input type="hidden" name="_captcha" value="false" />
+              <input type="text" name="_honey" style={{ display: 'none' }} />
               <input type="hidden" name="_template" value="table" />
               {isReady && (
                 <input
