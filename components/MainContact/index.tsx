@@ -31,7 +31,7 @@ export const MainContact = () => {
                 type="hidden"
                 name="_next"
                 value={encodeURI(
-                  'https://brapi.ga/contact?show-toast=Recebemos o seu email',
+                  'https://brapi.dev/contact?show-toast=Recebemos o seu email',
                 )}
               />
               <input

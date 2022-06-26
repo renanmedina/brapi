@@ -144,7 +144,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
               historicalQuote.earningsPerShare = fundamentalInformation[0][1];
               historicalQuote.logourl = fundamentalInformation[0][2]
                 ? `https://s3-symbol-logo.tradingview.com/${fundamentalInformation[0][2]}--big.svg`
-                : 'https://brapi.ga/favicon.svg';
+                : 'https://brapi.dev/favicon.svg';
             }
 
             if (response.status === 200) {
@@ -188,7 +188,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             quote.earningsPerShare = fundamentalInformation[0][1];
             quote.logourl = fundamentalInformation[0][2]
               ? `https://s3-symbol-logo.tradingview.com/${fundamentalInformation[0][2]}--big.svg`
-              : 'https://brapi.ga/favicon.svg';
+              : 'https://brapi.dev/favicon.svg';
           }
 
           if (response.status === 200) {

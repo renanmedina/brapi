@@ -124,7 +124,7 @@ export const Features = () => {
                 de 99,996%
               </p>
               <a
-                href="https://status.brapi.ga"
+                href="https://status.brapi.dev"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-link"

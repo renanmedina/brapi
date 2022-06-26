@@ -1,8 +1,8 @@
 <p align="center">
-  <a href="https://brapi.ga/#gh-dark-mode-only">
+  <a href="https://brapi.dev/#gh-dark-mode-only">
     <img src="./public/logotype.svg" width="256" />
   </a>
-  <a href="https://brapi.ga/#gh-light-mode-only">
+  <a href="https://brapi.dev/#gh-light-mode-only">
     <img src="./public/favicon.svg" width="96" />
   </a>
 </p>
@@ -21,9 +21,9 @@ At brapi, you have access to a real-time stock data on the Brazilian stock marke
 
 Works with common Brazilian stock shares ending in 3 and 4(Like PETR4 or COGN3). It also works with Investment Fund stocks ending with end 11(Like BOVA11 or HGLG11).
 
-Check Here: [https://brapi.ga](https://brapi.ga)
+Check Here: [https://brapi.dev](https://brapi.dev)
 
-Documentation: [https://brapi.ga/docs](https://brapi.ga/docs)
+Documentation: [https://brapi.dev/docs](https://brapi.dev/docs)
 
 ## Features
 
@@ -40,7 +40,7 @@ Our API has no limits for now, use at your will.
 We developed the easiest API to start using, no registration, no credit card and without any type of authentication.
 
 ```json
-// GET https://brapi.ga/api/quote/COGN3
+// GET https://brapi.dev/api/quote/COGN3
 {
   "results": {
     "symbol": "COGN3",
@@ -94,7 +94,7 @@ Feel free to contribute or report issues. Also, if you have any ideas on new nam
 
 ## Disclaimer
 
-This project is not affiliated in any way with Yahoo or TradingView or any other company mentioned here or on the website [brapi.ga](brapi.ga).
+This project is not affiliated in any way with Yahoo or TradingView or any other company mentioned here or on the website [brapi.dev](brapi.dev).
 
 This is an API for informational purposes. We do not guarantee data accuracy
 provided by the API or contained on this page, as they must
@@ -113,10 +113,10 @@ affected by these values, as well as other API endpoints.
 [Go to the top 🚀](#brapi)
 
 <p align="center">
-  <a href="https://brapi.ga/#gh-dark-mode-only">
+  <a href="https://brapi.dev/#gh-dark-mode-only">
     <img src="./public/logotype.svg" width="256" />
   </a>
-  <a href="https://brapi.ga/#gh-light-mode-only">
+  <a href="https://brapi.dev/#gh-light-mode-only">
     <img src="./public/favicon.svg" width="96" />
   </a>
 </p>

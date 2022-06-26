@@ -1,8 +1,8 @@
 <p align="center">
-  <a href="https://brapi.ga/#gh-dark-mode-only">
+  <a href="https://brapi.dev/#gh-dark-mode-only">
     <img src="./public/logotype.svg" width="256" />
   </a>
-  <a href="https://brapi.ga/#gh-light-mode-only">
+  <a href="https://brapi.dev/#gh-light-mode-only">
     <img src="./public/favicon.svg" width="96" />
   </a>
 </p>
@@ -19,9 +19,9 @@
 
 Na brapi, você tem acesso à cotação em tempo real das ações da Bovespa e criptomoedas com um delay de até 15 minutos. Você tem acesso à uma API que mostra todos os dados necessarios para você desenvolver a sua própria aplicação relacionada ao mercado de ações brasileiro, cripto ou moedas. Ajudamos desenvolvedores a construir o futuro das fintechs democratizando o acesso aos dados do mercado financeiro brasileiro e de criptomoedas.
 
-- Saiba mais: [https://brapi.ga](https://brapi.ga)
+- Saiba mais: [https://brapi.dev](https://brapi.dev)
 
-- Documentação: [https://brapi.ga/docs](https://brapi.ga/docs)
+- Documentação: [https://brapi.dev/docs](https://brapi.dev/docs)
 
 - Collection do Postman: [https://app.getpostman.com/run-collection/da5f72c67bf46c6c4a5f](https://app.getpostman.com/run-collection/da5f72c67bf46c6c4a5f)
 
@@ -42,7 +42,7 @@ Nossa API não tem limites por enquanto, use a vontade.
 Você pode buscar infomações de qualquer criptomoeda em qualquer moeda
 
 ```json
-// https://brapi.ga/api/v2/crypto?coin=BTC&currency=BRL
+// https://brapi.dev/api/v2/crypto?coin=BTC&currency=BRL
 {
   "coins": [
     {
@@ -70,7 +70,7 @@ Você pode buscar infomações de qualquer criptomoeda em qualquer moeda
 Você pode buscar infomações e converter várias moedas
 
 ```json
-// https://brapi.ga/api/v2/currency?currency=USD-BRL
+// https://brapi.dev/api/v2/currency?currency=USD-BRL
 {
   "currency": [
     {
@@ -95,7 +95,7 @@ Você pode buscar infomações e converter várias moedas
 Desenvolvemos a API mais fácil de começar a utilizar, sem cadastros, sem cartão de crédito e sem qualquer tipo de autenticação.
 
 ```json
-// GET https://brapi.ga/api/quote/COGN3
+// GET https://brapi.dev/api/quote/COGN3
 {
   "results": {
     "symbol": "COGN3",
@@ -149,7 +149,7 @@ Sinta-se livre para contribuir ou reportar algum erro ou sujestão.
 
 ## Exoneração de Responsabilidade
 
-Esse projeto não é afiliado de qualquer forma à Yahoo ou TradingView or qualquer outra empresa mencionada aqui ou no site [brapi.ga](brapi.ga).
+Esse projeto não é afiliado de qualquer forma à Yahoo ou TradingView or qualquer outra empresa mencionada aqui ou no site [brapi.dev](brapi.dev).
 
 Essa é uma API para fins informativos. Não garantimos a precisão dos dados
 fornecidos pela API ou contidos nesta página, uma vez que devem
@@ -168,10 +168,10 @@ afetada por estes valores, assim como demais endpoints da API.
 [Subir ao Topo 🚀](#brapi)
 
 <p align="center">
-  <a href="https://brapi.ga/#gh-dark-mode-only">
+  <a href="https://brapi.dev/#gh-dark-mode-only">
     <img src="./public/logotype.svg" width="256" />
   </a>
-  <a href="https://brapi.ga/#gh-light-mode-only">
+  <a href="https://brapi.dev/#gh-light-mode-only">
     <img src="./public/favicon.svg" width="96" />
   </a>
 </p>

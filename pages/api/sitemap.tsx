@@ -5,169 +5,169 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   res.send(`<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
   <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-      <loc>https://brapi.ga/</loc>
+      <loc>https://brapi.dev/</loc>
       <lastmod>2021-02-06</lastmod>
       <changefreq>monthly</changefreq>
       <priority>1</priority>
     </url>
     <url>
-      <loc>https://brapi.ga/about</loc>
+      <loc>https://brapi.dev/about</loc>
       <lastmod>2021-02-06</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.9</priority>
     </url>
     <url>
-      <loc>https://brapi.ga/quotes</loc>
+      <loc>https://brapi.dev/quotes</loc>
       <lastmod>2021-02-06</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.9</priority>
     </url>
     <url>
-      <loc>https://brapi.ga/docs</loc>
+      <loc>https://brapi.dev/docs</loc>
       <lastmod>2021-02-06</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.9</priority>
     </url>
     <url>
-      <loc>https://brapi.ga/contact</loc>
+      <loc>https://brapi.dev/contact</loc>
       <lastmod>2021-02-06</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.9</priority>
     </url>
     <url>
-      <loc>https://brapi.ga/login</loc>
+      <loc>https://brapi.dev/login</loc>
       <lastmod>2021-02-06</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.9</priority>
     </url>
     <url>
-      <loc>https://brapi.ga/create-account</loc>
+      <loc>https://brapi.dev/create-account</loc>
       <lastmod>2021-02-06</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.9</priority>
     </url>
     <url>
-      <loc>https://brapi.ga/legal</loc>
+      <loc>https://brapi.dev/legal</loc>
       <lastmod>2021-02-06</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.9</priority>
     </url>
     <url>
-      <loc>https://brapi.ga/quotes/OIBR3</loc>
+      <loc>https://brapi.dev/quotes/OIBR3</loc>
       <lastmod>2021-02-06</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>
     <url>
-      <loc>https://brapi.ga/quotes/CIEL3</loc>
+      <loc>https://brapi.dev/quotes/CIEL3</loc>
       <lastmod>2021-02-06</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>
     <url>
-      <loc>https://brapi.ga/quotes/IRBR3</loc>
+      <loc>https://brapi.dev/quotes/IRBR3</loc>
       <lastmod>2021-02-06</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>
     <url>
-      <loc>https://brapi.ga/quotes/GFSA3</loc>
+      <loc>https://brapi.dev/quotes/GFSA3</loc>
       <lastmod>2021-02-06</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>
     <url>
-      <loc>https://brapi.ga/quotes/COGN3</loc>
+      <loc>https://brapi.dev/quotes/COGN3</loc>
       <lastmod>2021-02-06</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>
     <url>
-      <loc>https://brapi.ga/quotes/PETR3</loc>
+      <loc>https://brapi.dev/quotes/PETR3</loc>
       <lastmod>2021-02-06</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>
     <url>
-      <loc>https://brapi.ga/quotes/VVAR3</loc>
+      <loc>https://brapi.dev/quotes/VVAR3</loc>
       <lastmod>2021-02-06</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>
     <url>
-      <loc>https://brapi.ga/quotes/VALE3</loc>
+      <loc>https://brapi.dev/quotes/VALE3</loc>
       <lastmod>2021-02-06</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>
     <url>
-      <loc>https://brapi.ga/quotes/MGLU3</loc>
+      <loc>https://brapi.dev/quotes/MGLU3</loc>
       <lastmod>2021-02-06</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>
     <url>
-      <loc>https://brapi.ga/quotes/CSNA3</loc>
+      <loc>https://brapi.dev/quotes/CSNA3</loc>
       <lastmod>2021-02-06</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>
     <url>
-      <loc>https://brapi.ga/quotes/DMMO3</loc>
+      <loc>https://brapi.dev/quotes/DMMO3</loc>
       <lastmod>2021-02-06</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>
     <url>
-      <loc>https://brapi.ga/quotes/BBAS3</loc>
+      <loc>https://brapi.dev/quotes/BBAS3</loc>
       <lastmod>2021-02-06</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>
     <url>
-      <loc>https://brapi.ga/quotes/BRDT3</loc>
+      <loc>https://brapi.dev/quotes/BRDT3</loc>
       <lastmod>2021-02-06</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>
     <url>
-      <loc>https://brapi.ga/quotes/ABEV3</loc>
+      <loc>https://brapi.dev/quotes/ABEV3</loc>
       <lastmod>2021-02-06</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>
     <url>
-      <loc>https://brapi.ga/quotes/BRML3</loc>
+      <loc>https://brapi.dev/quotes/BRML3</loc>
       <lastmod>2021-02-06</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>
     <url>
-      <loc>https://brapi.ga/quotes/INTB3</loc>
+      <loc>https://brapi.dev/quotes/INTB3</loc>
       <lastmod>2021-02-06</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>
     <url>
-      <loc>https://brapi.ga/quotes/JHSF3</loc>
+      <loc>https://brapi.dev/quotes/JHSF3</loc>
       <lastmod>2021-02-06</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>
     <url>
-      <loc>https://brapi.ga/quotes/MRFG3</loc>
+      <loc>https://brapi.dev/quotes/MRFG3</loc>
       <lastmod>2021-02-06</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>
     <url>
-      <loc>https://brapi.ga/quotes/RAIL3</loc>
+      <loc>https://brapi.dev/quotes/RAIL3</loc>
       <lastmod>2021-02-06</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>
     <url>
-      <loc>https://brapi.ga/quotes/PRIO3</loc>
+      <loc>https://brapi.dev/quotes/PRIO3</loc>
       <lastmod>2021-02-06</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>

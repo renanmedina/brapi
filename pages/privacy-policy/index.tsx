@@ -16,7 +16,7 @@ const Home = () => {
           <p>
             A sua privacidade é importante para nós. É política do Brapi
             respeitar a sua privacidade em relação a qualquer informação sua que
-            possamos coletar no site <a href="https://brapi.ga">Brapi</a>, e
+            possamos coletar no site <a href="https://brapi.dev">Brapi</a>, e
             outros sites que possuímos e operamos.
           </p>
           <p>

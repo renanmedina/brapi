@@ -99,7 +99,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       market_cap: stock.d[3],
       logo: stock.d[5]
         ? `https://s3-symbol-logo.tradingview.com/${stock.d[5]}--big.svg`
-        : 'https://brapi.ga/favicon.svg',
+        : 'https://brapi.dev/favicon.svg',
     };
 
     return stockInformation;

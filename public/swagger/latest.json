@@ -2,18 +2,18 @@
   "openapi": "3.0.0",
   "info": {
     "title": "brapi - API de finanças",
-    "description": "Tenha acesso instantâneo aos valores da cotação da bolsa de valores, dados históricos e até dados de criptomoedas em diferentes moedas\n\n**https://brapi.ga**",
+    "description": "Tenha acesso instantâneo aos valores da cotação da bolsa de valores, dados históricos e até dados de criptomoedas em diferentes moedas\n\n**https://brapi.dev**",
     "termsOfService": "/terms-of-use",
     "contact": {
       "name": "brapi",
-      "url": "https://brapi.ga/",
+      "url": "https://brapi.dev/",
       "email": "brapi@proton.me"
     },
-    "version": "2.4.0"
+    "version": "2.4.1"
   },
   "servers": [
     {
-      "url": "https://brapi.ga"
+      "url": "https://brapi.dev"
     }
   ],
   "paths": {
@@ -256,7 +256,7 @@
           {
             "name": "coin",
             "in": "query",
-            "description": "Add one or more cryptocoin separated by a comma. Available coins at: https://brapi.ga/api/v2/crypto/available",
+            "description": "Add one or more cryptocoin separated by a comma. Available coins at: https://brapi.dev/api/v2/crypto/available",
             "required": true,
             "style": "form",
             "schema": {
@@ -372,7 +372,7 @@
           {
             "name": "currency",
             "in": "query",
-            "description": "Currency to another currency. Available currencies at: https://brapi.ga/api/v2/currency/available",
+            "description": "Currency to another currency. Available currencies at: https://brapi.dev/api/v2/currency/available",
             "required": true,
             "style": "form",
             "schema": {

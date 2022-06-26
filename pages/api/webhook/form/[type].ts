@@ -26,7 +26,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     await axios.post(`${process.env.DISCORD_WEBHOOK_URL}`, {
       username: 'brapi',
-      avatar_url: 'https://brapi.ga/favicon.png',
+      avatar_url: 'https://brapi.dev/favicon.png',
       embeds: [
         {
           title: `New ${formType} Form Submission`,

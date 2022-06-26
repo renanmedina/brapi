@@ -15,7 +15,7 @@ class MyDocument extends Document {
           <meta name="theme-color" content="#7347AB" />
           <meta property="og:title" content="brapi" />
           <meta property="og:type" content="website" />
-          <meta property="og:image" content="https://brapi.ga/favicon.png" />
+          <meta property="og:image" content="https://brapi.dev/favicon.png" />
           <meta property="og:image:width" content="512" />
           <meta property="og:image:height" content="512" />
           <meta
@@ -23,7 +23,7 @@ class MyDocument extends Document {
             lang="pt-BR"
             content="API ilimitada da BOVESPA e Cryptomoedas. Ajudamos desenvolvedores a construir o futuro das fintechs democratizando o acesso aos dados do mercado financeiro brasileiro."
           />
-          <meta property="og:url" content="https://brapi.ga" />
+          <meta property="og:url" content="https://brapi.dev" />
           <meta property="og:locale" content="pt-BR" />
           <link rel="manifest" href="/manifest.json" />
           {/* <meta
