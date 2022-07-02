@@ -60,6 +60,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       'market_cap_basic',
       'description',
       'logoid',
+      'sector',
     ],
     sort: {
       sortBy: sortBy?.toString() || 'volume',
@@ -100,6 +101,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       logo: stock.d[5]
         ? `https://s3-symbol-logo.tradingview.com/${stock.d[5]}--big.svg`
         : 'https://brapi.dev/favicon.svg',
+      sector: stock.d[6],
     };
 
     return stockInformation;

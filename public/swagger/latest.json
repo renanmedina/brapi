@@ -9,7 +9,7 @@
       "url": "https://brapi.dev/",
       "email": "brapi@proton.me"
     },
-    "version": "2.4.1"
+    "version": "2.4.2"
   },
   "servers": [
     {
@@ -186,7 +186,8 @@
                 "change",
                 "change_abs",
                 "volume",
-                "market_cap_basic"
+                "market_cap_basic",
+                "sector"
               ]
             },
             "example": ""
@@ -229,7 +230,8 @@
                       "change": -4.76190773,
                       "volume": 118295600,
                       "market_cap": 422521192168,
-                      "logo": "https://s3-symbol-logo.tradingview.com/brasileiro-petrobras--big.svg"
+                      "logo": "https://s3-symbol-logo.tradingview.com/brasileiro-petrobras--big.svg",
+                      "sector": "Energy Minerals"
                     },
                     {
                       "stock": "OIBR3",
@@ -238,7 +240,8 @@
                       "change": 8.57142857,
                       "volume": 91165400,
                       "market_cap": 5107338999,
-                      "logo": "https://s3-symbol-logo.tradingview.com/oi--big.svg"
+                      "logo": "https://s3-symbol-logo.tradingview.com/oi--big.svg",
+                      "sector": "Communications"
                     }
                   ]
                 }
