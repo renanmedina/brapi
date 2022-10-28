@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { toast, ToastContainer } from 'react-toastify';
+import { Analytics } from '@vercel/analytics/react';
 import * as gtag from '../utils/gtag';
 import '../styles/global.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -39,6 +40,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       </Head>
       <Component {...pageProps} />
       <ToastContainer theme="dark" />
+      <Analytics />
     </>
   );
 };
