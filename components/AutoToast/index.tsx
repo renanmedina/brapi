@@ -1,9 +1,8 @@
 'use client';
 
-import { Toaster as HotToaster } from 'react-hot-toast';
+import hotToast, { Toaster as HotToaster } from 'react-hot-toast';
 import { useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
-import hotToast from 'react-hot-toast';
 
 export const AutoToast = () => {
   const searchParams = useSearchParams();
