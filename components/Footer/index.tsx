@@ -1,7 +1,4 @@
-'use client';
-
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
 
 const companyLinks = [
   {
@@ -38,14 +35,6 @@ const legalLinks = [
 ];
 
 const Footer = () => {
-  const [isReady, setIsReady] = useState(false);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setIsReady(true);
-    }
-  }, []);
-
   return (
     <footer className="text-gray-400 bg-gray-900 body-font border-t border-gray-800">
       <div className="container px-5 py-8 flex flex-wrap mx-auto items-center flex-row justify-between">
@@ -87,26 +76,22 @@ const Footer = () => {
               method="POST"
               className="relative sm:w-64 w-full max-w-full min-w-[200px] sm:mr-4 mr-2"
             >
-              {isReady && (
-                <input
-                  type="hidden"
-                  name="_next"
-                  value={encodeURI(
-                    `${window.location.href}?show-toast=Agora você receberá nossas novidades!`,
-                  )}
-                />
-              )}
+              <input
+                type="hidden"
+                name="_next"
+                value={encodeURI(
+                  'https://brapi.dev?show-toast=Agora você receberá nossas novidades!',
+                )}
+              />
               <input type="hidden" name="_subject" value="Newsletter brapi" />
               <input type="hidden" name="_captcha" value="false" />
               <input type="text" name="_honey" style={{ display: 'none' }} />
               <input type="hidden" name="_template" value="table" />
-              {isReady && (
-                <input
-                  type="hidden"
-                  name="_webhook"
-                  value={`${window.location.origin}/api/webhook/form/newsletter`}
-                />
-              )}
+              <input
+                type="hidden"
+                name="_webhook"
+                value="https://brapi.dev/api/webhook/form/newsletter"
+              />
               <input type="text" name="_honey" style={{ display: 'none' }} />
               <label
                 htmlFor="email"
