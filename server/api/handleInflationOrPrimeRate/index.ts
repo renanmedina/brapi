@@ -94,7 +94,6 @@ export const handleInflationOrPrimeRate = async (
       epochDate: new Date(parseDMY(item.data)).getTime(),
     }));
 
-    console.log({ sortBy, sortOrder });
     const orderedInflationOrPrimeRate = formattedData.sort((a, b) => {
       if (sortBy === 'value') {
         if (sortOrder === 'desc') {
