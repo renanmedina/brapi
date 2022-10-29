@@ -1,13 +1,23 @@
-import { PropsWithChildren } from 'react';
+import { Analytics } from '~/components/Analytics';
+import { AutoToast } from '~/components/AutoToast';
+import Footer from '~/components/Footer';
+import Header from '~/components/Header';
+import '~/styles/global.css';
 
-export default function RootLayout({ children }: PropsWithChildren<{}>) {
+interface RootLayoutProps {
+  children: React.ReactNode;
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en">
-      <head>
-        <title>Next.js</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </head>
-      <body>{children}</body>
+    <html lang="pt-BR">
+      <body>
+        <Header />
+        {children}
+        <Analytics />
+        <AutoToast />
+        <Footer />
+      </body>
     </html>
   );
 }

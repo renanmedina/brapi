@@ -5,7 +5,7 @@ import { Hero } from './Hero';
 import { Numbers } from './Numbers';
 import { WhatWeDo } from './WhatWeDo';
 
-const Main: React.FC = () => {
+const Main = () => {
   return (
     <main>
       <Hero />
