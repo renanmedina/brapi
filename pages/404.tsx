@@ -11,8 +11,8 @@ const NotFound: React.FC = () => {
           <h1 className="text-9xl font-bold">404</h1>
           <p>Essa página não existe :(</p>
         </div>
-        <Link href="/" passHref>
-          <a className="btn btn-primary">Voltar para a página inicial</a>
+        <Link href="/" className="btn btn-primary">
+          Voltar para a página inicial
         </Link>
       </main>
     </Layout>

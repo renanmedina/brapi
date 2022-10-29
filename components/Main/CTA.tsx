@@ -8,8 +8,8 @@ export const CTA = () => {
           <h1 className="flex-grow sm:pr-16 text-2xl font-medium title-font text-white">
             Pronto para desenvolver uma aplicação?
           </h1>
-          <Link href="/docs" passHref>
-            <button className="btn btn-primary">Começar</button>
+          <Link href="/docs" className="btn btn-primary">
+            Começar
           </Link>
         </div>
       </div>

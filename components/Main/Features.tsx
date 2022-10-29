@@ -80,21 +80,19 @@ export const Features = () => {
                 autenticação, comece a desenvolver agora mesmo. E o melhor de
                 tudo, é grátis. Acreditamos que dados devem ser democratizados
               </p>
-              <Link href="/docs" passHref>
-                <a className="btn btn-link" tabIndex={0}>
-                  Começar
-                  <svg
-                    fill="none"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    className="w-4 h-4 ml-2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
+              <Link href="/docs" className="btn btn-link" tabIndex={0}>
+                Começar
+                <svg
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  className="w-4 h-4 ml-2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
               </Link>
             </div>
           </div>
