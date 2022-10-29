@@ -16,6 +16,7 @@ export const WhatWeDo = () => {
             converter de uma moeda para qualquer outra.
           </p>
           <Link
+            prefetch={false}
             href="/docs"
             className="text-brand-400 inline-flex items-center mt-4"
             tabIndex={0}
@@ -41,6 +42,7 @@ export const WhatWeDo = () => {
           <nav className="flex flex-wrap list-none -mb-1">
             <li className="lg:w-1/3 mb-1 w-1/2">
               <Link
+                prefetch={false}
                 href="/docs#stocks"
                 className="hover:text-white"
                 tabIndex={0}
@@ -50,6 +52,7 @@ export const WhatWeDo = () => {
             </li>
             <li className="lg:w-1/3 mb-1 w-1/2">
               <Link
+                prefetch={false}
                 href="/docs#stocks-history"
                 className="hover:text-white"
                 tabIndex={0}
@@ -59,6 +62,7 @@ export const WhatWeDo = () => {
             </li>
             <li className="lg:w-1/3 mb-1 w-1/2">
               <Link
+                prefetch={false}
                 href="/docs#stocks-fundamentalist"
                 className="hover:text-white"
                 tabIndex={0}
@@ -68,6 +72,7 @@ export const WhatWeDo = () => {
             </li>
             <li className="lg:w-1/3 mb-1 w-1/2">
               <Link
+                prefetch={false}
                 href="/docs#crypto"
                 className="hover:text-white"
                 tabIndex={0}
@@ -77,6 +82,7 @@ export const WhatWeDo = () => {
             </li>
             <li className="lg:w-1/3 mb-1 w-1/2">
               <Link
+                prefetch={false}
                 href="/docs#currency"
                 className="hover:text-white"
                 tabIndex={0}
@@ -86,6 +92,7 @@ export const WhatWeDo = () => {
             </li>
             <li className="lg:w-1/3 mb-1 w-1/2">
               <Link
+                prefetch={false}
                 href="/docs#search"
                 className="hover:text-white"
                 tabIndex={0}

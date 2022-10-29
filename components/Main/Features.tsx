@@ -80,7 +80,12 @@ export const Features = () => {
                 autenticação, comece a desenvolver agora mesmo. E o melhor de
                 tudo, é grátis. Acreditamos que dados devem ser democratizados
               </p>
-              <Link href="/docs" className="btn btn-link" tabIndex={0}>
+              <Link
+                prefetch={false}
+                href="/docs"
+                className="btn btn-link"
+                tabIndex={0}
+              >
                 Começar
                 <svg
                   fill="none"

@@ -22,7 +22,7 @@ const MainAbout = () => {
                   </h2>
                   <div className="w-12 h-1 bg-brand-500 rounded mt-2 mb-4"></div>
                   <p className="text-base text-gray-400">
-                    Founder e developer na brapi
+                    Founder e Software Engineer na brapi
                   </p>
                 </div>
               </div>
@@ -63,6 +63,7 @@ const MainAbout = () => {
                   onde é disponibiilizada toda a sua infraestrutura global.
                 </p>
                 <Link
+                  prefetch={false}
                   href="/docs"
                   className="text-brand-400 inline-flex items-center"
                 >
@@ -70,9 +71,9 @@ const MainAbout = () => {
                   <svg
                     fill="none"
                     stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     className="w-4 h-4 ml-2"
                     viewBox="0 0 24 24"
                   >
