@@ -9,7 +9,7 @@
       "url": "https://brapi.dev/",
       "email": "brapi@proton.me"
     },
-    "version": "2.4.2"
+    "version": "2.5.0"
   },
   "servers": [
     {
@@ -425,6 +425,67 @@
         }
       }
     },
+    "/api/v2/inflation": {
+      "get": {
+        "tags": ["inflation"],
+        "summary": "Get the history of the inflation of a certain country",
+        "parameters": [
+          {
+            "name": "country",
+            "in": "query",
+            "description": "Get data for a certain country, defaults to 'brazil'",
+            "required": false,
+            "style": "form",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "Sort the data by a column, defaults to 'date'",
+            "required": false,
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "enum": ["date", "value"]
+            },
+            "example": ""
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "Sort order for sortBy, defaults to 'desc'",
+            "required": false,
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "enum": ["desc", "asc"]
+            },
+            "example": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": {
+                  "inflation": [
+                    {
+                      "date": "01/09/2022",
+                      "value": "7.17",
+                      "epochDate": 1661990400000
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v2/currency/available": {
       "get": {
         "tags": ["currency"],
@@ -468,6 +529,47 @@
               "application/json": {
                 "example": {
                   "message": "Currency not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/inflation/available": {
+      "get": {
+        "tags": ["inflation"],
+        "summary": "Get all available supported inflation countries",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Find all possible supported inflation countries, if no query is passed then all supported inflation countries are returned",
+            "required": false,
+            "style": "form",
+            "schema": {
+              "type": "string"
+            },
+            "example": "br"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": {
+                  "countries": ["brazil"]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Country not found",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Country not found"
                 }
               }
             }
