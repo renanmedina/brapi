@@ -15,24 +15,24 @@ export const WhatWeDo = () => {
             histórico de preços, etc. Para moedas e criptomoedas você ainda pode
             converter de uma moeda para qualquer outra.
           </p>
-          <Link href="/docs" passHref>
-            <a
-              className="text-brand-400 inline-flex items-center mt-4"
-              tabIndex={0}
+          <Link
+            prefetch={false}
+            href="/docs"
+            className="text-brand-400 inline-flex items-center mt-4"
+            tabIndex={0}
+          >
+            Começar
+            <svg
+              fill="none"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              className="w-4 h-4 ml-2"
+              viewBox="0 0 24 24"
             >
-              Começar
-              <svg
-                fill="none"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                className="w-4 h-4 ml-2"
-                viewBox="0 0 24 24"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7"></path>
-              </svg>
-            </a>
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
           </Link>
         </div>
         <div className="flex flex-col md:w-1/2 md:pl-12">
@@ -41,45 +41,63 @@ export const WhatWeDo = () => {
           </h2>
           <nav className="flex flex-wrap list-none -mb-1">
             <li className="lg:w-1/3 mb-1 w-1/2">
-              <Link href="/docs#stocks" passHref>
-                <a className="hover:text-white" tabIndex={0}>
-                  Bovespa
-                </a>
+              <Link
+                prefetch={false}
+                href="/docs#stocks"
+                className="hover:text-white"
+                tabIndex={0}
+              >
+                Bovespa
               </Link>
             </li>
             <li className="lg:w-1/3 mb-1 w-1/2">
-              <Link href="/docs#stocks-history" passHref>
-                <a className="hover:text-white" tabIndex={0}>
-                  Dados históricos
-                </a>
+              <Link
+                prefetch={false}
+                href="/docs#stocks-history"
+                className="hover:text-white"
+                tabIndex={0}
+              >
+                Dados históricos
               </Link>
             </li>
             <li className="lg:w-1/3 mb-1 w-1/2">
-              <Link href="/docs#stocks-fundamentalist" passHref>
-                <a className="hover:text-white" tabIndex={0}>
-                  Dados fundamentalistas
-                </a>
+              <Link
+                prefetch={false}
+                href="/docs#stocks-fundamentalist"
+                className="hover:text-white"
+                tabIndex={0}
+              >
+                Dados fundamentalistas
               </Link>
             </li>
             <li className="lg:w-1/3 mb-1 w-1/2">
-              <Link href="/docs#crypto" passHref>
-                <a className="hover:text-white" tabIndex={0}>
-                  Criptomoedas
-                </a>
+              <Link
+                prefetch={false}
+                href="/docs#crypto"
+                className="hover:text-white"
+                tabIndex={0}
+              >
+                Criptomoedas
               </Link>
             </li>
             <li className="lg:w-1/3 mb-1 w-1/2">
-              <Link href="/docs#currency" passHref>
-                <a className="hover:text-white" tabIndex={0}>
-                  Moedas
-                </a>
+              <Link
+                prefetch={false}
+                href="/docs#currency"
+                className="hover:text-white"
+                tabIndex={0}
+              >
+                Moedas
               </Link>
             </li>
             <li className="lg:w-1/3 mb-1 w-1/2">
-              <Link href="/docs#search" passHref>
-                <a className="hover:text-white" tabIndex={0}>
-                  Pesquisa rápida
-                </a>
+              <Link
+                prefetch={false}
+                href="/docs#search"
+                className="hover:text-white"
+                tabIndex={0}
+              >
+                Pesquisa rápida
               </Link>
             </li>
           </nav>

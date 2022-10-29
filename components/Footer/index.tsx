@@ -1,15 +1,40 @@
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+
+const companyLinks = [
+  {
+    href: '/about',
+    label: 'Sobre',
+  },
+  {
+    href: '/contact',
+    label: 'Contato',
+  },
+  {
+    href: '/career',
+    label: 'Carreira',
+  },
+  {
+    href: '/press-kit',
+    label: 'Press kit',
+  },
+];
+
+const legalLinks = [
+  {
+    href: '/terms-of-use',
+    label: 'Termos de uso',
+  },
+  {
+    href: '/privacy-policy',
+    label: 'Política de privacidade',
+  },
+  {
+    href: '/cookie-policy',
+    label: 'Política de cookies',
+  },
+];
 
 const Footer = () => {
-  const [isReady, setIsReady] = useState(false);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setIsReady(true);
-    }
-  }, []);
-
   return (
     <footer className="text-gray-400 bg-gray-900 body-font border-t border-gray-800">
       <div className="container px-5 py-8 flex flex-wrap mx-auto items-center flex-row justify-between">
@@ -17,30 +42,27 @@ const Footer = () => {
           <div className="footer flex space-x-8 max-w-fit">
             <div>
               <span className="footer-title">Empresa</span>
-              <Link href="/about" passHref>
-                <a className="link link-hover">Sobre</a>
-              </Link>
-              <Link href="/contact" passHref>
-                <a className="link link-hover">Contato</a>
-              </Link>
-              <Link href="/career" passHref>
-                <a className="link link-hover">Carreira</a>
-              </Link>
-              <Link href="/press-kit" passHref>
-                <a className="link link-hover">Press kit</a>
-              </Link>
+              {companyLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="link link-hover"
+                >
+                  {link.label}
+                </Link>
+              ))}
             </div>
             <div>
               <span className="footer-title">Legal</span>
-              <Link href="/terms-of-use" passHref>
-                <a className="link link-hover">Termos de uso</a>
-              </Link>
-              <Link href="/privacy-policy" passHref>
-                <a className="link link-hover">Política de privacidade</a>
-              </Link>
-              <Link href="/cookie-policy" passHref>
-                <a className="link link-hover">Política de Cookie</a>
-              </Link>
+              {legalLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="link link-hover"
+                >
+                  {link.label}
+                </Link>
+              ))}
             </div>
           </div>
           <div className="flex md:flex-nowrap flex-wrap justify-center md:justify-end w-full gap-8 md:gap-2">
@@ -54,26 +76,22 @@ const Footer = () => {
               method="POST"
               className="relative sm:w-64 w-full max-w-full min-w-[200px] sm:mr-4 mr-2"
             >
-              {isReady && (
-                <input
-                  type="hidden"
-                  name="_next"
-                  value={encodeURI(
-                    `${window.location.href}?show-toast=Agora você receberá nossas novidades!`,
-                  )}
-                />
-              )}
+              <input
+                type="hidden"
+                name="_next"
+                value={encodeURI(
+                  'https://brapi.dev?show-toast=Agora você receberá nossas novidades!',
+                )}
+              />
               <input type="hidden" name="_subject" value="Newsletter brapi" />
               <input type="hidden" name="_captcha" value="false" />
               <input type="text" name="_honey" style={{ display: 'none' }} />
               <input type="hidden" name="_template" value="table" />
-              {isReady && (
-                <input
-                  type="hidden"
-                  name="_webhook"
-                  value={`${window.location.origin}/api/webhook/form/newsletter`}
-                />
-              )}
+              <input
+                type="hidden"
+                name="_webhook"
+                value="https://brapi.dev/api/webhook/form/newsletter"
+              />
               <input type="text" name="_honey" style={{ display: 'none' }} />
               <label
                 htmlFor="email"

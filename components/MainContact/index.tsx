@@ -1,14 +1,4 @@
-import { useEffect, useState } from 'react';
-
 export const MainContact = () => {
-  const [isReady, setIsReady] = useState(false);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setIsReady(true);
-    }
-  }, []);
-
   return (
     <section className="text-gray-400 bg-gray-900 body-font relative">
       <div className="container px-5 py-24 mx-auto">
@@ -43,13 +33,13 @@ export const MainContact = () => {
               <input type="hidden" name="_captcha" value="false" />
               <input type="text" name="_honey" style={{ display: 'none' }} />
               <input type="hidden" name="_template" value="table" />
-              {isReady && (
-                <input
-                  type="hidden"
-                  name="_webhook"
-                  value={`${window.location.origin}/api/webhook/form/contact`}
-                />
-              )}
+
+              <input
+                type="hidden"
+                name="_webhook"
+                value="https://brapi.dev/api/webhook/form/contact"
+              />
+
               <input type="text" name="_honey" style={{ display: 'none' }} />
 
               <div className="p-2 w-1/2">

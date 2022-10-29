@@ -3,5 +3,6 @@ module.exports = {
   swcMinify: true,
   experimental: {
     optimizeCss: true,
+    appDir: true,
   },
 };
