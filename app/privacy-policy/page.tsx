@@ -3,9 +3,6 @@ import MainLegal from '../../components/MainLegal';
 const PrivacyPolicyPage = () => {
   return (
     <div>
-      {/* <Head>
-        <title>brapi - Política de Privacidade</title>
-      </Head> */}
       <MainLegal>
         <h2>Política Privacidade</h2>
         <p>

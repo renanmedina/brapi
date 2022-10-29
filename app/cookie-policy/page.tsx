@@ -3,9 +3,6 @@ import MainLegal from '../../components/MainLegal';
 const CookiePolicyPage = () => {
   return (
     <div>
-      {/* <Head>
-        <title>brapi - Política de Privacidade</title>
-      </Head> */}
       <MainLegal>
         <h2>Política de Cookies Brapi</h2>
         <h3>O que são cookies?</h3>

@@ -6,6 +6,7 @@ const Head = () => {
     <>
       <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       <link rel="icon" type="image/png" href="/favicon.png" />
+      <title>brapi - API de ações da bolsa de valores brasileira</title>
       <meta
         name="keywords"
         content="API, Desenvolvimento, Cripto, Criptomoeda, Bitcoin, Ethereum, Bovespa, Ibovespa, Negócios, Informações financeiras, Investimento, Investidor, Notícias de mercado, Pesquisa de ações, Avaliação de ações, notícias de negócios, economia, finanças, ferramentas de investimento, hipotecas, fundos mútuos, finanças pessoais, cotação, imóveis, aposentadoria, ações, ações, impostos , monitorar portfólio"

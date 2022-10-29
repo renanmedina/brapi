@@ -3,9 +3,6 @@ import MainLegal from '../../components/MainLegal';
 const TermsOfUsePage = () => {
   return (
     <div>
-      {/* <Head>
-        <title>brapi - Política de Privacidade</title>
-      </Head> */}
       <MainLegal>
         <h2>1. Termos</h2>
         <p>
