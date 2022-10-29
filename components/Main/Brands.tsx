@@ -41,7 +41,12 @@ export const Brands = () => {
         </span>
 
         <span className="opacity-50 hover:opacity-100 transition ease-in-out duration-150 w-full h-full flex items-center justify-center">
-          <a href="https://finance.yahoo.com">
+          <a
+            href="https://finance.yahoo.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Yahoo Finance"
+          >
             <svg
               version="1.0"
               xmlns="http://www.w3.org/2000/svg"
