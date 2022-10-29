@@ -1,6 +1,7 @@
+'use client';
 import Link from 'next/link';
 
-const Header: React.FC = () => {
+const Header = () => {
   return (
     <div className="bg-gray-900 pb-40 md:pb-20 relative min-w-full">
       <div className="absolute bg-brand-400/80 md:bg-brand-400/20 w-96 h-96 max-w-full blur-3xl rounded-full left-1/2 translate -translate-x-1/2 -translate-y-3/4 md:-left-48 md:-top-48 md:-translate-x-0 md:-translate-y-0 overflow-hidden z-10" />
@@ -70,7 +71,13 @@ const Header: React.FC = () => {
             <Link href="/about" className="mr-5 hover:text-white" tabIndex={0}>
               Sobre
             </Link>
-            <Link href="/docs" className="mr-5 hover:text-white" tabIndex={0}>
+
+            <Link
+              prefetch={false}
+              href="/docs"
+              className="mr-5 hover:text-white"
+              tabIndex={0}
+            >
               Docs
             </Link>
             <Link
@@ -81,7 +88,11 @@ const Header: React.FC = () => {
               Contato
             </Link>
           </nav>
-          <Link href="/docs" className="btn btn-primary hidden md:flex">
+          <Link
+            prefetch={false}
+            href="/docs"
+            className="btn btn-primary hidden md:flex"
+          >
             Começar
             <svg
               fill="none"
