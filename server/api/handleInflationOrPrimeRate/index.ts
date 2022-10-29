@@ -95,7 +95,7 @@ export const handleInflationOrPrimeRate = async (
     }));
 
     console.log({ sortBy, sortOrder });
-    const orderedInflation = formattedData.sort((a, b) => {
+    const orderedInflationOrPrimeRate = formattedData.sort((a, b) => {
       if (sortBy === 'value') {
         if (sortOrder === 'desc') {
           return b.value - a.value;
@@ -110,7 +110,7 @@ export const handleInflationOrPrimeRate = async (
       return b.epochDate - a.epochDate;
     });
 
-    res.status(200).json({ inflation: orderedInflation });
+    res.status(200).json({ [type]: orderedInflationOrPrimeRate });
   } catch (err) {
     console.log(err);
     res.status(400).json({

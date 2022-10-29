@@ -54,7 +54,7 @@
                 "max"
               ]
             },
-            "example": ""
+            "example": "1d"
           },
           {
             "name": "interval",
@@ -78,7 +78,7 @@
                 "max"
               ]
             },
-            "example": ""
+            "example": "1d"
           },
           {
             "name": "fundamental",
@@ -89,7 +89,7 @@
             "schema": {
               "type": "boolean"
             },
-            "example": ""
+            "example": "true"
           }
         ],
         "responses": {
@@ -190,7 +190,7 @@
                 "sector"
               ]
             },
-            "example": ""
+            "example": "close"
           },
           {
             "name": "sortOrder",
@@ -202,7 +202,7 @@
               "type": "string",
               "enum": ["desc", "asc"]
             },
-            "example": ""
+            "example": "desc"
           },
           {
             "name": "limit",
@@ -213,7 +213,7 @@
             "schema": {
               "type": "integer"
             },
-            "example": ""
+            "example": "10"
           }
         ],
         "responses": {
@@ -439,7 +439,40 @@
             "schema": {
               "type": "string"
             },
-            "example": ""
+            "example": "brazil"
+          },
+          {
+            "name": "historical",
+            "in": "query",
+            "description": "Get historical data for a certain country, defaults to 'false'",
+            "required": false,
+            "style": "form",
+            "schema": {
+              "type": "boolean"
+            },
+            "example": "false"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "Get historical data from a certain date, defaults to today's date (DD/MM/YYYY)",
+            "required": false,
+            "style": "form",
+            "schema": {
+              "type": "string"
+            },
+            "example": "29/10/2022"
+          },
+          {
+            "name": "end",
+            "in": "query",
+            "description": "Get historical data until a certain date, defaults to today's date (DD/MM/YYYY)",
+            "required": false,
+            "style": "form",
+            "schema": {
+              "type": "string"
+            },
+            "example": "29/10/2022"
           },
           {
             "name": "sortBy",
@@ -451,7 +484,7 @@
               "type": "string",
               "enum": ["date", "value"]
             },
-            "example": ""
+            "example": "date"
           },
           {
             "name": "sortOrder",
@@ -463,7 +496,7 @@
               "type": "string",
               "enum": ["desc", "asc"]
             },
-            "example": ""
+            "example": "desc"
           }
         ],
         "responses": {
@@ -479,6 +512,182 @@
                       "epochDate": 1661990400000
                     }
                   ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/inflation/available": {
+      "get": {
+        "tags": ["inflation"],
+        "summary": "Get all available supported inflation countries",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Find all possible supported inflation countries, if no query is passed then all supported inflation countries are returned",
+            "required": false,
+            "style": "form",
+            "schema": {
+              "type": "string"
+            },
+            "example": "br"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": {
+                  "countries": ["brazil"]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Country not found",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Country not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/prime-rate": {
+      "get": {
+        "tags": ["prime-rate (SELIC)"],
+        "summary": "Get the history of the prime-rate of a certain country",
+        "parameters": [
+          {
+            "name": "country",
+            "in": "query",
+            "description": "Get data for a certain country, defaults to 'brazil'",
+            "required": false,
+            "style": "form",
+            "schema": {
+              "type": "string"
+            },
+            "example": "brazil"
+          },
+          {
+            "name": "historical",
+            "in": "query",
+            "description": "Get historical data for a certain country, defaults to 'false'",
+            "required": false,
+            "style": "form",
+            "schema": {
+              "type": "boolean"
+            },
+            "example": "false"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "Get historical data from a certain date, defaults to today's date (DD/MM/YYYY)",
+            "required": false,
+            "style": "form",
+            "schema": {
+              "type": "string"
+            },
+            "example": "29/10/2022"
+          },
+          {
+            "name": "end",
+            "in": "query",
+            "description": "Get historical data until a certain date, defaults to today's date (DD/MM/YYYY)",
+            "required": false,
+            "style": "form",
+            "schema": {
+              "type": "string"
+            },
+            "example": "29/10/2022"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "Sort the data by a column, defaults to 'date'",
+            "required": false,
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "enum": ["date", "value"]
+            },
+            "example": "date"
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "Sort order for sortBy, defaults to 'desc'",
+            "required": false,
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "enum": ["desc", "asc"]
+            },
+            "example": "desc"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": {
+                  "prime-rate": [
+                    {
+                      "date": "29/11/2022",
+                      "value": "13.75",
+                      "epochDate": 1669680000000
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/prime-rate/available": {
+      "get": {
+        "tags": ["prime-rate (SELIC)"],
+        "summary": "Get all available supported countries' prime-rates",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Find all possible supported countries' prime-rates, if no query is passed then all supported countries' prime-rates are returned",
+            "required": false,
+            "style": "form",
+            "schema": {
+              "type": "string"
+            },
+            "example": "br"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": {
+                  "countries": ["brazil"]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Country not found",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Country not found"
                 }
               }
             }
@@ -536,47 +745,7 @@
         }
       }
     },
-    "/api/v2/inflation/available": {
-      "get": {
-        "tags": ["inflation"],
-        "summary": "Get all available supported inflation countries",
-        "parameters": [
-          {
-            "name": "search",
-            "in": "query",
-            "description": "Find all possible supported inflation countries, if no query is passed then all supported inflation countries are returned",
-            "required": false,
-            "style": "form",
-            "schema": {
-              "type": "string"
-            },
-            "example": "br"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "example": {
-                  "countries": ["brazil"]
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Country not found",
-            "content": {
-              "application/json": {
-                "example": {
-                  "message": "Country not found"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
+
     "components": {
       "schemas": {},
       "securitySchemes": {
