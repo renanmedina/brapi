@@ -4,5 +4,10 @@ module.exports = {
   experimental: {
     optimizeCss: true,
     appDir: true,
+    transpilePackages: [
+      'react-syntax-highlighter',
+      'swagger-client',
+      'swagger-ui-react',
+    ],
   },
 };
