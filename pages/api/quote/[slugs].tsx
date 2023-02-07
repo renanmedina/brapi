@@ -88,16 +88,50 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             const dividendParser = (eachDividend) => {
               return {
                 ...eachDividend,
-                paymentDate: new Date(
-                  eachDividend?.paymentDate?.split('/')?.reverse()?.join('-'),
-                ),
-                approvedOn: new Date(
-                  eachDividend?.approvedOn?.split('/')?.reverse()?.join('-'),
-                ),
-                lastDatePrior: new Date(
-                  eachDividend?.lastDatePrior?.split('/')?.reverse()?.join('-'),
-                ),
-                rate: parseFloat(eachDividend?.rate?.replace(',', '.') || 0),
+                ...(eachDividend?.paymentDate && {
+                  paymentDate: new Date(
+                    eachDividend?.paymentDate?.split('/')?.reverse()?.join('-'),
+                  ),
+                }),
+                ...(eachDividend?.approvedOn && {
+                  approvedOn: new Date(
+                    eachDividend?.approvedOn?.split('/')?.reverse()?.join('-'),
+                  ),
+                }),
+                ...(eachDividend?.lastDatePrior && {
+                  lastDatePrior: new Date(
+                    eachDividend?.lastDatePrior
+                      ?.split('/')
+                      ?.reverse()
+                      ?.join('-'),
+                  ),
+                }),
+                ...(eachDividend?.rate && {
+                  rate: parseFloat(eachDividend?.rate?.replace(',', '.') || 0),
+                }),
+                ...(eachDividend?.factor && {
+                  factor: parseFloat(
+                    eachDividend?.factor?.replace(',', '.') || 0,
+                  ),
+                }),
+                ...(eachDividend?.percentage && {
+                  percentage: parseFloat(
+                    eachDividend?.percentage?.replace(',', '.') || 0,
+                  ),
+                }),
+                ...(eachDividend?.priceUnit && {
+                  priceUnit: parseFloat(
+                    eachDividend?.priceUnit?.replace(',', '.') || 0,
+                  ),
+                }),
+                ...(eachDividend?.subscriptionDate && {
+                  subscriptionDate: new Date(
+                    eachDividend?.subscriptionDate
+                      ?.split('/')
+                      ?.reverse()
+                      ?.join('-'),
+                  ),
+                }),
               };
             };
 
