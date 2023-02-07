@@ -9,7 +9,7 @@
       "url": "https://brapi.dev/",
       "email": "brapi@proton.me"
     },
-    "version": "2.5.0"
+    "version": "2.6.0"
   },
   "servers": [
     {
@@ -84,6 +84,17 @@
             "name": "fundamental",
             "in": "query",
             "description": "Retrieve fundamental analysis data",
+            "required": false,
+            "style": "form",
+            "schema": {
+              "type": "boolean"
+            },
+            "example": "true"
+          },
+          {
+            "name": "dividends",
+            "in": "query",
+            "description": "Retrieve dividends data",
             "required": false,
             "style": "form",
             "schema": {
