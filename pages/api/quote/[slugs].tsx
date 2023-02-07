@@ -10,10 +10,7 @@ interface LooseObject {
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   logHost(req, 'quote');
 
-  const { slugs } = req.query;
-  const { interval } = req.query;
-  const { range } = req.query;
-  const { fundamental } = req.query;
+  const { slugs, interval, range, fundamental, dividends } = req.query;
 
   const validRanges = [
     '1d',
@@ -42,6 +39,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           );
 
           let fundamentalInformation = [];
+          let dividendsData = {};
 
           if (fundamental) {
             const formDataTradingView = {
@@ -69,6 +67,47 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             );
 
             fundamentalInformation.push(responseTradingView.data.data[0].d);
+          }
+
+          if (dividends) {
+            const jwtHeader = {
+              identifierFund: slug,
+            };
+
+            const jwtHeaderString = Buffer.from(
+              JSON.stringify(jwtHeader),
+            ).toString('base64');
+
+            const responseDividends = await axios.get(
+              `https://sistemaswebb3-listados.b3.com.br/fundsProxy/fundsCall/GetListedSupplementFunds/${jwtHeaderString}`,
+            );
+
+            const { cashDividends, stockDividends, subscriptions } =
+              responseDividends?.data || {};
+
+            const dividendParser = (eachDividend) => {
+              return {
+                ...eachDividend,
+                paymentDate: new Date(
+                  eachDividend?.paymentDate?.split('/')?.reverse()?.join('-'),
+                ),
+                approvedOn: new Date(
+                  eachDividend?.approvedOn?.split('/')?.reverse()?.join('-'),
+                ),
+                lastDatePrior: new Date(
+                  eachDividend?.lastDatePrior?.split('/')?.reverse()?.join('-'),
+                ),
+                rate: parseFloat(eachDividend?.rate?.replace(',', '.') || 0),
+              };
+            };
+
+            const parsedData = {
+              cashDividends: cashDividends?.map(dividendParser),
+              stockDividends: stockDividends?.map(dividendParser),
+              subscriptions: subscriptions?.map(dividendParser),
+            };
+
+            dividendsData = parsedData;
           }
 
           const getHistory = async () => {
@@ -147,6 +186,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                 : 'https://brapi.dev/favicon.svg';
             }
 
+            if (dividends) {
+              historicalQuote.dividendsData = dividendsData;
+            }
+
             if (response.status === 200) {
               return historicalQuote;
             }
@@ -189,6 +232,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             quote.logourl = fundamentalInformation[0][2]
               ? `https://s3-symbol-logo.tradingview.com/${fundamentalInformation[0][2]}--big.svg`
               : 'https://brapi.dev/favicon.svg';
+          }
+
+          if (dividends) {
+            quote.dividendsData = dividendsData;
           }
 
           if (response.status === 200) {
