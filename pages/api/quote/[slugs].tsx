@@ -56,17 +56,21 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
               ],
             };
 
-            const responseTradingView = await axios.post(
-              `https://scanner.tradingview.com/brazil/scan`,
-              formDataTradingView,
-              {
-                headers: {
-                  'Content-Type': 'application/x-www-form-urlencoded',
+            try {
+              const responseTradingView = await axios.post(
+                `https://scanner.tradingview.com/brazil/scan`,
+                formDataTradingView,
+                {
+                  headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                  },
                 },
-              },
-            );
+              );
 
-            fundamentalInformation.push(responseTradingView.data.data[0].d);
+              fundamentalInformation.push(responseTradingView.data.data[0].d);
+            } catch (error) {
+              console.log(error?.message);
+            }
           }
 
           if (dividends) {
@@ -78,100 +82,123 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
               JSON.stringify(jwtHeader),
             ).toString('base64');
 
-            const responseDividends = await axios.get(
-              `https://sistemaswebb3-listados.b3.com.br/fundsProxy/fundsCall/GetListedSupplementFunds/${jwtHeaderString}`,
-            );
+            try {
+              const responseDividends = await axios.get(
+                `https://sistemaswebb3-listados.b3.com.br/fundsProxy/fundsCall/GetListedSupplementFunds/${jwtHeaderString}`,
+              );
 
-            const { cashDividends, stockDividends, subscriptions } =
-              responseDividends?.data || {};
+              const { cashDividends, stockDividends, subscriptions } =
+                responseDividends?.data || {};
 
-            const dividendParser = (eachDividend) => {
-              return {
-                ...eachDividend,
-                ...(eachDividend?.paymentDate && {
-                  paymentDate: new Date(
-                    eachDividend?.paymentDate?.split('/')?.reverse()?.join('-'),
-                  ),
-                }),
-                ...(eachDividend?.approvedOn && {
-                  approvedOn: new Date(
-                    eachDividend?.approvedOn?.split('/')?.reverse()?.join('-'),
-                  ),
-                }),
-                ...(eachDividend?.lastDatePrior && {
-                  lastDatePrior: new Date(
-                    eachDividend?.lastDatePrior
-                      ?.split('/')
-                      ?.reverse()
-                      ?.join('-'),
-                  ),
-                }),
-                ...(eachDividend?.rate && {
-                  rate: parseFloat(eachDividend?.rate?.replace(',', '.') || 0),
-                }),
-                ...(eachDividend?.factor && {
-                  factor: parseFloat(
-                    eachDividend?.factor?.replace(',', '.') || 0,
-                  ),
-                }),
-                ...(eachDividend?.percentage && {
-                  percentage: parseFloat(
-                    eachDividend?.percentage?.replace(',', '.') || 0,
-                  ),
-                }),
-                ...(eachDividend?.priceUnit && {
-                  priceUnit: parseFloat(
-                    eachDividend?.priceUnit?.replace(',', '.') || 0,
-                  ),
-                }),
-                ...(eachDividend?.subscriptionDate && {
-                  subscriptionDate: new Date(
-                    eachDividend?.subscriptionDate
-                      ?.split('/')
-                      ?.reverse()
-                      ?.join('-'),
-                  ),
-                }),
+              const dividendParser = (eachDividend) => {
+                return {
+                  ...eachDividend,
+                  ...(eachDividend?.paymentDate && {
+                    paymentDate: new Date(
+                      eachDividend?.paymentDate
+                        ?.split('/')
+                        ?.reverse()
+                        ?.join('-'),
+                    ),
+                  }),
+                  ...(eachDividend?.approvedOn && {
+                    approvedOn: new Date(
+                      eachDividend?.approvedOn
+                        ?.split('/')
+                        ?.reverse()
+                        ?.join('-'),
+                    ),
+                  }),
+                  ...(eachDividend?.lastDatePrior && {
+                    lastDatePrior: new Date(
+                      eachDividend?.lastDatePrior
+                        ?.split('/')
+                        ?.reverse()
+                        ?.join('-'),
+                    ),
+                  }),
+                  ...(eachDividend?.rate && {
+                    rate: parseFloat(
+                      eachDividend?.rate?.replace(',', '.') || 0,
+                    ),
+                  }),
+                  ...(eachDividend?.factor && {
+                    factor: parseFloat(
+                      eachDividend?.factor?.replace(',', '.') || 0,
+                    ),
+                  }),
+                  ...(eachDividend?.percentage && {
+                    percentage: parseFloat(
+                      eachDividend?.percentage?.replace(',', '.') || 0,
+                    ),
+                  }),
+                  ...(eachDividend?.priceUnit && {
+                    priceUnit: parseFloat(
+                      eachDividend?.priceUnit?.replace(',', '.') || 0,
+                    ),
+                  }),
+                  ...(eachDividend?.subscriptionDate && {
+                    subscriptionDate: new Date(
+                      eachDividend?.subscriptionDate
+                        ?.split('/')
+                        ?.reverse()
+                        ?.join('-'),
+                    ),
+                  }),
+                };
               };
-            };
 
-            const parsedData = {
-              cashDividends: cashDividends?.map(dividendParser),
-              stockDividends: stockDividends?.map(dividendParser),
-              subscriptions: subscriptions?.map(dividendParser),
-            };
+              const parsedData = {
+                cashDividends: cashDividends?.map(dividendParser),
+                stockDividends: stockDividends?.map(dividendParser),
+                subscriptions: subscriptions?.map(dividendParser),
+              };
 
-            dividendsData = parsedData;
+              dividendsData = parsedData;
+            } catch (error) {
+              dividendsData = {};
+            }
           }
 
           const getHistory = async () => {
-            const historicalResponse = await axios.get(
-              `https://query1.finance.yahoo.com/v8/finance/chart/${slug}.SA${
-                interval && range
-                  ? `?includePrePost=false&interval=${interval}&useYfid=true&range=${range}`
-                  : '?includePrePost=false&interval=1d&useYfid=true&range=1mo'
-              }`,
-            );
+            try {
+              const historicalResponse = await axios.get(
+                `https://query1.finance.yahoo.com/v8/finance/chart/${slug}.SA${
+                  interval && range
+                    ? `?includePrePost=false&interval=${interval}&useYfid=true&range=${range}`
+                    : '?includePrePost=false&interval=1d&useYfid=true&range=1mo'
+                }`,
+              );
 
-            const { timestamp } = await historicalResponse.data.chart.result[0];
-            const { low, high, open, close, volume } = await historicalResponse
-              .data.chart.result[0].indicators.quote[0];
+              const { timestamp } = await historicalResponse.data.chart
+                .result[0];
+              const {
+                low,
+                high,
+                open,
+                close,
+                volume,
+              } = await historicalResponse.data.chart.result[0].indicators
+                .quote[0];
 
-            const prices: Array<{}> = [];
-            for (let index = 0; index < timestamp.length; index++) {
-              const price = {
-                date: timestamp[index],
-                open: open[index],
-                high: high[index],
-                low: low[index],
-                close: close[index],
-                volume: volume[index],
-              };
+              const prices: Array<{}> = [];
+              for (let index = 0; index < timestamp.length; index++) {
+                const price = {
+                  date: timestamp[index],
+                  open: open[index],
+                  high: high[index],
+                  low: low[index],
+                  close: close[index],
+                  volume: volume[index],
+                };
 
-              prices.push(price);
+                prices.push(price);
+              }
+
+              return prices;
+            } catch (error) {
+              console.log(error?.message);
             }
-
-            return prices;
           };
 
           const data: QuoteProps = await response.data.optionChain.result[0]
