@@ -2,6 +2,8 @@ import axios from 'axios';
 import { logHost } from '../../../utils/logHost';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { QuoteProps } from '../../../@types/QuoteProps';
+import { parseDMY } from '~/utils/parseDMY';
+import { replaceComma } from '~/utils/replaceComma';
 
 interface LooseObject {
   [key: string]: any;
@@ -94,55 +96,35 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                 return {
                   ...eachDividend,
                   ...(eachDividend?.paymentDate && {
-                    paymentDate: new Date(
-                      eachDividend?.paymentDate
-                        ?.split('/')
-                        ?.reverse()
-                        ?.join('-'),
-                    ),
+                    paymentDate: new Date(parseDMY(eachDividend?.paymentDate)),
                   }),
                   ...(eachDividend?.approvedOn && {
-                    approvedOn: new Date(
-                      eachDividend?.approvedOn
-                        ?.split('/')
-                        ?.reverse()
-                        ?.join('-'),
-                    ),
+                    approvedOn: new Date(parseDMY(eachDividend?.approvedOn)),
                   }),
                   ...(eachDividend?.lastDatePrior && {
                     lastDatePrior: new Date(
-                      eachDividend?.lastDatePrior
-                        ?.split('/')
-                        ?.reverse()
-                        ?.join('-'),
+                      parseDMY(eachDividend?.lastDatePrior),
                     ),
                   }),
                   ...(eachDividend?.rate && {
-                    rate: parseFloat(
-                      eachDividend?.rate?.replace(',', '.') || 0,
-                    ),
+                    rate: parseFloat(replaceComma(eachDividend?.rate)),
                   }),
                   ...(eachDividend?.factor && {
-                    factor: parseFloat(
-                      eachDividend?.factor?.replace(',', '.') || 0,
-                    ),
+                    factor: parseFloat(replaceComma(eachDividend?.factor)),
                   }),
                   ...(eachDividend?.percentage && {
                     percentage: parseFloat(
-                      eachDividend?.percentage?.replace(',', '.') || 0,
+                      replaceComma(eachDividend?.percentage),
                     ),
                   }),
                   ...(eachDividend?.priceUnit && {
                     priceUnit: parseFloat(
-                      eachDividend?.priceUnit?.replace(',', '.') || 0,
+                      replaceComma(eachDividend?.priceUnit),
                     ),
                   }),
                   ...(eachDividend?.subscriptionDate && {
                     subscriptionDate: new Date(
-                      eachDividend?.subscriptionDate
-                        ?.split('/')
-                        ?.reverse()
-                        ?.join('-'),
+                      parseDMY(eachDividend?.subscriptionDate),
                     ),
                   }),
                 };
