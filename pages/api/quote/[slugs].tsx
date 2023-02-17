@@ -2,6 +2,8 @@ import axios from 'axios';
 import { logHost } from '../../../utils/logHost';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { QuoteProps } from '../../../@types/QuoteProps';
+import { parseDMY } from '~/utils/parseDMY';
+import { replaceComma } from '~/utils/replaceComma';
 
 interface LooseObject {
   [key: string]: any;
@@ -10,10 +12,7 @@ interface LooseObject {
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   logHost(req, 'quote');
 
-  const { slugs } = req.query;
-  const { interval } = req.query;
-  const { range } = req.query;
-  const { fundamental } = req.query;
+  const { slugs, interval, range, fundamental, dividends } = req.query;
 
   const validRanges = [
     '1d',
@@ -42,6 +41,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           );
 
           let fundamentalInformation = [];
+          let dividendsData = {};
 
           if (fundamental) {
             const formDataTradingView = {
@@ -58,47 +58,129 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
               ],
             };
 
-            const responseTradingView = await axios.post(
-              `https://scanner.tradingview.com/brazil/scan`,
-              formDataTradingView,
-              {
-                headers: {
-                  'Content-Type': 'application/x-www-form-urlencoded',
+            try {
+              const responseTradingView = await axios.post(
+                `https://scanner.tradingview.com/brazil/scan`,
+                formDataTradingView,
+                {
+                  headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                  },
                 },
-              },
-            );
+              );
 
-            fundamentalInformation.push(responseTradingView.data.data[0].d);
+              fundamentalInformation.push(responseTradingView.data.data[0].d);
+            } catch (error) {
+              console.log(error?.message);
+            }
+          }
+
+          if (dividends) {
+            const jwtHeader = {
+              identifierFund: slug,
+            };
+
+            const jwtHeaderString = Buffer.from(
+              JSON.stringify(jwtHeader),
+            ).toString('base64');
+
+            try {
+              const responseDividends = await axios.get(
+                `https://sistemaswebb3-listados.b3.com.br/fundsProxy/fundsCall/GetListedSupplementFunds/${jwtHeaderString}`,
+              );
+
+              const { cashDividends, stockDividends, subscriptions } =
+                responseDividends?.data || {};
+
+              const dividendParser = (eachDividend) => {
+                return {
+                  ...eachDividend,
+                  ...(eachDividend?.paymentDate && {
+                    paymentDate: new Date(parseDMY(eachDividend?.paymentDate)),
+                  }),
+                  ...(eachDividend?.approvedOn && {
+                    approvedOn: new Date(parseDMY(eachDividend?.approvedOn)),
+                  }),
+                  ...(eachDividend?.lastDatePrior && {
+                    lastDatePrior: new Date(
+                      parseDMY(eachDividend?.lastDatePrior),
+                    ),
+                  }),
+                  ...(eachDividend?.rate && {
+                    rate: parseFloat(replaceComma(eachDividend?.rate)),
+                  }),
+                  ...(eachDividend?.factor && {
+                    factor: parseFloat(replaceComma(eachDividend?.factor)),
+                  }),
+                  ...(eachDividend?.percentage && {
+                    percentage: parseFloat(
+                      replaceComma(eachDividend?.percentage),
+                    ),
+                  }),
+                  ...(eachDividend?.priceUnit && {
+                    priceUnit: parseFloat(
+                      replaceComma(eachDividend?.priceUnit),
+                    ),
+                  }),
+                  ...(eachDividend?.subscriptionDate && {
+                    subscriptionDate: new Date(
+                      parseDMY(eachDividend?.subscriptionDate),
+                    ),
+                  }),
+                };
+              };
+
+              const parsedData = {
+                cashDividends: cashDividends?.map(dividendParser),
+                stockDividends: stockDividends?.map(dividendParser),
+                subscriptions: subscriptions?.map(dividendParser),
+              };
+
+              dividendsData = parsedData;
+            } catch (error) {
+              dividendsData = {};
+            }
           }
 
           const getHistory = async () => {
-            const historicalResponse = await axios.get(
-              `https://query1.finance.yahoo.com/v8/finance/chart/${slug}.SA${
-                interval && range
-                  ? `?includePrePost=false&interval=${interval}&useYfid=true&range=${range}`
-                  : '?includePrePost=false&interval=1d&useYfid=true&range=1mo'
-              }`,
-            );
+            try {
+              const historicalResponse = await axios.get(
+                `https://query1.finance.yahoo.com/v8/finance/chart/${slug}.SA${
+                  interval && range
+                    ? `?includePrePost=false&interval=${interval}&useYfid=true&range=${range}`
+                    : '?includePrePost=false&interval=1d&useYfid=true&range=1mo'
+                }`,
+              );
 
-            const { timestamp } = await historicalResponse.data.chart.result[0];
-            const { low, high, open, close, volume } = await historicalResponse
-              .data.chart.result[0].indicators.quote[0];
+              const { timestamp } = await historicalResponse.data.chart
+                .result[0];
+              const {
+                low,
+                high,
+                open,
+                close,
+                volume,
+              } = await historicalResponse.data.chart.result[0].indicators
+                .quote[0];
 
-            const prices: Array<{}> = [];
-            for (let index = 0; index < timestamp.length; index++) {
-              const price = {
-                date: timestamp[index],
-                open: open[index],
-                high: high[index],
-                low: low[index],
-                close: close[index],
-                volume: volume[index],
-              };
+              const prices: Array<{}> = [];
+              for (let index = 0; index < timestamp.length; index++) {
+                const price = {
+                  date: timestamp[index],
+                  open: open[index],
+                  high: high[index],
+                  low: low[index],
+                  close: close[index],
+                  volume: volume[index],
+                };
 
-              prices.push(price);
+                prices.push(price);
+              }
+
+              return prices;
+            } catch (error) {
+              console.log(error?.message);
             }
-
-            return prices;
           };
 
           const data: QuoteProps = await response.data.optionChain.result[0]
@@ -147,6 +229,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                 : 'https://brapi.dev/favicon.svg';
             }
 
+            if (dividends) {
+              historicalQuote.dividendsData = dividendsData;
+            }
+
             if (response.status === 200) {
               return historicalQuote;
             }
@@ -189,6 +275,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             quote.logourl = fundamentalInformation[0][2]
               ? `https://s3-symbol-logo.tradingview.com/${fundamentalInformation[0][2]}--big.svg`
               : 'https://brapi.dev/favicon.svg';
+          }
+
+          if (dividends) {
+            quote.dividendsData = dividendsData;
           }
 
           if (response.status === 200) {
