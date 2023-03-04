@@ -17,7 +17,7 @@ export const QuoteSimpleCard = ({
   logo,
 }: IQuoteSimpleCardProps) => {
   return (
-    <div className="flex flex-col justify-center px-4 py-4 bg-base-300 rounded-md flex-grow min-w-fit">
+    <div className="flex flex-col justify-center px-4 py-4 bg-base-300 rounded-md flex-grow min-w-[192px]">
       <div className="flex justify-between">
         <div className="text-xl font-bold">{stock}</div>
         <img src={logo} alt={stock} className="w-8 h-8 rounded-lg" />
