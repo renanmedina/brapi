@@ -32,6 +32,7 @@ export const QuoteSimpleCard = ({
             'text-error': change < 0,
           })}
         >
+          {change > 0 ? '▲' : '▼'}
           {(Math.floor(change * 100) / 100).toFixed(2)}%
         </div>
       </div>
