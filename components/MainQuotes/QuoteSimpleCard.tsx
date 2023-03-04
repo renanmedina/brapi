@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { numberToMoney } from '~/utils/formatNumbers';
 
 interface IQuoteSimpleCardProps {
@@ -5,6 +6,7 @@ interface IQuoteSimpleCardProps {
   name: string;
   close: number;
   change: number;
+  logo: string;
 }
 
 export const QuoteSimpleCard = ({
@@ -12,13 +14,27 @@ export const QuoteSimpleCard = ({
   name,
   change,
   close,
+  logo,
 }: IQuoteSimpleCardProps) => {
   return (
-    <div className="flex flex-col items-center justify-center">
-      <div className="text-2xl font-bold">{stock}</div>
-      <div className="text-sm">{name}</div>
-      <div className="text-sm">{numberToMoney(close)}</div>
-      <div className="text-sm">{Math.floor(change * 100) / 100}%</div>
+    <div className="flex flex-col justify-center px-4 py-4 bg-base-300 rounded-md flex-grow min-w-fit">
+      <div className="flex justify-between">
+        <div className="text-xl font-bold">{stock}</div>
+        <img src={logo} alt={stock} className="w-8 h-8 rounded-lg" />
+      </div>
+      <div className="text-sm capitalize">{name?.toLowerCase()}</div>
+      <div className="flex justify-between">
+        <div className="text-sm">{numberToMoney(close)}</div>
+        <div
+          className={clsx({
+            'text-sm': true,
+            'text-success': change > 0,
+            'text-error': change < 0,
+          })}
+        >
+          {(Math.floor(change * 100) / 100).toFixed(2)}%
+        </div>
+      </div>
     </div>
   );
 };
