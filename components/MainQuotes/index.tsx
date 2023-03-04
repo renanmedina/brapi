@@ -13,8 +13,10 @@ const MainQuotes = async () => {
 
   return (
     <div className="py-4 flex w-full flex-col space-y-4">
-      <SideScroller quotes={quotes} />
-      <div>aaa</div>
+      <div className="space-y-2">
+        <span className="text-2xl font-bold">Ativos mais negociados hoje</span>
+        <SideScroller quotes={quotes} />
+      </div>
     </div>
   );
 };
