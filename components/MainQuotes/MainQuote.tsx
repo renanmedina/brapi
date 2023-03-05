@@ -19,7 +19,7 @@ interface IMainQuoteProps {
 
 export const MainQuote = async ({ quote }: IMainQuoteProps) => {
   return (
-    <div className="flex justify-between space-x-8 max-w-full">
+    <div className="flex space-x-8 max-w-full flex-col">
       <div className="flex flex-col space-y-4">
         <div className="flex flex-col">
           <span className="text-2xl font-bold">{quote.symbol}</span>

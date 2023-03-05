@@ -3,6 +3,7 @@
 import { format } from 'd3-format';
 import { timeFormatLocale } from 'd3-time-format';
 
+import AutoSizer from 'react-virtualized-auto-sizer';
 import {
   MouseCoordinateX,
   MouseCoordinateY,
@@ -20,6 +21,8 @@ import { IHistoricalDataPrice } from '~/@types/IHistoricalDataPrice';
 
 interface IQuoteChartProps {
   historicalDataPrices: IHistoricalDataPrice[];
+  width: number;
+  height: number;
 }
 
 const localeDefinition = timeFormatLocale({
@@ -59,11 +62,13 @@ const localeDefinition = timeFormatLocale({
   ],
 });
 
-export const QuoteChart = ({ historicalDataPrices }: IQuoteChartProps) => {
+export const QuoteChartBase = ({
+  historicalDataPrices,
+  width,
+  height,
+}: IQuoteChartProps) => {
   const initialData = historicalDataPrices;
-  const height = 300;
   const ratio = 1;
-  const width = 600;
   const margin = { left: 0, right: 40, top: 24, bottom: 24 };
 
   const gridHeight = height - margin.top - margin.bottom;
@@ -128,5 +133,17 @@ export const QuoteChart = ({ historicalDataPrices }: IQuoteChartProps) => {
       </Chart>
       <CrossHairCursor />
     </ChartCanvas>
+  );
+};
+
+export const QuoteChart = (
+  props: Pick<IQuoteChartProps, 'historicalDataPrices'>,
+) => {
+  return (
+    <AutoSizer>
+      {({ width, height }) => (
+        <QuoteChartBase {...props} width={width} height={height} />
+      )}
+    </AutoSizer>
   );
 };
