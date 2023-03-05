@@ -1,6 +1,13 @@
-import { QuoteSimpleCard } from '~/components/MainQuotes/QuoteSimpleCard';
+import {
+  IQuoteSimpleCardProps,
+  QuoteSimpleCard,
+} from '~/components/MainQuotes/QuoteSimpleCard';
 
-export const SideScroller = ({ quotes }) => {
+interface ISideScrollerProps {
+  quotes: IQuoteSimpleCardProps[];
+}
+
+export const SideScroller = ({ quotes }: ISideScrollerProps) => {
   return (
     <div className="flex space-x-2 overflow-hidden pb-5 hover:overflow-auto hover:pb-[5px]">
       {quotes.map((quote) => (
