@@ -9,6 +9,7 @@ module.exports = {
       'react-syntax-highlighter',
       'swagger-client',
       'swagger-ui-react',
+      'react-financial-charts',
     ],
   },
 };
