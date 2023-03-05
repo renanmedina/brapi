@@ -20,7 +20,6 @@ export default async function QuotesQuoteLayout({
   return (
     <>
       <div className="space-y-2 container mx-auto px-5 pt-6">
-        <span className="text-2xl font-bold">Ativos mais negociados hoje</span>
         <SideScroller quotes={quotes} />
       </div>
       {children}
