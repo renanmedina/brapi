@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import NextLink from 'next/link';
 import { numberToMoney } from '~/utils/formatNumbers';
 
-interface IQuoteSimpleCardProps {
+export interface IQuoteSimpleCardProps {
   stock: string;
   name: string;
   close: number;
@@ -22,6 +22,7 @@ export const QuoteSimpleCard = ({
       className="flex flex-col justify-center px-4 py-4 bg-base-300 rounded-md flex-grow min-w-[192px]"
       role="button"
       href={`/quotes/${stock}`}
+      prefetch={false}
     >
       <div className="flex justify-between">
         <div className="text-xl font-bold">{stock}</div>
