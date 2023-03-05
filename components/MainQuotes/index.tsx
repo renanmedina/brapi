@@ -12,7 +12,7 @@ interface IQuote extends QuoteProps {
 
 const getCurrentQuote = async (stock: string) => {
   const res = await fetch(
-    `https://brapi.dev/api/quote/${stock}?range=1y&interval=1d&fundamental=true`,
+    `https://brapi.dev/api/quote/${stock}?range=max&interval=1d&fundamental=true`,
   );
   const data = await res.json();
   return (data?.results?.[0] || null) as IQuote;
