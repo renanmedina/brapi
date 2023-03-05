@@ -6,7 +6,7 @@ interface QuotesQuoteLayoutProps {
 
 const getData = async () => {
   const res = await fetch(
-    'https://brapi.dev/api/quote/list?sortBy=volume&limit=20',
+    'https://brapi.dev/api/quote/list?sortBy=volume&limit=20&fundamental=true',
   );
   const data = await res.json();
   return data?.stocks;
