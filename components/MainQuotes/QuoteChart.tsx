@@ -3,6 +3,7 @@
 import Chart from 'chart.js/auto';
 import { useEffect, useRef } from 'react';
 import { IHistoricalDataPrice } from '~/@types/IHistoricalDataPrice';
+import { numberToMoney } from '~/utils/formatNumbers';
 
 interface IQuoteChartProps {
   historicalDataPrices: IHistoricalDataPrice[];
@@ -34,7 +35,12 @@ export const QuoteChart = ({ historicalDataPrices }: IQuoteChartProps) => {
       options: {
         scales: {
           y: {
-            beginAtZero: false,
+            beginAtZero: true,
+            ticks: {
+              callback: (value) => {
+                return numberToMoney(value);
+              },
+            },
           },
         },
         responsive: true,
