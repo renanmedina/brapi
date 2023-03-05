@@ -107,9 +107,9 @@ export const QuoteChart = ({ historicalDataPrices }: IQuoteChartProps) => {
           displayFormat={pricesDisplayFormat}
         />
         <AreaSeries yAccessor={(d) => d.close} />
-        <XAxis />
-        <YAxis />
-        <OHLCTooltip origin={[8, 16]} />
+        <XAxis tickLabelFill="#FFF" />
+        <YAxis tickLabelFill="#FFF" />
+        <OHLCTooltip origin={[8, 16]} labelFill="#9d7ec4" textFill="#FFF" />
       </Chart>
       <Chart
         id={2}
