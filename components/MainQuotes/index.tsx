@@ -1,3 +1,4 @@
+import { IHistoricalDataPrice } from '~/@types/IHistoricalDataPrice';
 import { QuoteProps } from '~/@types/QuoteProps';
 import { MainQuote } from '~/components/MainQuotes/MainQuote';
 
@@ -6,14 +7,7 @@ interface IMainQuotesProps {
 }
 
 interface IQuote extends QuoteProps {
-  historicalDataPrice: {
-    date: number;
-    open: number;
-    high: number;
-    low: number;
-    close: number;
-    volume: number;
-  };
+  historicalDataPrice: IHistoricalDataPrice[];
 }
 
 const getCurrentQuote = async (stock: string) => {
