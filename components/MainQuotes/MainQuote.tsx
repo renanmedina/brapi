@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import { IHistoricalDataPrice } from '~/@types/IHistoricalDataPrice';
 import { QuoteChart } from '~/components/MainQuotes/QuoteChart';
 import { numberToMoney } from '~/utils/formatNumbers';
