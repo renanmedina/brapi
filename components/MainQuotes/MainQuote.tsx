@@ -1,4 +1,4 @@
-import { QuoteProps } from '~/@types/QuoteProps';
+import { numberToMoney } from '~/utils/formatNumbers';
 
 interface IMainQuoteProps {
   quote: {
@@ -18,7 +18,7 @@ export const MainQuote = async ({ quote }: IMainQuoteProps) => {
   return (
     <div className="flex flex-col space-y-4">
       <div className="flex flex-col">
-        <span className="text-2xl font-bold">{quote.shortName}</span>
+        <span className="text-2xl font-bold">{quote.symbol}</span>
         <span className="text-sm">{quote.longName}</span>
       </div>
       <div className="flex flex-col">
@@ -30,7 +30,7 @@ export const MainQuote = async ({ quote }: IMainQuoteProps) => {
       <div className="flex flex-col">
         <span className="text-sm">Variação</span>
         <span className="text-2xl font-bold">
-          {quote.regularMarketChange.toFixed(2)} (
+          {numberToMoney(quote.regularMarketChange)} (
           {quote.regularMarketChangePercent.toFixed(2)}%)
         </span>
       </div>
@@ -43,7 +43,7 @@ export const MainQuote = async ({ quote }: IMainQuoteProps) => {
       <div className="flex flex-col">
         <span className="text-sm">Capitalização de mercado</span>
         <span className="text-2xl font-bold">
-          {quote.marketCap?.toLocaleString()}
+          {numberToMoney(quote.marketCap)}
         </span>
       </div>
     </div>
