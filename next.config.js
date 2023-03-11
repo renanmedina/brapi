@@ -6,4 +6,18 @@ module.exports = {
     optimizeCss: true,
     appDir: true,
   },
+  async redirects() {
+    return [
+      {
+        source: '/sitemap.xml',
+        destination: '/api/sitemap',
+        permanent: true,
+      },
+      {
+        source: '/sitemap',
+        destination: '/api/sitemap',
+        permanent: true,
+      },
+    ];
+  },
 };
