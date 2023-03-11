@@ -18,11 +18,11 @@ export default async function QuotesQuoteLayout({
   const quotes = await getData();
 
   return (
-    <>
-      <div className="space-y-2 container mx-auto px-5 pt-6">
+    <div className="bg-gray-900">
+      <div className="space-y-2 container mx-auto px-5 md:pt-6">
         <SideScroller quotes={quotes} />
       </div>
       {children}
-    </>
+    </div>
   );
 }
