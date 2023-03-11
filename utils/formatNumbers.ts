@@ -26,6 +26,20 @@ export const numberToMoney = (number: any) => {
   return money.format(parsedNumber);
 };
 
+export const numberToSIMoney = (number: any) => {
+  const parsedNumber = parseFloat(number);
+
+  if (isNaN(parsedNumber)) return '--';
+
+  let money = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+    notation: 'compact',
+  });
+
+  return money.format(parsedNumber);
+};
+
 export const numberToPercent = (number: any) => {
   let percent = new Intl.NumberFormat('pt-BR', {
     style: 'percent',
