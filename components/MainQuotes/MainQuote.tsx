@@ -68,7 +68,7 @@ export const MainQuote = async ({ quote }: IMainQuoteProps) => {
         </div>
       </div>
 
-      <div className="min-h-[400px]">
+      <div className="h-[400px]">
         <QuoteChart historicalDataPrices={quote.historicalDataPrice} />
       </div>
     </div>

@@ -139,6 +139,14 @@ export const QuoteChartBase = ({
 export const QuoteChart = (
   props: Pick<IQuoteChartProps, 'historicalDataPrices'>,
 ) => {
+  if (props.historicalDataPrices.length <= 1) {
+    return (
+      <div className="flex flex-col items-center justify-center h-full bg-gray-800/50 rounded-md">
+        <div className="text-2xl">Não temos dados suficientes</div>
+      </div>
+    );
+  }
+
   return (
     <AutoSizer>
       {({ width, height }) => (
