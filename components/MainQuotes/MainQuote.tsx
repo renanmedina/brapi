@@ -1,7 +1,7 @@
 import { IHistoricalDataPrice } from '~/@types/IHistoricalDataPrice';
 import { QuoteProps } from '~/@types/QuoteProps';
 import { QuoteChart } from '~/components/MainQuotes/QuoteChart';
-import { numberToMoney } from '~/utils/formatNumbers';
+import { numberToMoney, numberToSIMoney } from '~/utils/formatNumbers';
 
 interface IMainQuoteProps {
   quote: QuoteProps & {
@@ -63,7 +63,7 @@ export const MainQuote = async ({ quote }: IMainQuoteProps) => {
         <div className="flex flex-col">
           <span className="text-sm">Capitalização de mercado</span>
           <span className="text-2xl font-bold">
-            {numberToMoney(quote.marketCap)}
+            {numberToSIMoney(quote.marketCap)}
           </span>
         </div>
       </div>
