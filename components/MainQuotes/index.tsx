@@ -10,7 +10,7 @@ interface IQuote extends QuoteProps {
   historicalDataPrice: IHistoricalDataPrice[];
 }
 
-const getCurrentQuote = async (stock: string) => {
+export const getCurrentQuote = async (stock: string) => {
   const res = await fetch(
     `https://brapi.dev/api/quote/${stock}?range=max&interval=1d&fundamental=true`,
   );

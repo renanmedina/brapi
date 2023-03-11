@@ -1,13 +1,6 @@
 import Main from '~/components/Main';
 
 export default function IndexPage() {
-  return (
-    <div>
-      {/* <Head>
-        <title>brapi - API de Ações</title>
-      </Head> */}
-      {/* @ts-expect-error Server Component */}
-      <Main />
-    </div>
-  );
+  /* @ts-expect-error Server Component */
+  return <Main />;
 }

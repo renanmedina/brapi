@@ -1,4 +1,9 @@
+import { Metadata } from 'next';
 import MainLegal from '../../components/MainLegal';
+
+export const metadata: Metadata = {
+  title: 'Termos de Uso',
+};
 
 const TermsOfUsePage = () => {
   return (

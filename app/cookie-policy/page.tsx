@@ -1,4 +1,9 @@
+import { Metadata } from 'next';
 import MainLegal from '../../components/MainLegal';
+
+export const metadata: Metadata = {
+  title: 'Política de Cookies',
+};
 
 const CookiePolicyPage = () => {
   return (
