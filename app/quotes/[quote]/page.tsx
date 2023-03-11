@@ -1,10 +1,13 @@
 import { Metadata } from 'next';
 import MainQuotes, { getCurrentQuote } from '~/components/MainQuotes';
+import { numberToMoney } from '~/utils/formatNumbers';
 
 export async function generateMetadata({ params }): Promise<Metadata> {
   const stock = await getCurrentQuote(params?.quote);
 
-  const title = `${stock.symbol} - ${stock.shortName} | brapi`;
+  const title = `${stock.longName} (${stock.symbol}) ${numberToMoney(
+    stock.regularMarketPrice,
+  )} - Preço, Variação, Gráfico, Notícias e mais`;
   const description = `Informações sobre a ação ${stock.symbol} - ${stock.shortName} da empresa ${stock.longName}.`;
 
   return {
