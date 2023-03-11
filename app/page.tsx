@@ -6,6 +6,7 @@ export default function IndexPage() {
       {/* <Head>
         <title>brapi - API de Ações</title>
       </Head> */}
+      {/* @ts-expect-error Server Component */}
       <Main />
     </div>
   );

@@ -3,14 +3,20 @@ import {
   QuoteSimpleCard,
 } from '~/components/MainQuotes/QuoteSimpleCard';
 
-interface ISideScrollerProps {
-  quotes: IQuoteSimpleCardProps[];
-}
+export const getSideScrollerData = async () => {
+  const res = await fetch(
+    'https://brapi.dev/api/quote/list?sortBy=volume&limit=20',
+  );
+  const data = await res.json();
+  return data?.stocks as IQuoteSimpleCardProps[];
+};
 
-export const SideScroller = ({ quotes }: ISideScrollerProps) => {
+export const SideScroller = async () => {
+  let data = await getSideScrollerData();
+
   return (
-    <div className="flex space-x-2 overflow-hidden pb-5 hover:overflow-auto hover:pb-[5px]">
-      {quotes.map((quote) => (
+    <div className="flex space-x-2 overflow-hidden pb-5 hover:overflow-auto hover:pb-[5px] container mx-auto px-5 md:pt-6">
+      {data.map((quote) => (
         <QuoteSimpleCard
           key={quote.stock}
           stock={quote.stock}
