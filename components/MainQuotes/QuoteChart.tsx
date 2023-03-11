@@ -69,7 +69,7 @@ export const QuoteChartBase = ({
 }: IQuoteChartProps) => {
   const initialData = historicalDataPrices;
   const ratio = 1;
-  const margin = { left: 0, right: 40, top: 24, bottom: 24 };
+  const margin = { left: 0, right: 20, top: 24, bottom: 24 };
 
   const gridHeight = height - margin.top - margin.bottom;
 
