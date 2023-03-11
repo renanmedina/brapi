@@ -62,7 +62,10 @@ export const MainQuote = async ({ quote }: IMainQuoteProps) => {
 
         <div className="flex flex-col">
           <span className="text-sm">Capitalização de mercado</span>
-          <span className="text-2xl font-bold">
+          <span
+            className="text-2xl font-bold"
+            title={numberToMoney(quote.marketCap)}
+          >
             {numberToSIMoney(quote.marketCap)}
           </span>
         </div>
