@@ -5,11 +5,5 @@ module.exports = {
     scrollRestoration: true,
     optimizeCss: true,
     appDir: true,
-    transpilePackages: [
-      'react-syntax-highlighter',
-      'swagger-client',
-      'swagger-ui-react',
-      'react-financial-charts',
-    ],
   },
 };

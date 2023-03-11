@@ -14,7 +14,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body>
         <Header />
         {children}
-        <Analytics />
+        {typeof window !== 'undefined' && <Analytics />}
         <AutoToast />
         <Footer />
       </body>
