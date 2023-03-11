@@ -27,9 +27,19 @@ const MainQuotes = async ({ currentStock }: IMainQuotesProps) => {
 
   return (
     <div className="py-4 flex w-full flex-col space-y-4">
-      <div>
-        {/* @ts-expect-error Server Component */}
-        <MainQuote quote={currentQuote} />
+      {/* @ts-expect-error Server Component */}
+      <MainQuote quote={currentQuote} />
+
+      {/* show/download data button */}
+      <div className="flex justify-end">
+        <a
+          href={`/api/quote/${currentStock}?range=max&interval=1d&fundamental=true`}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="link link-hover"
+        >
+          <span>fonte: brapi.dev/api/quote/{currentStock}</span>
+        </a>
       </div>
     </div>
   );
