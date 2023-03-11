@@ -11,12 +11,12 @@ module.exports = {
       {
         source: '/sitemap.xml',
         destination: '/api/sitemap',
-        permanent: true,
+        permanent: false,
       },
       {
         source: '/sitemap',
         destination: '/api/sitemap',
-        permanent: true,
+        permanent: false,
       },
     ];
   },
