@@ -22,7 +22,7 @@ export const QuoteSimpleCard = ({
       className="flex flex-col justify-center px-4 py-4 bg-base-300 rounded-md flex-grow min-w-[192px]"
       role="button"
       href={`/quotes/${stock}`}
-      prefetch={false}
+      prefetch={true}
     >
       <div className="flex justify-between">
         <div className="text-xl font-bold">{stock}</div>
