@@ -109,7 +109,7 @@ export const SearchInput = () => {
         }}
         onFocus={() => updateInputStatus({ isFocused: true })}
         onBlur={() =>
-          setTimeout(() => updateInputStatus({ isFocused: false }), 50)
+          setTimeout(() => updateInputStatus({ isFocused: false }), 150)
         }
       />
       <svg
