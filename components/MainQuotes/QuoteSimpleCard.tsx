@@ -1,14 +1,7 @@
 import clsx from 'clsx';
 import NextLink from 'next/link';
+import { IQuoteList } from '~/services/getQuoteList';
 import { numberToMoney } from '~/utils/formatNumbers';
-
-export interface IQuoteSimpleCardProps {
-  stock: string;
-  name: string;
-  close: number;
-  change: number;
-  logo: string;
-}
 
 export const QuoteSimpleCard = ({
   stock,
@@ -16,7 +9,7 @@ export const QuoteSimpleCard = ({
   change,
   close,
   logo,
-}: IQuoteSimpleCardProps) => {
+}: IQuoteList) => {
   return (
     <NextLink
       className="flex flex-col justify-center px-4 py-4 bg-base-300 rounded-md flex-grow min-w-[192px]"
