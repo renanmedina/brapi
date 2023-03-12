@@ -1,11 +1,12 @@
 import Link from 'next/link';
+import { SearchInput } from '~/components/SearchInput';
 
 const Header = () => {
   return (
     <div className="bg-gray-900 pb-40 md:pb-20 relative min-w-full">
       <div className="absolute bg-brand-400/80 md:bg-brand-400/20 w-96 h-96 max-w-full blur-3xl rounded-full left-1/2 translate -translate-x-1/2 -translate-y-3/4 md:-left-48 md:-top-48 md:-translate-x-0 md:-translate-y-0 overflow-hidden z-10" />
       <div className="text-gray-400 bg-gray-900/70 body-font fixed w-full z-10 backdrop-blur-md">
-        <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+        <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center justify-between">
           <Link
             href="/"
             className="flex title-font font-medium items-center text-white mb-4 md:mb-0 w-20"
@@ -66,7 +67,10 @@ const Header = () => {
               </defs>
             </svg>
           </Link>
-          <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
+
+          <SearchInput />
+
+          <nav className="flex flex-wrap items-center text-base justify-center">
             <Link href="/about" className="mr-5 hover:text-white" tabIndex={0}>
               Sobre
             </Link>
@@ -86,25 +90,26 @@ const Header = () => {
             >
               Contato
             </Link>
-          </nav>
-          <Link
-            prefetch={false}
-            href="/docs"
-            className="btn btn-primary hidden md:flex"
-          >
-            Começar
-            <svg
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              className="w-4 h-4 ml-1"
-              viewBox="0 0 24 24"
+
+            <Link
+              prefetch={false}
+              href="/docs"
+              className="btn btn-primary hidden md:flex"
             >
-              <path d="M5 12h14M12 5l7 7-7 7"></path>
-            </svg>
-          </Link>
+              Começar
+              <svg
+                fill="none"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                className="w-4 h-4 ml-1"
+                viewBox="0 0 24 24"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </Link>
+          </nav>
         </div>
       </div>
     </div>
