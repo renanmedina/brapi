@@ -1,9 +1,12 @@
 import { Metadata } from 'next';
-import MainQuotes, { getCurrentQuote } from '~/components/MainQuotes';
+import MainQuotes from '~/components/MainQuotes';
+import { getCurrentQuote } from '~/services/getCurrentQuote';
 import { numberToMoney } from '~/utils/formatNumbers';
 
 export async function generateMetadata({ params }): Promise<Metadata> {
-  const stock = await getCurrentQuote(params?.quote);
+  const [stock] = await getCurrentQuote({
+    stocks: params?.quote,
+  });
 
   const title = `${stock.longName} (${stock.symbol}) ${numberToMoney(
     stock.regularMarketPrice,
