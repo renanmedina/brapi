@@ -14,12 +14,12 @@ interface IInputStatus {
 
 interface IResults {
   search: string;
-  results: IQuoteList[];
-  cachedResults: { search: string; results: IQuoteList[] }[];
+  results: IQuoteList[] | string;
+  cachedResults: { search: string; results: IQuoteList[] | string }[];
 }
 
 interface ISearchResults {
-  results: IQuoteList[];
+  results: IResults['results'];
   isLoading: IInputStatus['isLoading'];
 }
 
@@ -71,10 +71,13 @@ export const SearchInput = () => {
         });
 
         updateResults({
-          results: listResults,
+          results: listResults?.length ? listResults : 'no_results',
           cachedResults: [
             ...results.cachedResults,
-            { search: debouncedSearchTerm, results: listResults },
+            {
+              search: debouncedSearchTerm,
+              results: listResults?.length ? listResults : 'no_results',
+            },
           ],
         });
         updateInputStatus({ isLoading: false });
@@ -180,6 +183,8 @@ const SearchResults = ({ results, isLoading }: ISearchResults) => {
     <div className="absolute top-full left-0 w-full bg-gray-800 rounded-md shadow-lg overflow-hidden rounded-t-none min-w-maxz">
       {isLoading ? (
         <SearchResult isLoading={true} />
+      ) : typeof results == 'string' ? (
+        <p className="text-center text-gray-400 p-4">{'Nenhum resultado :('}</p>
       ) : (
         results.map((result) => <SearchResult key={result.stock} {...result} />)
       )}
