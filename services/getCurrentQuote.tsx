@@ -14,7 +14,7 @@ type IValidRangeInterval =
   | 'ytd'
   | 'max';
 
-interface IQuote extends QuoteProps {
+export interface IQuote extends QuoteProps {
   historicalDataPrice: IHistoricalDataPrice[];
 }
 

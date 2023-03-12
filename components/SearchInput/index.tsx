@@ -23,7 +23,11 @@ interface ISearchResults {
   isLoading: IInputStatus['isLoading'];
 }
 
-type ISearchResult = IQuoteList | { isLoading: boolean };
+type ISearchResult =
+  | (IQuoteList & {
+      hasBorder?: boolean;
+    })
+  | { isLoading: boolean };
 
 export const SearchInput = () => {
   const [results, updateResults] = useReducer(
@@ -137,7 +141,7 @@ export const SearchInput = () => {
   );
 };
 
-const SearchResult = (props: ISearchResult) => {
+export const SearchResult = (props: ISearchResult) => {
   if ('isLoading' in props) {
     return (
       <div className="flex items-center p-2 border-b bg-gray-800 animate-pulse">
@@ -154,12 +158,19 @@ const SearchResult = (props: ISearchResult) => {
 
   return (
     <Link
-      className="flex items-center p-2 border-b border-gray-200 hover:bg-gray-700"
+      className={clsx({
+        'flex items-center p-2 border-gray-200 hover:bg-gray-700': true,
+        'border-b': props.hasBorder,
+        'rounded-md': !props.hasBorder,
+      })}
       href={`/quotes/${stock}`}
+      title={name}
     >
       <img src={logo} className="w-10 h-10 rounded-full" alt={name} />
       <div className="ml-4">
-        <p className="text-lg font-medium">{name}</p>
+        <p className="text-lg font-medium md:w-52 lg:w-64 md:truncate">
+          {name}
+        </p>
         <p className="text-sm">
           <span>{stock} </span>
           <span
@@ -186,7 +197,9 @@ const SearchResults = ({ results, isLoading }: ISearchResults) => {
       ) : typeof results == 'string' ? (
         <p className="text-center text-gray-400 p-4">{'Nenhum resultado :('}</p>
       ) : (
-        results.map((result) => <SearchResult key={result.stock} {...result} />)
+        results.map((result) => (
+          <SearchResult key={result.stock} {...result} hasBorder />
+        ))
       )}
     </div>
   );
