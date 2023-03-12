@@ -106,7 +106,7 @@ export const SearchInput = () => {
         }}
         onFocus={() => updateInputStatus({ isFocused: true })}
         onBlur={() =>
-          setTimeout(() => updateInputStatus({ isFocused: false }), 200)
+          setTimeout(() => updateInputStatus({ isFocused: false }), 50)
         }
       />
       <svg
@@ -124,10 +124,12 @@ export const SearchInput = () => {
         />
       </svg>
 
-      <SearchResults
-        results={results.results}
-        isLoading={inputStatus.isLoading}
-      />
+      {inputStatus.isFocused && (
+        <SearchResults
+          results={results.results}
+          isLoading={inputStatus.isLoading}
+        />
+      )}
     </div>
   );
 };
