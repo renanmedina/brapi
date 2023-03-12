@@ -1,6 +1,7 @@
 import { IHistoricalDataPrice } from '~/@types/IHistoricalDataPrice';
 import { QuoteProps } from '~/@types/QuoteProps';
 import { MainQuote } from '~/components/MainQuotes/MainQuote';
+import { QuoteChart } from '~/components/MainQuotes/QuoteChart';
 
 interface IMainQuotesProps {
   currentStock: string;
@@ -30,16 +31,11 @@ const MainQuotes = async ({ currentStock }: IMainQuotesProps) => {
       {/* @ts-expect-error Server Component */}
       <MainQuote quote={currentQuote} />
 
-      {/* show/download data button */}
-      <div className="flex justify-end">
-        <a
-          href={`/api/quote/${currentStock}?range=max&interval=1d&fundamental=true`}
-          target="_blank"
-          rel="noreferrer noopener"
-          className="link link-hover"
-        >
-          <span>fonte: brapi.dev/api/quote/{currentStock}</span>
-        </a>
+      <div className="h-[400px]">
+        <QuoteChart
+          historicalDataPrices={currentQuote.historicalDataPrice}
+          source={`https://brapi.dev/api/quote/${currentQuote.symbol}?range=max&interval=1d&fundamental=true`}
+        />
       </div>
     </div>
   );

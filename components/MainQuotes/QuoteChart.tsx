@@ -137,8 +137,13 @@ export const QuoteChartBase = ({
 };
 
 export const QuoteChart = (
-  props: Pick<IQuoteChartProps, 'historicalDataPrices'>,
+  props: Pick<IQuoteChartProps, 'historicalDataPrices'> & {
+    source?: string;
+  },
 ) => {
+  const cleanSourceUrl =
+    props?.source && props.source.split('?')[0].split('//')[1];
+
   if (props.historicalDataPrices.length <= 1) {
     return (
       <div className="flex flex-col items-center justify-center h-full bg-gray-800/50 rounded-md">
@@ -148,10 +153,25 @@ export const QuoteChart = (
   }
 
   return (
-    <AutoSizer>
-      {({ width, height }) => (
-        <QuoteChartBase {...props} width={width} height={height} />
+    <>
+      <AutoSizer>
+        {({ width, height }) => (
+          <QuoteChartBase {...props} width={width} height={height} />
+        )}
+      </AutoSizer>
+
+      {props.source && (
+        <div className="flex justify-end absolute top-full w-full">
+          <a
+            href={props.source}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="link link-hover"
+          >
+            <span>fonte: {cleanSourceUrl}</span>
+          </a>
+        </div>
       )}
-    </AutoSizer>
+    </>
   );
 };
