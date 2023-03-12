@@ -2,32 +2,87 @@
 
 import clsx from 'clsx';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useReducer } from 'react';
 import { useDebounce } from '~/hooks/useDebounce';
 import { getQuoteList, IQuoteList } from '~/services/getQuoteList';
 import { numberToMoney } from '~/utils/formatNumbers';
 
-export const SearchInput = () => {
-  const [search, setSearch] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
-  const [isFocused, setIsFocused] = useState(false);
+interface IInputStatus {
+  isFocused: boolean;
+  isLoading: boolean;
+}
 
-  const debouncedSearchTerm = useDebounce(search, 500);
+interface IResults {
+  search: string;
+  results: IQuoteList[];
+  cachedResults: { search: string; results: IQuoteList[] }[];
+}
+
+interface ISearchResults {
+  results: IQuoteList[];
+  isLoading: IInputStatus['isLoading'];
+}
+
+type ISearchResult = IQuoteList | { isLoading: boolean };
+
+export const SearchInput = () => {
+  const [results, updateResults] = useReducer(
+    (state: IResults, newState: Partial<IResults>) => ({
+      ...state,
+      ...newState,
+    }),
+    {
+      search: '',
+      results: [],
+      cachedResults: [],
+    },
+  );
+
+  const [inputStatus, updateInputStatus] = useReducer(
+    (state: IInputStatus, newState: Partial<IInputStatus>) => ({
+      ...state,
+      ...newState,
+    }),
+    {
+      isFocused: false,
+      isLoading: false,
+    },
+  );
+  const debouncedSearchTerm = useDebounce(results.search, 500);
 
   useEffect(() => {
     if (debouncedSearchTerm) {
+      const cached = results.cachedResults.find(
+        (result) => result.search === debouncedSearchTerm,
+      );
+
+      if (cached) {
+        updateResults({ results: cached.results });
+        updateInputStatus({ isLoading: false });
+        return;
+      }
+
       const getData = async () => {
-        const results = await getQuoteList({
+        updateInputStatus({ isLoading: true });
+
+        const listResults = await getQuoteList({
           search: debouncedSearchTerm,
           limit: 5,
         });
 
-        setSearchResults(results);
+        updateResults({
+          results: listResults,
+          cachedResults: [
+            ...results.cachedResults,
+            { search: debouncedSearchTerm, results: listResults },
+          ],
+        });
+        updateInputStatus({ isLoading: false });
       };
 
       getData();
     } else {
-      setSearchResults([]);
+      updateResults({ results: [] });
     }
   }, [debouncedSearchTerm]);
 
@@ -37,10 +92,22 @@ export const SearchInput = () => {
         type="text"
         placeholder="Pesquisar Ação"
         className="input input-bordered w-64"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setTimeout(() => setIsFocused(false), 200)}
+        value={results.search}
+        onChange={(e) => {
+          updateResults({ search: e.target.value });
+
+          const hasCachedResults = results.cachedResults.find(
+            (result) => result.search === e.target.value,
+          );
+
+          if (hasCachedResults) {
+            updateResults({ results: hasCachedResults.results });
+          }
+        }}
+        onFocus={() => updateInputStatus({ isFocused: true })}
+        onBlur={() =>
+          setTimeout(() => updateInputStatus({ isFocused: false }), 200)
+        }
       />
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -57,14 +124,29 @@ export const SearchInput = () => {
         />
       </svg>
 
-      {searchResults.length > 0 && isFocused && (
-        <SearchResults results={searchResults} />
-      )}
+      <SearchResults
+        results={results.results}
+        isLoading={inputStatus.isLoading}
+      />
     </div>
   );
 };
 
-const SearchResult = ({ stock, name, logo, change, close }: IQuoteList) => {
+const SearchResult = (props: ISearchResult) => {
+  if ('isLoading' in props) {
+    return (
+      <div className="flex items-center p-2 border-b bg-gray-800 animate-pulse">
+        <div className="w-10 h-10 rounded-full bg-gray-700" />
+        <div className="pl-4 flex-grow space-y-2">
+          <div className="h-7 bg-gray-700 rounded" />
+          <div className="h-5 bg-gray-700 rounded" />
+        </div>
+      </div>
+    );
+  }
+
+  const { stock, name, close, change, logo } = props;
+
   return (
     <Link
       className="flex items-center p-2 border-b border-gray-200 hover:bg-gray-700"
@@ -91,12 +173,14 @@ const SearchResult = ({ stock, name, logo, change, close }: IQuoteList) => {
   );
 };
 
-const SearchResults = ({ results }) => {
+const SearchResults = ({ results, isLoading }: ISearchResults) => {
   return (
     <div className="absolute top-full left-0 w-full bg-gray-800 rounded-md shadow-lg overflow-hidden rounded-t-none min-w-maxz">
-      {results.map((result) => (
-        <SearchResult key={result.stock} {...result} />
-      ))}
+      {isLoading ? (
+        <SearchResult isLoading={true} />
+      ) : (
+        results.map((result) => <SearchResult key={result.stock} {...result} />)
+      )}
     </div>
   );
 };
