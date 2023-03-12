@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getSideScrollerData } from '~/components/MainQuotes/SideScroller';
+import { getQuoteList } from '~/services/getQuoteList';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const stockList = await getSideScrollerData({ limit: 5000 });
+  const stockList = await getQuoteList({ limit: 5000 });
 
   res.status(200).setHeader('Content-Type', 'application/xml');
   res.send(`<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
