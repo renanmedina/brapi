@@ -1,18 +1,8 @@
-import {
-  IQuoteSimpleCardProps,
-  QuoteSimpleCard,
-} from '~/components/MainQuotes/QuoteSimpleCard';
-
-export const getSideScrollerData = async (args?: { limit?: number }) => {
-  const res = await fetch(
-    `https://brapi.dev/api/quote/list?sortBy=volume&limit=${args?.limit || 20}`,
-  );
-  const data = await res.json();
-  return data?.stocks as IQuoteSimpleCardProps[];
-};
+import { QuoteSimpleCard } from '~/components/MainQuotes/QuoteSimpleCard';
+import { getQuoteList } from '~/services/getQuoteList';
 
 export const SideScroller = async () => {
-  let data = await getSideScrollerData();
+  let data = await getQuoteList();
 
   return (
     <div className="flex space-x-2 overflow-hidden pb-5 hover:overflow-auto hover:pb-[5px] container mx-auto px-5 md:pt-6 bg-gray-900">
