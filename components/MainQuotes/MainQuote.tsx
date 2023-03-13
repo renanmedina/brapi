@@ -1,6 +1,5 @@
 import { IHistoricalDataPrice } from '~/@types/IHistoricalDataPrice';
 import { QuoteProps } from '~/@types/QuoteProps';
-import { QuoteChart } from '~/components/MainQuotes/QuoteChart';
 import { numberToMoney, numberToSIMoney } from '~/utils/formatNumbers';
 
 interface IMainQuoteProps {

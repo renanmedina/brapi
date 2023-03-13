@@ -1,5 +1,5 @@
 import { SearchResult } from '~/components/SearchInput';
-import { getCurrentQuote, IQuote } from '~/services/getCurrentQuote';
+import { getCurrentQuote } from '~/services/getCurrentQuote';
 
 interface IRecommendedQuotesProps {
   quote: string;
