@@ -6,20 +6,26 @@ interface IRecommendedQuotesProps {
 }
 
 const getRecommendedQuotes = async (quote: string) => {
-  const res = await fetch(
-    `https://query2.finance.yahoo.com/v6/finance/recommendationsbysymbol/${quote}.SA`,
-  );
-  const data = await res.json();
-  const recommendedSymbols = data?.finance?.result?.[0]?.recommendedSymbols.map(
-    (recommendedSymbol) => recommendedSymbol?.symbol?.replace('.SA', ''),
-  ) as string[];
+  try {
+    const res = await fetch(
+      `https://query2.finance.yahoo.com/v6/finance/recommendationsbysymbol/${quote}.SA`,
+      {
+        next: { revalidate: 900 },
+      },
+    );
+    const data = await res?.json();
 
-  const recommendedQuotes = await getCurrentQuote({
-    stocks: recommendedSymbols,
-    fundamental: false,
-  });
+    const recommendedSymbols = data?.finance?.result?.[0]?.recommendedSymbols?.map(
+      (recommendedSymbol) => recommendedSymbol?.symbol?.replace('.SA', ''),
+    ) as string[];
 
-  return recommendedQuotes;
+    const recommendedQuotes = await getCurrentQuote({
+      stocks: recommendedSymbols,
+      fundamental: false,
+    });
+
+    return recommendedQuotes;
+  } catch (err) {}
 };
 
 export const RecommendedQuotes = async ({ quote }: IRecommendedQuotesProps) => {

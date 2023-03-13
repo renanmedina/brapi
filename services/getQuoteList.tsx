@@ -20,20 +20,22 @@ interface IGetQuoteList {
 }
 
 export const getQuoteList = async (args?: IGetQuoteList) => {
-  const url = new URL('https://brapi.dev/api/quote/list');
-  const params = {
-    sortBy: args?.sortBy || 'volume',
-    sortOrder: args?.sortOrder || 'desc',
-    limit: args?.limit || 20,
-    search: args?.search || '',
-  };
+  try {
+    const url = new URL('https://brapi.dev/api/quote/list');
+    const params = {
+      sortBy: args?.sortBy || 'volume',
+      sortOrder: args?.sortOrder || 'desc',
+      limit: args?.limit || 20,
+      search: args?.search || '',
+    };
 
-  Object.keys(params).forEach((key) =>
-    url.searchParams.append(key, params[key]),
-  );
+    Object.keys(params).forEach((key) =>
+      url.searchParams.append(key, params[key]),
+    );
 
-  const res = await fetch(url.toString());
+    const res = await fetch(url.toString(), { next: { revalidate: 900 } });
 
-  const data = await res.json();
-  return data?.stocks as IQuoteList[];
+    const data = await res.json();
+    return data?.stocks as IQuoteList[];
+  } catch (err) {}
 };

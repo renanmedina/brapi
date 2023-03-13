@@ -26,16 +26,23 @@ interface IGetCurrentQuote {
 }
 
 export const getCurrentQuote = async (props: IGetCurrentQuote) => {
-  const { stocks, range = '1d', interval = '1d', fundamental = false } = props;
+  try {
+    const {
+      stocks,
+      range = '1d',
+      interval = '1d',
+      fundamental = false,
+    } = props;
 
-  const stock = Array.isArray(stocks) ? stocks.join(',') : stocks;
+    const stock = Array.isArray(stocks) ? stocks.join(',') : stocks;
 
-  const url = `https://brapi.dev/api/quote/${stock}?range=${range}&interval=${interval}&fundamental=${fundamental}`;
+    const url = `https://brapi.dev/api/quote/${stock}?range=${range}&interval=${interval}&fundamental=${fundamental}`;
 
-  const res = await fetch(url);
-  const data = (await res.json()) as {
-    results: IQuote[];
-  };
+    const res = await fetch(url, { next: { revalidate: 900 } });
+    const data = (await res.json()) as {
+      results: IQuote[];
+    };
 
-  return data?.results || [];
+    return data?.results || [];
+  } catch (err) {}
 };
