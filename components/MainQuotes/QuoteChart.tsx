@@ -80,9 +80,8 @@ export const QuoteChartBase = ({
     (d) => new Date(d.date * 1000),
   );
 
-  const { data, xScale, xAccessor, displayXAccessor } = xScaleProvider(
-    initialData,
-  );
+  const { data, xScale, xAccessor, displayXAccessor } =
+    xScaleProvider(initialData) || {};
 
   const maxX = xAccessor(data[data.length - 1]);
   const minX = xAccessor(data[Math.max(0, data.length - 100)]);
@@ -144,7 +143,7 @@ export const QuoteChart = (
   const cleanSourceUrl =
     props?.source && props.source.split('?')[0].split('//')[1];
 
-  if (props.historicalDataPrices.length <= 1) {
+  if (props?.historicalDataPrices?.length <= 1) {
     return (
       <div className="flex flex-col items-center justify-center h-full bg-gray-800/50 rounded-md">
         <div className="text-2xl">Não temos dados suficientes</div>

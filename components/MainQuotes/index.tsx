@@ -10,7 +10,7 @@ interface IMainQuotesProps {
 const MainQuotes = async ({ currentStock }: IMainQuotesProps) => {
   const [currentQuote] = await getCurrentQuote({
     stocks: currentStock,
-    interval: '1d',
+    interval: '1mo',
     range: 'max',
   });
 
@@ -26,7 +26,7 @@ const MainQuotes = async ({ currentStock }: IMainQuotesProps) => {
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
         <div className="h-[400px] md:col-span-2 lg:col-span-3">
           <QuoteChart
-            historicalDataPrices={currentQuote.historicalDataPrice}
+            historicalDataPrices={currentQuote?.historicalDataPrice || []}
             source={`https://brapi.dev/api/quote/${currentQuote.symbol}?range=max&interval=1d&fundamental=true`}
           />
         </div>
