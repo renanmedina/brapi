@@ -225,6 +225,17 @@
               "type": "integer"
             },
             "example": "10"
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Search for a ticker",
+            "required": false,
+            "style": "form",
+            "schema": {
+              "type": "string"
+            },
+            "example": "COG"
           }
         ],
         "responses": {

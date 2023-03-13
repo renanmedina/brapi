@@ -9,7 +9,7 @@ export interface QuoteProps {
   marketCap: number | null;
   shortName: string;
   longName: string;
-  stockImg?: string;
+  logourl?: string;
   regularMarketChange: number;
   regularMarketChangePercent: number;
   regularMarketTime: number;

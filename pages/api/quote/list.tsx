@@ -5,7 +5,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   logHost(req, 'list');
 
-  const { sortBy, sortOrder, limit } = req.query;
+  const { sortBy, sortOrder, limit, search } = req.query;
 
   res.setHeader('Cache-Control', 's-maxage=900, stale-while-revalidate');
 
@@ -46,6 +46,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       {
         left: sortBy?.toString() || 'volume',
         operation: 'nempty',
+        right: '',
       },
     ],
     options: {
@@ -68,6 +69,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     },
     range: [0, Number(limit) || 2000],
   };
+
+  search &&
+    formData.filter.push({
+      left: 'name',
+      operation: 'match',
+      right: search.toString(),
+    });
 
   const response = await axios.post(
     `https://scanner.tradingview.com/brazil/scan`,

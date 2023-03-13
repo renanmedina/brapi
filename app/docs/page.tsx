@@ -1,5 +1,10 @@
+import { Metadata } from 'next';
 import { MainDocs } from '~/components/MainDocs';
 import '~/styles/swagger-ui.css';
+
+export const metadata: Metadata = {
+  title: 'Documentação',
+};
 
 const Docs = () => {
   return (

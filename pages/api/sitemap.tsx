@@ -1,176 +1,65 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import { getQuoteList } from '~/services/getQuoteList';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
+  const stockList = await getQuoteList({ limit: 5000 });
+
   res.status(200).setHeader('Content-Type', 'application/xml');
   res.send(`<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
   <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
       <loc>https://brapi.dev/</loc>
-      <lastmod>2021-02-06</lastmod>
+      <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
       <changefreq>monthly</changefreq>
       <priority>1</priority>
     </url>
     <url>
       <loc>https://brapi.dev/about</loc>
-      <lastmod>2021-02-06</lastmod>
+      <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.9</priority>
     </url>
     <url>
-      <loc>https://brapi.dev/quotes</loc>
-      <lastmod>2021-02-06</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>0.9</priority>
-    </url>
-    <url>
       <loc>https://brapi.dev/docs</loc>
-      <lastmod>2021-02-06</lastmod>
+      <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.9</priority>
     </url>
     <url>
       <loc>https://brapi.dev/contact</loc>
-      <lastmod>2021-02-06</lastmod>
+      <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.9</priority>
     </url>
     <url>
-      <loc>https://brapi.dev/login</loc>
-      <lastmod>2021-02-06</lastmod>
+      <loc>https://brapi.dev/terms-of-use</loc>
+      <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.9</priority>
     </url>
     <url>
-      <loc>https://brapi.dev/create-account</loc>
-      <lastmod>2021-02-06</lastmod>
+      <loc>https://brapi.dev/privacy-policy</loc>
+      <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.9</priority>
     </url>
     <url>
-      <loc>https://brapi.dev/legal</loc>
-      <lastmod>2021-02-06</lastmod>
+      <loc>https://brapi.dev/cookie-policy</loc>
+      <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.9</priority>
     </url>
-    <url>
-      <loc>https://brapi.dev/quotes/OIBR3</loc>
-      <lastmod>2021-02-06</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>0.8</priority>
-    </url>
-    <url>
-      <loc>https://brapi.dev/quotes/CIEL3</loc>
-      <lastmod>2021-02-06</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>0.8</priority>
-    </url>
-    <url>
-      <loc>https://brapi.dev/quotes/IRBR3</loc>
-      <lastmod>2021-02-06</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>0.8</priority>
-    </url>
-    <url>
-      <loc>https://brapi.dev/quotes/GFSA3</loc>
-      <lastmod>2021-02-06</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>0.8</priority>
-    </url>
-    <url>
-      <loc>https://brapi.dev/quotes/COGN3</loc>
-      <lastmod>2021-02-06</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>0.8</priority>
-    </url>
-    <url>
-      <loc>https://brapi.dev/quotes/PETR3</loc>
-      <lastmod>2021-02-06</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>0.8</priority>
-    </url>
-    <url>
-      <loc>https://brapi.dev/quotes/VVAR3</loc>
-      <lastmod>2021-02-06</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>0.8</priority>
-    </url>
-    <url>
-      <loc>https://brapi.dev/quotes/VALE3</loc>
-      <lastmod>2021-02-06</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>0.8</priority>
-    </url>
-    <url>
-      <loc>https://brapi.dev/quotes/MGLU3</loc>
-      <lastmod>2021-02-06</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>0.8</priority>
-    </url>
-    <url>
-      <loc>https://brapi.dev/quotes/CSNA3</loc>
-      <lastmod>2021-02-06</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>0.8</priority>
-    </url>
-    <url>
-      <loc>https://brapi.dev/quotes/DMMO3</loc>
-      <lastmod>2021-02-06</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>0.8</priority>
-    </url>
-    <url>
-      <loc>https://brapi.dev/quotes/BBAS3</loc>
-      <lastmod>2021-02-06</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>0.8</priority>
-    </url>
-    <url>
-      <loc>https://brapi.dev/quotes/BRDT3</loc>
-      <lastmod>2021-02-06</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>0.8</priority>
-    </url>
-    <url>
-      <loc>https://brapi.dev/quotes/ABEV3</loc>
-      <lastmod>2021-02-06</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>0.8</priority>
-    </url>
-    <url>
-      <loc>https://brapi.dev/quotes/BRML3</loc>
-      <lastmod>2021-02-06</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>0.8</priority>
-    </url>
-    <url>
-      <loc>https://brapi.dev/quotes/INTB3</loc>
-      <lastmod>2021-02-06</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>0.8</priority>
-    </url>
-    <url>
-      <loc>https://brapi.dev/quotes/JHSF3</loc>
-      <lastmod>2021-02-06</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>0.8</priority>
-    </url>
-    <url>
-      <loc>https://brapi.dev/quotes/MRFG3</loc>
-      <lastmod>2021-02-06</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>0.8</priority>
-    </url>
-    <url>
-      <loc>https://brapi.dev/quotes/RAIL3</loc>
-      <lastmod>2021-02-06</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>0.8</priority>
-    </url>
-    <url>
-      <loc>https://brapi.dev/quotes/PRIO3</loc>
-      <lastmod>2021-02-06</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>0.8</priority>
-    </url>
+    ${stockList
+      .map(
+        (stock) => `
+      <url>
+        <loc>https://brapi.dev/quote/${stock.stock}</loc>
+        <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+      </url>
+    `,
+      )
+      .join('\n')}
   </urlset>`);
 };

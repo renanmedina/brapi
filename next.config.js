@@ -2,12 +2,22 @@
 module.exports = {
   swcMinify: true,
   experimental: {
+    scrollRestoration: true,
     optimizeCss: true,
     appDir: true,
-    transpilePackages: [
-      'react-syntax-highlighter',
-      'swagger-client',
-      'swagger-ui-react',
-    ],
+  },
+  async redirects() {
+    return [
+      {
+        source: '/sitemap.xml',
+        destination: '/api/sitemap',
+        permanent: false,
+      },
+      {
+        source: '/sitemap',
+        destination: '/api/sitemap',
+        permanent: false,
+      },
+    ];
   },
 };
