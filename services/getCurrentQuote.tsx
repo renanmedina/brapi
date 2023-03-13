@@ -37,5 +37,5 @@ export const getCurrentQuote = async (props: IGetCurrentQuote) => {
     results: IQuote[];
   };
 
-  return data.results;
+  return data?.results || [];
 };
