@@ -4,6 +4,8 @@ interface QuotesQuoteLayoutProps {
   children: React.ReactNode;
 }
 
+export const revalidate = 900;
+
 export default async function QuotesQuoteLayout({
   children,
 }: QuotesQuoteLayoutProps) {

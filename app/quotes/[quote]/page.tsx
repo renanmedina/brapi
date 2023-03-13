@@ -32,6 +32,8 @@ export async function generateMetadata({ params }): Promise<Metadata> {
   };
 }
 
+export const revalidate = 900;
+
 const Quotes = ({ params }) => {
   return (
     <main>
