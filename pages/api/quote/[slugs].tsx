@@ -31,8 +31,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const allSlugs = slugs.toString().split(',');
 
   if (slugs) {
-    res.setHeader('Cache-Control', 's-maxage=900, stale-while-revalidate');
-
     const responseAllSlugs = async () => {
       const promises = allSlugs.map(async (slug) => {
         try {
@@ -300,12 +298,18 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             throw new Error(actualData[0].message);
           }
 
+          res.setHeader(
+            'Cache-Control',
+            's-maxage=900, stale-while-revalidate',
+          );
+
           res.status(200).json({
             results: actualData,
             requestedAt: dynamicDate,
           });
         })
         .catch((err) => {
+          res.setHeader('Cache-Control', 's-maxage=10, stale-while-revalidate');
           return res.status(404).json({
             error: err.message,
           });
