@@ -9,9 +9,7 @@ const getRecommendedQuotes = async (quote: string) => {
   try {
     const res = await fetch(
       `https://query2.finance.yahoo.com/v6/finance/recommendationsbysymbol/${quote}.SA`,
-      {
-        next: { revalidate: 900 },
-      },
+      { cache: 'no-cache' },
     );
     const data = await res?.json();
 

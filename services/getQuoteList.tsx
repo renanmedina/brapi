@@ -33,7 +33,7 @@ export const getQuoteList = async (args?: IGetQuoteList) => {
       url.searchParams.append(key, params[key]),
     );
 
-    const res = await fetch(url.toString(), { next: { revalidate: 900 } });
+    const res = await fetch(url.toString(), { cache: 'no-cache' });
 
     const data = await res.json();
     return data?.stocks as IQuoteList[];

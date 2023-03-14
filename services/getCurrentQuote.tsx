@@ -38,7 +38,7 @@ export const getCurrentQuote = async (props: IGetCurrentQuote) => {
 
     const url = `https://brapi.dev/api/quote/${stock}?range=${range}&interval=${interval}&fundamental=${fundamental}`;
 
-    const res = await fetch(url, { next: { revalidate: 900 } });
+    const res = await fetch(url, { cache: 'no-cache' });
     const data = (await res.json()) as {
       results: IQuote[];
     };
