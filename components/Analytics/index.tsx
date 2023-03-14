@@ -2,21 +2,16 @@
 
 import { useEffect } from 'react';
 import { Analytics as VercelAnalytics } from '@vercel/analytics/react';
-import { useRouter } from 'next/router';
 import * as gtag from '~/utils/gtag';
+import { usePathname } from 'next/navigation';
 
 export const Analytics = () => {
-  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
-    const handleRouteChange = (url: URL) => {
-      gtag.pageview(url);
-    };
-    router?.events.on('routeChangeComplete', handleRouteChange);
-    return () => {
-      router?.events.off('routeChangeComplete', handleRouteChange);
-    };
-  }, [router?.events]);
+    const url = new URL(pathname, window.location.origin);
+    gtag.pageview(url);
+  }, [pathname]);
 
   return <VercelAnalytics />;
 };
