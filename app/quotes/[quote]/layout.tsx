@@ -4,7 +4,7 @@ interface QuotesQuoteLayoutProps {
   children: React.ReactNode;
 }
 
-export const revalidate = 900;
+export const dynamic = 'force-dynamic';
 
 export default async function QuotesQuoteLayout({
   children,
