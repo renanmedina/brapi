@@ -32,7 +32,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
   };
 }
 
-export const revalidate = 900;
+export const dynamic = 'force-dynamic';
 
 const Quotes = ({ params }) => {
   return (
