@@ -1,8 +1,12 @@
 import { Metadata } from 'next';
+import { createOg } from '~/utils/og';
 import MainLegal from '../../components/MainLegal';
 
 export const metadata: Metadata = {
   title: 'Política de Cookies',
+  openGraph: {
+    ...createOg('Política de Cookies'),
+  },
 };
 
 const CookiePolicyPage = () => {

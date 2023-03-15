@@ -4,8 +4,9 @@ import { Analytics } from '~/components/Analytics';
 import { AutoToast } from '~/components/AutoToast';
 import Footer from '~/components/Footer';
 import Header from '~/components/Header';
-import '~/styles/global.css';
 import { GA_TRACKING_ID } from '~/utils/gtag';
+import { createOg } from '~/utils/og';
+import '~/styles/global.css';
 
 interface RootLayoutProps {
   children: React.ReactNode;
@@ -20,11 +21,11 @@ export const metadata: Metadata = {
   description:
     'API ilimitada da BOVESPA e Cryptomoedas. Ajudamos desenvolvedores a construir o futuro das fintechs democratizando o acesso aos dados do mercado financeiro brasileiro.',
   openGraph: {
+    ...createOg('API de ações da bolsa de valores brasileira'),
     title: 'brapi - API de ações da bolsa de valores brasileira',
     description:
       'API ilimitada da BOVESPA e Cryptomoedas. Ajudamos desenvolvedores a construir o futuro das fintechs democratizando o acesso aos dados do mercado financeiro brasileiro.',
     type: 'website',
-    images: [{ url: 'https://brapi.dev/favicon.png' }],
     siteName: 'brapi',
     url: 'https://brapi.dev',
   },
