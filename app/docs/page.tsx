@@ -1,9 +1,13 @@
 import { Metadata } from 'next';
 import { MainDocs } from '~/components/MainDocs';
+import { createOg } from '~/utils/og';
 import '~/styles/swagger-ui.css';
 
 export const metadata: Metadata = {
   title: 'Documentação',
+  openGraph: {
+    ...createOg('Documentação'),
+  },
 };
 
 const Docs = () => {

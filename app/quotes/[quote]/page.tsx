@@ -12,6 +12,11 @@ export async function generateMetadata({ params }): Promise<Metadata> {
     stock.regularMarketPrice,
   )} - Preço, Variação, Gráfico, Notícias e mais`;
   const description = `Informações sobre a ação ${stock.symbol} - ${stock.shortName} da empresa ${stock.longName}.`;
+  const ogImage = `https://${
+    process.env.NEXT_PUBLIC_VERCEL_URL || 'brapi.dev'
+  }/api/og?ticker=${stock.symbol || 'brapi'}&logoUrl=${
+    stock.logourl || 'https://brapi.dev/favicon.svg'
+  }&longName=${stock.longName || 'brapi.dev'}`;
 
   return {
     title,
@@ -20,7 +25,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
       title,
       description,
       type: 'website',
-      images: [{ url: stock.logourl }],
+      images: [{ url: ogImage }],
       siteName: 'brapi',
       url: `https://brapi.dev/quotes/${stock.symbol}`,
     },

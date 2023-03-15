@@ -1,8 +1,12 @@
 import { Metadata } from 'next';
+import { createOg } from '~/utils/og';
 import MainLegal from '../../components/MainLegal';
 
 export const metadata: Metadata = {
   title: 'Política de Privacidade',
+  openGraph: {
+    ...createOg('Política de Privacidade'),
+  },
 };
 
 const PrivacyPolicyPage = () => {
