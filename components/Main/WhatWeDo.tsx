@@ -39,7 +39,7 @@ export const WhatWeDo = () => {
           <h2 className="title-font font-semibold text-white tracking-wider text-sm mb-3">
             CATEGORIAS
           </h2>
-          <nav className="flex flex-wrap list-none -mb-1">
+          <ul className="flex flex-wrap list-none -mb-1">
             <li className="lg:w-1/3 mb-1 w-1/2">
               <Link
                 prefetch={false}
@@ -100,7 +100,7 @@ export const WhatWeDo = () => {
                 Pesquisa rápida
               </Link>
             </li>
-          </nav>
+          </ul>
         </div>
       </div>
     </section>

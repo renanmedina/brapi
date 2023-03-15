@@ -166,7 +166,13 @@ export const SearchResult = (props: ISearchResult) => {
       href={`/quotes/${stock}`}
       title={name}
     >
-      <img src={logo} className="w-10 h-10 rounded-full" alt={name} />
+      <img
+        src={logo}
+        className="w-10 h-10 rounded-full"
+        alt={name}
+        width={40}
+        height={40}
+      />
       <div className="ml-4">
         <p className="text-lg font-medium md:w-52 lg:w-64 md:truncate">
           {name}

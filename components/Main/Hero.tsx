@@ -1,4 +1,8 @@
+import Image from 'next/image';
 import Link from 'next/link';
+import dashboardPersonImage from '../../public/hero_image/dashboard_person.png';
+import creditCardImage from '../../public/hero_image/credit_card.png';
+import plantImage from '../../public/hero_image/plant.png';
 
 export const Hero = () => {
   return (
@@ -19,20 +23,21 @@ export const Hero = () => {
         </div>
         <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
           <div className="relative">
-            <img
+            <Image
               className="object-cover object-center"
               alt="Dashboard de gráficos com uma pessoa feliz"
-              src="/hero_image/dashboard_person.png"
+              src={dashboardPersonImage}
             />
-            <img
+            <Image
               className="object-cover object-center absolute top-1/2 -left-16 motion-safe:animate-bounce"
               alt="Cartão de crédito"
-              src="/hero_image/credit_card.png"
+              src={creditCardImage}
             />
-            <img
+            <Image
               className="object-cover object-center absolute bottom-0 right-0 motion-safe:animate-wiggle origin-bottom"
               alt="Planta"
-              src="/hero_image/plant.png"
+              // src="/hero_image/plant.png"
+              src={plantImage}
             />
           </div>
         </div>

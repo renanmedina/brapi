@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 const companyLinks = [
@@ -41,7 +42,9 @@ const Footer = () => {
         <div className="w-full flex flex-wrap md:flex-nowrap gap-8 justify-center md:justify-start">
           <div className="footer flex space-x-8 max-w-fit">
             <div>
-              <span className="footer-title">Empresa</span>
+              <span className="mb-2 font-bold uppercase opacity-80">
+                Empresa
+              </span>
               {companyLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -53,7 +56,7 @@ const Footer = () => {
               ))}
             </div>
             <div>
-              <span className="footer-title">Legal</span>
+              <span className="mb-2 font-bold uppercase opacity-80">Legal</span>
               {legalLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -66,7 +69,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="flex md:flex-nowrap flex-wrap justify-center md:justify-end w-full gap-8 md:gap-2">
-            <p className="text-gray-500 text-sm md:ml-6 md:mt-0 mt-2 text-center sm:text-left max-w-md">
+            <p className="text-gray-400 text-sm md:ml-6 md:mt-0 mt-2 text-center sm:text-left max-w-md">
               Ajudamos desenvolvedores a construir o futuro das fintechs
               democratizando o acesso aos dados do mercado financeiro
               brasileiro.
@@ -115,12 +118,18 @@ const Footer = () => {
       <div className="footer py-4 border-t bg-base-200 border-base-300">
         <div className="flex px-5 items-center container flex-col md:flex-row justify-center md:justify-between text-center mx-auto">
           <div className="flex items-center grid-flow-col space-x-2">
-            <img src="/favicon.svg" className="max-h-5" />
+            <Image
+              src="/favicon.svg"
+              className="max-h-5"
+              alt="Logo brapi"
+              width={20}
+              height={20}
+            />
             <p className="text-gray-400 text-sm text-center sm:text-left flex justify-center space-x-2">
               © {new Date().getFullYear()} brapi —
               <a
                 href="mailto:brapi@proton.me"
-                className="text-gray-500 ml-1 hover:text-white"
+                className="text-gray-400 ml-1 hover:text-white"
                 target="_blank"
                 rel="noopener noreferrer"
                 tabIndex={0}
@@ -131,8 +140,9 @@ const Footer = () => {
                 href="https://github.com/alissonsleal/brapi"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-500 hover:text-white transition-colors"
+                className="text-gray-400 hover:text-white transition-colors"
               >
+                <span className="sr-only">Alissonsleal Github</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="w-5 h-5"

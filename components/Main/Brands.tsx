@@ -148,6 +148,7 @@ c-24 0 -46 -5 -48 -11 -2 -6 -14 -5 -33 5 -36 19 -51 19 -93 1z m112 -91 c32
               height="100%"
               src="https://conteudo.imguol.com.br/c/_layout/v3/logoUOL2021/logo_completo_white.svg"
               className="max-h-16"
+              alt="UOL Economia"
             />
           </a>
         </span>

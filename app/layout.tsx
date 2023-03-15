@@ -33,24 +33,20 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'brapi',
   },
+  viewport: 'width=device-width, initial-scale=1',
 };
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="pt-BR">
       <Script
-        async
-        defer
-        src="https://www.googleoptimize.com/optimize.js?id=OPT-M7MLFBD"
-      ></Script>
-
-      {/* Global Site Tag (gtag.js) - Google Analytics */}
-      <Script
+        id="ga"
         async
         defer
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
       />
       <Script
+        id="ga-init"
         async
         defer
         dangerouslySetInnerHTML={{

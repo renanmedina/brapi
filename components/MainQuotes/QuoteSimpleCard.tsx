@@ -18,7 +18,16 @@ export const QuoteSimpleCard = ({
     >
       <div className="flex justify-between">
         <div className="text-xl font-bold">{stock}</div>
-        <img src={logo} alt={stock} className="w-8 h-8 rounded-lg" />
+        <img
+          src={logo}
+          alt={stock}
+          className="w-8 h-8 rounded-lg"
+          width={32}
+          height={32}
+          loading="lazy"
+          // dont send cookies to other domains
+          crossOrigin="anonymous"
+        />
       </div>
       <div className="text-sm capitalize">{name?.toLowerCase()}</div>
       <div className="flex justify-between">

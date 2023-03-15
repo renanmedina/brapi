@@ -12,6 +12,7 @@ const Header = () => {
             className="flex title-font font-medium items-center text-white mb-4 md:mb-0 w-20"
             tabIndex={0}
           >
+            <span className="sr-only">brapi</span>
             <svg
               viewBox="0 0 661 320"
               fill="none"
