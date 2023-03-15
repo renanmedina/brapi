@@ -5,13 +5,7 @@ export const config = {
   runtime: 'experimental-edge',
 };
 
-const font = fetch(
-  new URL('../../../assets/OpenSans.ttf', import.meta.url),
-).then((res) => res.arrayBuffer());
-
 export default async function handler(req: NextRequest) {
-  const fontData = await font;
-
   const { searchParams } = new URL(req.url);
 
   // ?ticker=<ticker>&logoUrl=<logoUrl>&longName=<longName>
@@ -30,7 +24,6 @@ export default async function handler(req: NextRequest) {
           backgroundImage:
             'radial-gradient(circle at 25px 25px, #344261 2%, transparent 0%), radial-gradient(circle at 75px 75px, #344261 2%, transparent 0%)',
           backgroundSize: '100px 100px',
-          fontFamily: 'Open Sans',
         }}
       >
         <div tw="flex flex-col">
@@ -59,13 +52,6 @@ export default async function handler(req: NextRequest) {
     {
       height: 630,
       width: 1200,
-      fonts: [
-        {
-          name: 'Open Sans',
-          data: fontData,
-          style: 'normal',
-        },
-      ],
     },
   );
 }
