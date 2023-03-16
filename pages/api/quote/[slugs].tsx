@@ -161,19 +161,20 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
               } = await historicalResponse.data.chart.result[0].indicators
                 .quote[0];
 
-              const { adjclose: adjustedClose } = await historicalResponse.data
-                .chart.result[0].indicators.adjclose[0];
+              const { adjclose: adjustedClose } =
+                (await historicalResponse.data.chart.result[0].indicators
+                  .adjclose[0]) || {};
 
               const prices: Array<{}> = [];
               for (let index = 0; index < timestamp.length; index++) {
                 const price = {
                   date: timestamp[index],
-                  open: open[index],
-                  high: high[index],
-                  low: low[index],
-                  close: close[index],
-                  volume: volume[index],
-                  adjustedClose: adjustedClose[index],
+                  open: open[index] || null,
+                  high: high[index] || null,
+                  low: low[index] || null,
+                  close: close[index] || null,
+                  volume: volume[index] || null,
+                  adjustedClose: adjustedClose[index] || null,
                 };
 
                 prices.push(price);
