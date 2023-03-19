@@ -18,6 +18,11 @@ module.exports = {
         destination: '/api/sitemap',
         permanent: false,
       },
+      {
+        source: '/quotes/:stock',
+        destination: '/quote/:stock',
+        permanent: false,
+      },
     ];
   },
 };

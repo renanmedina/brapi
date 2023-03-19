@@ -27,7 +27,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
       type: 'website',
       images: [{ url: ogImage }],
       siteName: 'brapi',
-      url: `https://brapi.dev/quotes/${stock.symbol}`,
+      url: `https://brapi.dev/quote/${stock.symbol}`,
     },
     applicationName: 'brapi',
     twitter: {

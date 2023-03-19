@@ -163,7 +163,7 @@ export const SearchResult = (props: ISearchResult) => {
         'border-b': props.hasBorder,
         'rounded-md': !props.hasBorder,
       })}
-      href={`/quotes/${stock}`}
+      href={`/quote/${stock}`}
       title={name}
     >
       <img
