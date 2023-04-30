@@ -26,7 +26,7 @@ export const Numbers = () => {
                 <path d="M20.88 18.09A5 5 0 0018 9h-1.26A8 8 0 103 16.29"></path>
               </svg>
               <h2 className="title-font font-medium text-3xl text-white">
-                +20 milhões
+                +50 milhões
               </h2>
               <p className="leading-relaxed">Requisições por mês</p>
             </div>
@@ -47,7 +47,7 @@ export const Numbers = () => {
                 <path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"></path>
               </svg>
               <h2 className="title-font font-medium text-3xl text-white">
-                +4 mil
+                +5 mil
               </h2>
               <p className="leading-relaxed">Usuários por mês</p>
             </div>
@@ -91,7 +91,7 @@ export const Numbers = () => {
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
               </svg>
               <h2 className="title-font font-medium text-3xl text-white">
-                99,996%
+                +99,9%
               </h2>
               <p className="leading-relaxed">Uptime</p>
             </div>
