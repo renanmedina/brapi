@@ -29,18 +29,20 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const coins = coin.toString().split(',');
 
-  const yahooSlugs = coins
-    .map((slug) => {
-      return `${slug}-USD`;
-    })
-    .join(',');
+  const yahooSlugs = coins.map((slug) => {
+    return `${slug}-USD`;
+  });
 
   try {
-    const { data: yahooResponse } = await axios.get(
-      `https://query1.finance.yahoo.com/v7/finance/quote?&symbols=${yahooSlugs}`,
+    const promises = yahooSlugs.map((slug) =>
+      axios.get(`https://query1.finance.yahoo.com/v7/finance/options/${slug}`),
     );
 
-    const yahooData = yahooResponse.quoteResponse.result;
+    const responses = await Promise.all(promises);
+
+    const yahooData = responses.map(
+      (response) => response.data.optionChain.result[0].quote,
+    );
 
     let USDPriceInCurrency: any;
 
