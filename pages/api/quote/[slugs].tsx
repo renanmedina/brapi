@@ -4,6 +4,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { QuoteProps } from '../../../@types/QuoteProps';
 import { parseDMY } from '~/utils/parseDMY';
 import { replaceComma } from '~/utils/replaceComma';
+import { TradingViewQuoteResponse } from '~/@types/TradingViewQuoteResponse';
 
 interface LooseObject {
   [key: string]: any;
@@ -38,7 +39,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             `https://query1.finance.yahoo.com/v7/finance/options/${slug}.SA`,
           );
 
-          let fundamentalInformation = [];
+          let fundamentalInformation: TradingViewQuoteResponse;
           let dividendsData = {};
 
           if (fundamental) {
@@ -53,6 +54,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                 'price_earnings_ttm',
                 'earnings_per_share_basic_ttm',
                 'logoid',
+                'type',
+                'sector'
               ],
             };
 
@@ -67,7 +70,16 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                 },
               );
 
-              fundamentalInformation.push(responseTradingView.data.data[0].d);
+              const responseTradingViewData = responseTradingView.data.data[0];
+              // we are going to only use the first result, 
+              // so we can actually make it a simple object interface to make it easy for re-mapping
+              fundamentalInformation = {
+                price_earnings_ttm: responseTradingViewData.d[0],
+                earnings_per_share_basic_ttm: responseTradingViewData.d[1],
+                logoid: responseTradingViewData.d[2],
+                type: responseTradingViewData.d[3],
+                sector: responseTradingViewData.d[4]
+              };
             } catch (error) {
               console.log(error?.message);
             }
@@ -273,10 +285,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           };
 
           if (fundamental) {
-            quote.priceEarnings = fundamentalInformation[0][0];
-            quote.earningsPerShare = fundamentalInformation[0][1];
-            quote.logourl = fundamentalInformation[0][2]
-              ? `https://s3-symbol-logo.tradingview.com/${fundamentalInformation[0][2]}--big.svg`
+            quote.priceEarnings = fundamentalInformation.price_earnings_ttm;
+            quote.earningsPerShare = fundamentalInformation.earnings_per_share_basic_ttm;
+            quote.type = fundamentalInformation.type;
+            quote.sector = fundamentalInformation.sector;
+            quote.logourl = fundamentalInformation.logoid
+              ? `https://s3-symbol-logo.tradingview.com/${fundamentalInformation.logoid}--big.svg`
               : 'https://brapi.dev/favicon.svg';
           }
 
