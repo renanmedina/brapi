@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { logHost } from '../../../utils/logHost';
 import { NextApiRequest, NextApiResponse } from 'next';
+import TradingViewService from '~/services/TradingViewService';
+import { TradingViewQuoteResponse } from '~/@types/TradingViewQuoteResponse';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   logHost(req, 'list');
@@ -41,81 +43,27 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     });
   }
 
-  const formData = {
-    filter: [
-      {
-        left: sortBy?.toString() || 'volume',
-        operation: 'nempty',
-        right: '',
-      },
-    ],
-    options: {
-      lang: 'pt',
-      active_symbols_only: true,
-    },
-    symbols: {},
-    columns: [
-      'close',
-      'change',
-      'volume',
-      'market_cap_basic',
-      'description',
-      'logoid',
-      'type',
-      'sector',
-    ],
-    sort: {
-      sortBy: sortBy?.toString() || 'volume',
-      sortOrder: sortOrder?.toString() || 'desc',
-    },
-    range: [0, Number(limit) || 2000],
-  };
+  const stockItems = await TradingViewService.build().getList({
+    sortBy: sortBy,
+    sortOrder: sortOrder,
+    search: search,
+    limit: limit
+  });
 
-  search &&
-    formData.filter.push({
-      left: 'name',
-      operation: 'match',
-      right: search.toString(),
-    });
+  const paths = stockItems.map((item: TradingViewQuoteResponse) => {
+    const logo = item.logoid ? `https://s3-symbol-logo.tradingview.com/${item.logoid}--big.svg` : 'https://brapi.dev/favicon.svg'
 
-  const response = await axios.post(
-    `https://scanner.tradingview.com/brazil/scan`,
-    formData,
-    { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } },
-  );
-
-  const paths = await response.data.data.map((stock: any) => {
-    const cleanString = (dirtyString: string) => {
-      return dirtyString
-        .replace(' ON', '')
-        .replace(' ON', '')
-        .replace(' NM', '')
-        .replace(' EJ', '')
-        .replace(' REON', '')
-        .replace(' N1', '')
-        .replace(' N2', '');
-    };
-
-    const availableStock = stock.s.replace('BMFBOVESPA:', '');
-
-    const cleanName = cleanString(stock.d[4]);
-    const stockType = stock.d[6];
-
-    const stockInformation = {
-      stock: availableStock,
-      name: cleanName,
-      type: stockType,
-      close: stock.d[0],
-      change: stock.d[1],
-      volume: stock.d[2],
-      market_cap: stock.d[3],
-      logo: stock.d[5]
-        ? `https://s3-symbol-logo.tradingview.com/${stock.d[5]}--big.svg`
-        : 'https://brapi.dev/favicon.svg',
-      sector: stock.d[7],
-    };
-
-    return stockInformation;
+    return {
+      stock: item.stock_code,
+      name: item.description,
+      type: item.type,
+      close: item.close,
+      change: item.change,
+      volume: item.volume,
+      market_cap: item.market_cap_basic,
+      logo: logo,
+      sector: item.sector,
+    }
   });
 
   const uniqueStocks = [...new Set(paths)];
