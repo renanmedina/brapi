@@ -42,7 +42,7 @@ export default class TradingViewService {
       columns: DEFAULT_TICKER_COLUMNS
     });
 
-    return this._mapResponseObject(DEFAULT_TICKER_COLUMNS, responseTradingViewData.pop() as TradingViewQuoteItem);
+    return this._mapResponseObject(DEFAULT_TICKER_COLUMNS, responseTradingViewData.pop());
   }
 
   async getList({sortBy, sortOrder, limit, search = null}): Promise<TradingViewQuoteResponse[]> {
@@ -121,7 +121,7 @@ export default class TradingViewService {
       i++;
     }
     
-    return responseObject as TradingViewQuoteResponse;
+    return responseObject;
   }
 
   _cleanString(dirtyString: string) {

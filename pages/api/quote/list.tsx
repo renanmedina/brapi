@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { logHost } from '../../../utils/logHost';
 import { NextApiRequest, NextApiResponse } from 'next';
 import TradingViewService from '~/services/TradingViewService';
