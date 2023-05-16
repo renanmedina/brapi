@@ -68,12 +68,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
               data.twoHundredDayAverageChangePercent,
           };
 
-          let fundamentalInformation: TradingViewQuoteResponse;
-          let dividendsData = {};
-
           if (fundamental) {
             try {
-              fundamentalInformation = await TradingViewService.build().getByTickerCode(slug);
+              const fundamentalInformation: TradingViewQuoteResponse = await TradingViewService.build().getByTickerCode(slug);
               quote.priceEarnings = fundamentalInformation.price_earnings_ttm;
               quote.earningsPerShare = fundamentalInformation.earnings_per_share_basic_ttm;
               quote.type = fundamentalInformation.type;
@@ -90,7 +87,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             try {
               quote.dividendsData = await DividendsService.build().getByTickerCode(slug);
             } catch (error) {
-              dividendsData = {};
+              console.log(error?.message);
             }
           }
 
