@@ -5,4 +5,5 @@ export interface IHistoricalDataPrice {
   low: number;
   close: number;
   volume: number;
+  adjustedClose: number;
 }

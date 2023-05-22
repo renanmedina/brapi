@@ -1,10 +1,10 @@
-import axios from 'axios';
 import { logHost } from '../../../utils/logHost';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { QuoteProps } from '../../../@types/QuoteProps';
-import { parseDMY } from '~/utils/parseDMY';
-import { replaceComma } from '~/utils/replaceComma';
 import { TradingViewQuoteResponse } from '~/@types/TradingViewQuoteResponse';
+import TradingViewService from '~/services/TradingViewService';
+import DividendsService from '~/services/DividendsService';
+import YahooFinanceService from '~/services/YahooFinanceService';
 
 interface LooseObject {
   [key: string]: any;
@@ -30,230 +30,14 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   ];
 
   const allSlugs = slugs.toString().split(',');
+  const financeService = YahooFinanceService.build(); 
 
   if (slugs) {
     const responseAllSlugs = async () => {
       const promises = allSlugs.map(async (slug) => {
         try {
-          const response = await axios.get(
-            `https://query1.finance.yahoo.com/v7/finance/options/${slug}.SA`,
-          );
-
-          let fundamentalInformation: TradingViewQuoteResponse;
-          let dividendsData = {};
-
-          if (fundamental) {
-            const formDataTradingView = {
-              symbols: {
-                tickers: [`BMFBOVESPA:${slug.toUpperCase()}`],
-                query: {
-                  types: [],
-                },
-              },
-              columns: [
-                'price_earnings_ttm',
-                'earnings_per_share_basic_ttm',
-                'logoid',
-                'type',
-                'sector'
-              ],
-            };
-
-            try {
-              const responseTradingView = await axios.post(
-                `https://scanner.tradingview.com/brazil/scan`,
-                formDataTradingView,
-                {
-                  headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                  },
-                },
-              );
-
-              const responseTradingViewData = responseTradingView.data.data[0];
-              // we are going to only use the first result, 
-              // so we can actually make it a simple object interface to make it easy for re-mapping
-              fundamentalInformation = {
-                price_earnings_ttm: responseTradingViewData.d[0],
-                earnings_per_share_basic_ttm: responseTradingViewData.d[1],
-                logoid: responseTradingViewData.d[2],
-                type: responseTradingViewData.d[3],
-                sector: responseTradingViewData.d[4]
-              };
-            } catch (error) {
-              console.log(error?.message);
-            }
-          }
-
-          if (dividends) {
-            const jwtHeader = {
-              identifierFund: slug,
-            };
-
-            const jwtHeaderString = Buffer.from(
-              JSON.stringify(jwtHeader),
-            ).toString('base64');
-
-            try {
-              const responseDividends = await axios.get(
-                `https://sistemaswebb3-listados.b3.com.br/fundsProxy/fundsCall/GetListedSupplementFunds/${jwtHeaderString}`,
-              );
-
-              const { cashDividends, stockDividends, subscriptions } =
-                responseDividends?.data || {};
-
-              const dividendParser = (eachDividend) => {
-                return {
-                  ...eachDividend,
-                  ...(eachDividend?.paymentDate && {
-                    paymentDate: new Date(parseDMY(eachDividend?.paymentDate)),
-                  }),
-                  ...(eachDividend?.approvedOn && {
-                    approvedOn: new Date(parseDMY(eachDividend?.approvedOn)),
-                  }),
-                  ...(eachDividend?.lastDatePrior && {
-                    lastDatePrior: new Date(
-                      parseDMY(eachDividend?.lastDatePrior),
-                    ),
-                  }),
-                  ...(eachDividend?.rate && {
-                    rate: parseFloat(replaceComma(eachDividend?.rate)),
-                  }),
-                  ...(eachDividend?.factor && {
-                    factor: parseFloat(replaceComma(eachDividend?.factor)),
-                  }),
-                  ...(eachDividend?.percentage && {
-                    percentage: parseFloat(
-                      replaceComma(eachDividend?.percentage),
-                    ),
-                  }),
-                  ...(eachDividend?.priceUnit && {
-                    priceUnit: parseFloat(
-                      replaceComma(eachDividend?.priceUnit),
-                    ),
-                  }),
-                  ...(eachDividend?.subscriptionDate && {
-                    subscriptionDate: new Date(
-                      parseDMY(eachDividend?.subscriptionDate),
-                    ),
-                  }),
-                };
-              };
-
-              const parsedData = {
-                cashDividends: cashDividends?.map(dividendParser),
-                stockDividends: stockDividends?.map(dividendParser),
-                subscriptions: subscriptions?.map(dividendParser),
-              };
-
-              dividendsData = parsedData;
-            } catch (error) {
-              dividendsData = {};
-            }
-          }
-
-          const getHistory = async () => {
-            try {
-              const historicalResponse = await axios.get(
-                `https://query1.finance.yahoo.com/v8/finance/chart/${slug}.SA${
-                  interval && range
-                    ? `?includePrePost=false&interval=${interval}&useYfid=true&range=${range}`
-                    : '?includePrePost=false&interval=1d&useYfid=true&range=1mo'
-                }`,
-              );
-
-              const { timestamp } = await historicalResponse.data.chart
-                .result[0];
-              const {
-                low,
-                high,
-                open,
-                close,
-                volume,
-              } = await historicalResponse.data.chart.result[0].indicators
-                .quote[0];
-
-              const { adjclose: adjustedClose } =
-                (await historicalResponse.data.chart.result[0].indicators
-                  .adjclose[0]) || {};
-
-              const prices: Array<{}> = [];
-              for (let index = 0; index < timestamp.length; index++) {
-                const price = {
-                  date: timestamp[index],
-                  open: open[index] || null,
-                  high: high[index] || null,
-                  low: low[index] || null,
-                  close: close[index] || null,
-                  volume: volume[index] || null,
-                  adjustedClose: adjustedClose[index] || null,
-                };
-
-                prices.push(price);
-              }
-
-              return prices;
-            } catch (error) {
-              console.log(error?.message);
-            }
-          };
-
-          const data: QuoteProps = await response.data.optionChain.result[0]
-            .quote;
-
-          if (interval && range) {
-            const historicalData = await getHistory();
-            const historicalQuote: LooseObject = {
-              symbol: slug.toString().toUpperCase(),
-              shortName: data.shortName,
-              longName: data.longName,
-              currency: data.currency,
-              regularMarketPrice: data.regularMarketPrice,
-              regularMarketDayHigh: data.regularMarketDayHigh,
-              regularMarketDayLow: data.regularMarketDayLow,
-              regularMarketDayRange: data.regularMarketDayRange,
-              regularMarketChange: data.regularMarketChange,
-              regularMarketChangePercent: data.regularMarketChangePercent,
-              regularMarketTime: new Date(data.regularMarketTime * 1000),
-              marketCap: data.marketCap,
-              regularMarketVolume: data.regularMarketVolume,
-              regularMarketPreviousClose: data.regularMarketPreviousClose,
-              regularMarketOpen: data.regularMarketOpen,
-              averageDailyVolume10Day: data.averageDailyVolume10Day,
-              averageDailyVolume3Month: data.averageDailyVolume3Month,
-              fiftyTwoWeekLowChange: data.fiftyTwoWeekLowChange,
-              fiftyTwoWeekLowChangePercent: data.fiftyTwoWeekLowChangePercent,
-              fiftyTwoWeekRange: data.fiftyTwoWeekRange,
-              fiftyTwoWeekHighChange: data.fiftyTwoWeekHighChange,
-              fiftyTwoWeekHighChangePercent: data.fiftyTwoWeekHighChangePercent,
-              fiftyTwoWeekLow: data.fiftyTwoWeekLow,
-              fiftyTwoWeekHigh: data.fiftyTwoWeekHigh,
-              twoHundredDayAverage: data.twoHundredDayAverage,
-              twoHundredDayAverageChange: data.twoHundredDayAverageChange,
-              twoHundredDayAverageChangePercent:
-                data.twoHundredDayAverageChangePercent,
-              validRanges: validRanges,
-              historicalDataPrice: historicalData,
-            };
-
-            if (fundamental) {
-              historicalQuote.priceEarnings = fundamentalInformation[0][0];
-              historicalQuote.earningsPerShare = fundamentalInformation[0][1];
-              historicalQuote.logourl = fundamentalInformation[0][2]
-                ? `https://s3-symbol-logo.tradingview.com/${fundamentalInformation[0][2]}--big.svg`
-                : 'https://brapi.dev/favicon.svg';
-            }
-
-            if (dividends) {
-              historicalQuote.dividendsData = dividendsData;
-            }
-
-            if (response.status === 200) {
-              return historicalQuote;
-            }
-          }
-
-          const quote: LooseObject = {
+          const data: QuoteProps = await financeService.getStockDetailsByCode(slug);
+          let quote: LooseObject = {
             symbol: slug.toString().toUpperCase(),
             shortName: data.shortName,
             longName: data.longName,
@@ -285,22 +69,35 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           };
 
           if (fundamental) {
-            quote.priceEarnings = fundamentalInformation.price_earnings_ttm;
-            quote.earningsPerShare = fundamentalInformation.earnings_per_share_basic_ttm;
-            quote.type = fundamentalInformation.type;
-            quote.sector = fundamentalInformation.sector;
-            quote.logourl = fundamentalInformation.logoid
-              ? `https://s3-symbol-logo.tradingview.com/${fundamentalInformation.logoid}--big.svg`
-              : 'https://brapi.dev/favicon.svg';
+            try {
+              const fundamentalInformation: TradingViewQuoteResponse = await TradingViewService.build().getByTickerCode(slug);
+              quote.priceEarnings = fundamentalInformation.price_earnings_ttm;
+              quote.earningsPerShare = fundamentalInformation.earnings_per_share_basic_ttm;
+              quote.type = fundamentalInformation.type;
+              quote.sector = fundamentalInformation.sector;
+              quote.logourl = fundamentalInformation.logoid
+                ? `https://s3-symbol-logo.tradingview.com/${fundamentalInformation.logoid}--big.svg`
+                : 'https://brapi.dev/favicon.svg';
+            } catch (error) {
+              console.log(error?.message);
+            }
           }
 
           if (dividends) {
-            quote.dividendsData = dividendsData;
+            try {
+              quote.dividendsData = await DividendsService.build().getByTickerCode(slug);
+            } catch (error) {
+              console.log(error?.message);
+            }
           }
 
-          if (response.status === 200) {
-            return quote;
+          if (interval && range) {
+            const historicalData = await financeService.getStockHistoryData(slug, interval, range);
+            quote.historicalDataPrice = historicalData;
+            quote.validRanges = validRanges;
           }
+
+          return quote;
         } catch (err) {
           return {
             symbol: slug.toString().toUpperCase(),
